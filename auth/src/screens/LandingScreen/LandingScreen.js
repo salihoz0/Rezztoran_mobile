@@ -9,7 +9,6 @@ import CustomRestorant from '../../components/CustomRestorant/CustomRestorant';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import heart_icon from '../../../assets/images/heart-icon.png';
 import star_icon from '../../../assets/images/star-icon.png';
-
 import SignUpScreen from '../SignUpScreen';
 import { NavigationContainer } from '@react-navigation/native';
 
