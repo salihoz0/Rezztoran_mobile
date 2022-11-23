@@ -80,7 +80,7 @@ const LandingScreen = () => {
         </View>
 
         <CustomRestorant text={'En Cok Sevilenler'} icon={heart_icon} />
-        <CustomRestorant text={'En Populerler'} icon={heart_icon} />
+        <CustomRestorant text={'En Populerler'} icon={star_icon} />
       </SafeAreaView>
     </ImageBackground>
   );
