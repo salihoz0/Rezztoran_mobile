@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, ImageBackground, Image } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import CustomInput from "../../components/CustomInput";
 import backgr from "../../../assets/images/arkaplan.png";
 import Logo_2 from "../../../assets/images/Logo_2.png";
@@ -10,18 +8,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import heart_icon from "../../../assets/images/heart-icon.png";
 import star_icon from "../../../assets/images/star-icon.png";
 import isDarkTheme from "../DrawerContent/Drawercontent";
+
 const LandingScreen = () => {
   const [search, setSearch] = useState("");
-  const [date, setDate] = useState("");
   const [star, setStar] = useState("");
-  const [icon, seticon] = useState();
-  const navigation = useNavigation();
-  const onSignInPress = () => {
-    navigation.navigate("SignIn");
-  };
-  const onPressHome = () => {
-    navigation.navigate("HomeScreen");
-  };
 
   return (
     <ImageBackground source={backgr} style={styles.backgr}>
@@ -104,7 +94,7 @@ const styles = StyleSheet.create({
   },
   backgr: {
     flex: 1,
-    backgroundColor: isDarkTheme ? 'black':'white'
+    backgroundColor: isDarkTheme ? "black" : "white",
   },
   top: {
     width: "100%",

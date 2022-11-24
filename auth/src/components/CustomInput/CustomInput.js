@@ -1,18 +1,24 @@
-import React from 'react';
-import { View, StyleSheet, Text, TextInput } from 'react-native';
+import React from "react";
+import { View, StyleSheet, Text, TextInput } from "react-native";
 
-const App = ({ value, setValue, placeholder,placeholderTextColor, secureTextEntry, type }) => {
+const App = ({
+  value,
+  setValue,
+  placeholder,
+  placeholderTextColor,
+  secureTextEntry,
+  type,
+}) => {
   return (
     <View style={[styles.container, styles[`container_${type}`]]}>
       <TextInput
         value={value}
         onChangeText={setValue}
-        placeholder={placeholder} 
+        placeholder={placeholder}
         placeholderTextColor={placeholderTextColor}
         style={styles.input}
         secureTextEntry={secureTextEntry}
         inlineImageLeft="search_icon"
-
       />
     </View>
   );
@@ -20,9 +26,9 @@ const App = ({ value, setValue, placeholder,placeholderTextColor, secureTextEntr
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
-    width: '100%',
-    borderColor: '#e8e8e8',
+    backgroundColor: "white",
+    width: "100%",
+    borderColor: "#e8e8e8",
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
@@ -31,24 +37,15 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
   },
-  container_CALENDAR: {
-    backgroundColor: 'white',
-    width: '40%',
-    borderColor: '#e8e8e8',
+  container_PRICE: {
+    backgroundColor: "white",
+    width: "30%",
+    borderColor: "#e8e8e8",
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
     marginVertical: 5,
+    marginLeft: 60
   },
-  container_STAR: {
-    backgroundColor: 'white',
-    width: '20%',
-    borderColor: '#e8e8e8',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginVertical: 5,
-  },
-})
+});
 export default App;
-
