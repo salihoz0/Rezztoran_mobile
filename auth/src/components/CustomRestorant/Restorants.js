@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, StyleSheet, Text } from "react-native";
+import { View, Image, StyleSheet, Text, Dimensions } from "react-native";
 
 const Restorants = ({ Restorant }) => {
   return (
@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    height: 170,
-    width: 370,
+    height:Dimensions.get('window').height/4.5,
+    width:Dimensions.get('window').width,
     resizeMode: "stretch",
     borderRadius: 7,
   },
