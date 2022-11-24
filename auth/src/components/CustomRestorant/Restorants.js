@@ -17,14 +17,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    height:Dimensions.get('window').height/4.5,
+    height:Dimensions.get('window').height/4,
     width:Dimensions.get('window').width,
     resizeMode: "stretch",
-    borderRadius: 7,
   },
   text: {
     position: "absolute",
-    top: 140,
+    top:Dimensions.get('window').height/4.7,
     fontSize: 20,
     color: "white",
     backgroundColor: "black",

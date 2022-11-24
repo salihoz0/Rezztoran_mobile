@@ -13,6 +13,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { DrawerContent } from "../screens/DrawerContent/Drawercontent";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
+
 const NavigationStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>

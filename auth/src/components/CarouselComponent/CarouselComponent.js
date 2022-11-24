@@ -5,7 +5,7 @@ import Restorants from "../CustomRestorant/Restorants";
 import { Ionicons } from "@expo/vector-icons";
 
 const CarouselComponent = ({ data, icon, title, iconColor }) => {
-  const width = Dimensions.get("screen").width;
+  const width = Dimensions.get("window").width;
   return (
     <View style={styles.container}>
       <View style={styles.titleAndIcon}>
@@ -17,7 +17,7 @@ const CarouselComponent = ({ data, icon, title, iconColor }) => {
         <Carousel
           loop
           style={styles.carousel}
-          width={Dimensions.get('window').width}
+          width={width}
           
           height={width / 2}
           autoPlay={true}
