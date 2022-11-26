@@ -4,6 +4,7 @@
     "title":"Elit Restorant",
     "imgURL":"https://www.thegalataistanbul.com/wp-content/uploads/sites/73/2021/03/Mesai7-1500x999.jpg"
   },
+
  {
     "id":1,
     "title":"Osteria Francescana",
@@ -33,5 +34,10 @@
     "id":6,
     "title":"Mürver Restaurant Novotel",
     "imgURL":"http://www.murverrestaurant.com/wp-content/uploads/2019/11/murver_yeni_30.jpg"
-  }
+  },
+  {
+    "id":7,
+    "title":"X",
+    "imgURL":"https://marketplace.canva.com/EAFDe720Qnc/3/0/1131w/canva-kahverengi%2C-d%C3%BCzenli%2C-geleneksel-t%C3%BCrk-mutfa%C4%9F%C4%B1-lezzetleri-men%C3%BC-32L9iX9FLNk.jpg"
+  },
 ]

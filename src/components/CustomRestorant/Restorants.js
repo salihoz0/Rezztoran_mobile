@@ -1,13 +1,18 @@
 import React from "react";
-import { View, Image, StyleSheet, Text, Dimensions } from "react-native";
+import { View, Image, StyleSheet, Text, Dimensions,TouchableOpacity } from "react-native";
+import {useNavigation} from '@react-navigation/native';
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 const Restorants = ({ Restorant }) => {
+  const navigation = useNavigation()
+
   return (
     <View>
+      <TouchableWithoutFeedback onPress={()=>{navigation.navigate('RestorantDetail',{title:Restorant.title})}} pressRetentionOffset>
       <View style={styles.container}>
         <Image style={styles.image} source={{ uri: Restorant.imgURL }} />
-        <Text style={styles.text}>{Restorant.title}</Text>
       </View>
+      </TouchableWithoutFeedback>
     </View>
   );
 };
@@ -17,8 +22,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    height:Dimensions.get('window').height/4,
-    width:Dimensions.get('window').width,
+    height:Dimensions.get('screen').height/4.3,
+    width:Dimensions.get('screen').width,
     resizeMode: "stretch",
   },
   text: {

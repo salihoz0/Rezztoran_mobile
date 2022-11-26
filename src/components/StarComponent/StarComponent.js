@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import Stars from "react-native-stars";
-import { Ionicons } from "@expo/vector-icons";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const StarComponent = ({title}) => {
   return (
@@ -13,19 +13,19 @@ const StarComponent = ({title}) => {
         half={true}
         starSize={50}
         fullStar={
-          <Ionicons name="star" size={20} style={[styles.myStarStyle]} />
+          <Icon name="star" size={20} style={[styles.myStarStyle]} />
         }
         emptyStar={
-          <Ionicons
-            name="star-outline"
+          <Icon
+            name="star-o"
             size={20}
             style={[styles.myStarStyle, styles.myEmptyStarStyle]}
           />
         }
         halfStar={
-          <Ionicons
+          <Icon
             size={20}
-            name="star-half-outline"
+            name="star-half-empty"
             style={[styles.myStarStyle]}
           />
         }

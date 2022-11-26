@@ -17,13 +17,9 @@ import Navigation from "../../navigation";
 
 export function DrawerContent(props) {
   const navigation = useNavigation();
-  const isDarkMode =useColorScheme()==='dark';
-  const [isDarkTheme,setisDarkTheme]=useState(false);
-  const toggleTheme = ()=>{
-    setisDarkTheme(!isDarkTheme )
-    }
+    
   return (
-    <View style={{ flex: 1,backgroundColor: isDarkTheme ? 'black':'white' }}>
+    <View style={{ flex: 1, }}>
       <DrawerContentScrollView {...props}>
         <View style={styles.drawerContent}>
           <View style={styles.userInfoSection}>
@@ -46,7 +42,7 @@ export function DrawerContent(props) {
               )}
               label="Anasayfa "
               onPress={() => {
-                navigation.navigate("SignIn");
+                navigation.navigate("HomeScreen");
               }}
             />
           </Drawer.Section>
@@ -84,18 +80,7 @@ export function DrawerContent(props) {
             />
           </Drawer.Section>
 
-              <Drawer.Section title='Seçenekler'>
-                <TouchableRipple onPress={()=>{toggleTheme()}}>
-                  <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-around'}} >
-                    <Text>Koyu Tema</Text>
-                    <View pointerEvents="none">
-                        <Switch value={isDarkTheme} onValueChange={(val)=>setİsDark(val)}/>
-                    </View>
-                  </View>
-
-                </TouchableRipple>
-
-              </Drawer.Section>
+      
 
         </View>
       </DrawerContentScrollView>

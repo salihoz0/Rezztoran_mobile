@@ -10,8 +10,8 @@ import Restaurants_data from "../../../assets/Data/Restorant_data.json";
 import CarouselComponent from "../../components/CarouselComponent";
 import CustomInput from "../../components/CustomInput";
 import StarComponent from "../../components/StarComponent";
-import heart_icon from '../../../assets/images/heart-icon.png';
 import backgr from "../../../assets/images/arkaplan.png";
+import SearchBar from "../../components/CustomSearchBar/CustomSearchBar";
 const HomeScreen = () => {
   const [restaurants, setRestaurants] = useState("");
   const [datepicker, setDatepicker] = useState("");
@@ -22,12 +22,7 @@ const HomeScreen = () => {
     <ScrollView >
       <View style={styles.container}>
         <View>
-          <CustomInput
-            value={restaurants}
-            setValue={setRestaurants}
-            placeholder="Sehir Restoran Mutfak Ara"
-            placeholderTextColor="black"
-          />
+        <SearchBar />
           <CustomInput
             value={datepicker}
             setValue={setDatepicker}
@@ -76,8 +71,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   carousel:{
-    marginTop: 10
-  },  backgr: {
+    marginTop: 10,
+    flex:1,
+  },  
+  backgr: {
     flex: 1,
   },
 });
