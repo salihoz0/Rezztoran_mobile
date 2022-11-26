@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Image, StyleSheet, Text, Dimensions,TouchableOpacity } from "react-native";
+import { View, Image, StyleSheet, Dimensions, } from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 const Restorants = ({ Restorant }) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   return (
     <View>

@@ -7,6 +7,7 @@ const SearchBar = props => {
   const navigation = useNavigation();
   const [a,setA]=useState(0);
   let b = 1;
+  const [value, setValue] = useState();
   const [list, setList] = useState('');
   const handleSearch = text => {
     const filteredList = Restorant_Data.filter(Restorant => {
@@ -16,8 +17,8 @@ const SearchBar = props => {
       return currentTitle.indexOf(text) > -1;
     });
     setList(filteredList);
-
     setA(1);
+    
   };
   useEffect(() => {
     a > 0
@@ -29,6 +30,7 @@ const SearchBar = props => {
     <View style={styles.container}>
       <TextInput
         placeholder="Ara... "
+        value={value}
         onSubmitEditing={text => {
           handleSearch(text.nativeEvent.text);
         }}
