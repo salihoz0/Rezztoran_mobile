@@ -8,8 +8,9 @@ import ConfirmEmailScreen from "../screens/ConfirmEmailScreen";
 import ForgotPasswordScreen from "../screens/ForgotPasswordScreen";
 import NewPasswordScreen from "../screens/NewPasswordScreen";
 import HomeScreen from "../screens/HomeScreen";
-import RestorantDetailScreen from "../screens/RestorantDetailScreen"
-import SearchedRestScreen from "../screens/SearchedRestScreen"
+import RestorantDetailScreen from "../screens/RestorantDetailScreen";
+import SearchedRestScreen from "../screens/SearchedRestScreen";
+import ReservationScreen from '../screens/ReservationScreen';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { DrawerContent } from "../screens/DrawerContent/Drawercontent";
 const Stack = createNativeStackNavigator();
@@ -26,6 +27,7 @@ const NavigationStack = () => {
       <Stack.Screen name="NewPassword" component={NewPasswordScreen}/>
       <Stack.Screen name="RestorantDetail" component={RestorantDetailScreen}/>
       <Stack.Screen name="SearchedRest" component={SearchedRestScreen}/>
+      <Stack.Screen name="ReservationScreen" component={ReservationScreen}/>
     </Stack.Navigator>
   );
 };

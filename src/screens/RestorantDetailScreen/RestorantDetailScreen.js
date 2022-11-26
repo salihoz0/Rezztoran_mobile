@@ -53,7 +53,7 @@ const RestorantDetailScreen = props => {
       </View>
       <TouchableHighlight
         onPress={() => {
-          navigation.navigate('HomeScreen');
+          navigation.navigate('ReservationScreen');
         }}
         style={styles.button}>
         <Text style={styles.text}>REZERVASYON YAP</Text>
