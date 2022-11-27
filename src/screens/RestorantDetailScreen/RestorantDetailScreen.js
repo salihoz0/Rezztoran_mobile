@@ -6,20 +6,20 @@ import {
   View,
   ImageBackground,
   Dimensions,
-  TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 import backgr from '../../../assets/images/arkaplan.png';
 import Restorant_data from '../../../assets/Data/Restorant_data.json';
 import Restorants from '../../components/CustomRestorant/Restorants';
 import CustomMenu from '../../components/CustomMenu/CustomMenu';
+import DateTimePicker from '../../components/DateTimePicker/DateTimePicker';
 import {useNavigation} from '@react-navigation/native';
 
 const RestorantDetailScreen = props => {
-  const width = Dimensions.get('window').width;
   const selectTitle = props.route.params.title;
   const [list, setList] = useState(Restorant_data);
   const renderRestorant = ({item}) => <Restorants Restorant={item} />;
-  const navigation = useNavigation();
+  const [showMenu, setShowMenu] = useState(true);
 
   const pressed = () => {
     const filteredList = Restorant_data.filter(Restorant => {
@@ -46,18 +46,30 @@ const RestorantDetailScreen = props => {
             renderItem={renderRestorant}
           />
         </View>
-        <View style={styles.Menu}>
-          <Text style={styles.header}>Menü</Text>
-          <CustomMenu />
-        </View>
+        {showMenu ? (
+          <View style={styles.Menu}>
+            <Text style={styles.header}>Menü</Text>
+            <CustomMenu />
+          </View>
+        ) 
+        : (
+          <View style={styles.reserve}>
+            <DateTimePicker />
+          </View>
+        )}
       </View>
-      <TouchableHighlight
+      <TouchableOpacity
         onPress={() => {
-          navigation.navigate('ReservationScreen');
+          setShowMenu(!showMenu);
         }}
-        style={styles.button}>
-        <Text style={styles.text}>REZERVASYON YAP</Text>
-      </TouchableHighlight>
+        style={styles.button} 
+        activeOpacity={0.9}
+        >
+          {
+          showMenu ? (<Text style={styles.text}>REZERVASYON YAP</Text>)
+          :(<Text style={styles.text}>İPTAL ET</Text>)
+        }
+      </TouchableOpacity>
     </ImageBackground>
   );
 };
@@ -79,22 +91,27 @@ const styles = StyleSheet.create({
     maxHeight: 100,
   },
   Menu: {
-    height: Dimensions.get('window').height / 1.75,
+    height: Dimensions.get('window').height / 1.53,
+  },
+  reserve:{
+    flex:1
+
   },
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1,
+    borderWidth:0.5,
     borderRadius: 30,
     width: Dimensions.get('window').width,
-    backgroundColor: 'purple',
+    borderColor:'#1e88e5',
+    backgroundColor: '#e0e0e0',
     margin: 2,
     marginTop: 0,
     height: Dimensions.get('window').height / 15,
   },
   text: {
     fontSize: 20,
-    color: 'white',
+    color:'black'
   },
 });
 

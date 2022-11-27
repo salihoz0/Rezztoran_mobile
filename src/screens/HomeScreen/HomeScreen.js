@@ -13,9 +13,7 @@ import StarComponent from "../../components/StarComponent";
 import backgr from "../../../assets/images/arkaplan.png";
 import SearchBar from "../../components/CustomSearchBar/CustomSearchBar";
 const HomeScreen = () => {
-  const [restaurants, setRestaurants] = useState("");
-  const [datepicker, setDatepicker] = useState("");
-  const [price, setPrice] = useState("");
+
 
   return (
     <ImageBackground source={backgr} style={styles.backgr}>
@@ -23,21 +21,7 @@ const HomeScreen = () => {
       <View style={styles.container}>
         <View>
         <SearchBar />
-          <CustomInput
-            value={datepicker}
-            setValue={setDatepicker}
-            placeholder="Date"
-            placeholderTextColor="black"
-          />
-          <View style={styles.starAndPrice}>
-            <StarComponent title='Restorant yıldızı seç'/>
-            <CustomInput
-              value={price}
-              setValue={price}
-              placeholder="Price $"
-              placeholderTextColor="black"
-              type="PRICE"
-            />
+          
           </View>
         </View>
         <View style={styles.carousel}>
@@ -54,7 +38,6 @@ const HomeScreen = () => {
             title="En Populerler"
           />
         </View>
-      </View>
     </ScrollView>
     </ImageBackground>
   );

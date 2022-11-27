@@ -14,7 +14,7 @@ const SearchBar = props => {
       const searchedText = text.toLowerCase();
       const currentTitle = Restorant.title.toLowerCase();
 
-      return currentTitle.indexOf(text) > -1;
+      return currentTitle.indexOf(searchedText) > -1;
     });
     setList(filteredList);
     setA(1);
@@ -29,6 +29,7 @@ const SearchBar = props => {
   return (
     <View style={styles.container}>
       <TextInput
+      style={styles.text}
         placeholder="Ara... "
         value={value}
         onSubmitEditing={text => {
@@ -45,9 +46,13 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#eceff1',
     padding: 5,
+
     margin: 5,
-    borderRadius: 5,
+    borderRadius: 40,
   },
+  text:{
+    marginLeft:20
+  }
 });
 
 export default SearchBar;

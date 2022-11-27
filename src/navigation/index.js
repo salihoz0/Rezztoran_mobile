@@ -10,7 +10,6 @@ import NewPasswordScreen from "../screens/NewPasswordScreen";
 import HomeScreen from "../screens/HomeScreen";
 import RestorantDetailScreen from "../screens/RestorantDetailScreen";
 import SearchedRestScreen from "../screens/SearchedRestScreen";
-import ReservationScreen from '../screens/ReservationScreen';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { DrawerContent } from "../screens/DrawerContent/Drawercontent";
 const Stack = createNativeStackNavigator();
@@ -27,7 +26,6 @@ const NavigationStack = () => {
       <Stack.Screen name="NewPassword" component={NewPasswordScreen}/>
       <Stack.Screen name="RestorantDetail" component={RestorantDetailScreen}/>
       <Stack.Screen name="SearchedRest" component={SearchedRestScreen}/>
-      <Stack.Screen name="ReservationScreen" component={ReservationScreen}/>
     </Stack.Navigator>
   );
 };
@@ -41,8 +39,6 @@ const Navigation = () => {
         drawerContent={(props) => <DrawerContent {...props} />}
       >
         <Drawer.Screen name="Anasayfa" component={NavigationStack} />
-
-        <Drawer.Screen name="Restorantlar" component={SignInScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

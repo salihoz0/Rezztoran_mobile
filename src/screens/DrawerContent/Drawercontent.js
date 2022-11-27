@@ -14,7 +14,7 @@ import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import Icon from "react-native-vector-icons/Entypo";
 import { useNavigation } from "@react-navigation/native";
 import Navigation from "../../navigation";
-
+import data from '../../../assets/Data/Restorant_data.json'
 export function DrawerContent(props) {
   const navigation = useNavigation();
     
@@ -53,7 +53,7 @@ export function DrawerContent(props) {
               )}
               label="Restorantlar "
               onPress={() => {
-                navigation.navigate("SignIn");
+                navigation.navigate('SearchedRest', {data: data});
               }}
             />
           </Drawer.Section>
