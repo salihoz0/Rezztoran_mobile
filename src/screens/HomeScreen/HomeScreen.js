@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
   },  
   backgr: {
     flex: 1,
-    zIndex:0
   },
 });
 

@@ -51,7 +51,7 @@ const DateTimePicker = () => {
             setSelected={val => setSelected(val)}
             save="value"
             data={data}
-            dropdownItemStyles={{borderWidth: 0.3, borderRadius: 10, margin: 3}}
+            dropdownItemStyles={{borderWidth: 0.3, borderRadius: 10, margin: 2}}
           />
         </View>
 

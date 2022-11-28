@@ -3,7 +3,6 @@ import React from "react";
 import Stars from "react-native-stars";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-
 const StarComponent = ({title}) => {
   return (
     <View>
