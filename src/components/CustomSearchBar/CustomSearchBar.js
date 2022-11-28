@@ -68,10 +68,9 @@ const SearchBar = props => {
             <SelectList
               dropdownShown={false}
               placeholder={'Şehirinizi Seçin'}
-              defaultOption={"İSTANBUL"}
               maxHeight={100}
               boxStyles={{backgroundColor: 'white', margin: 3,width:220,zIndex:2,alignSelf:'flex-start',}}
-              dropdownStyles={{backgroundColor: 'white',zIndex:2,marginTop:50}}
+              dropdownStyles={{backgroundColor: 'white',zIndex:2,width:220,}}
               setSelected={val => setSelectedCity(val)}
               save="value"
               data={City_data}
@@ -79,8 +78,8 @@ const SearchBar = props => {
                 borderWidth: 0.3,
                 borderRadius: 10,
                 margin: 3,
+                width:210,  
                 zIndex:2,
-                width:220,
                 alignSelf:'flex-start'
               }}
             />
