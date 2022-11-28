@@ -71,7 +71,7 @@ const SearchBar = props => {
               defaultOption={"İSTANBUL"}
               maxHeight={100}
               boxStyles={{backgroundColor: 'white', margin: 3,width:220,zIndex:2,alignSelf:'flex-start',}}
-              dropdownStyles={{backgroundColor: 'white',zIndex:2,position:'absolute',marginTop:50}}
+              dropdownStyles={{backgroundColor: 'white',zIndex:2,marginTop:50}}
               setSelected={val => setSelectedCity(val)}
               save="value"
               data={City_data}
