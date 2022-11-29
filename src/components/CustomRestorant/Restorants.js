@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, StyleSheet, Dimensions, } from "react-native";
+import { View, Image, StyleSheet, Dimensions, Pressable, } from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
@@ -8,11 +8,11 @@ const Restorants = ({ Restorant }) => {
 
   return (
     <View>
-      <TouchableWithoutFeedback onPress={()=>{navigation.navigate('RestorantDetail',{title:Restorant.title})}} pressRetentionOffset>
+      <Pressable onPress={()=>{navigation.navigate('RestorantDetail',{title:Restorant.title})}} pressRetentionOffset>
       <View style={styles.container}>
         <Image style={styles.image} source={{ uri: Restorant.imgURL }} />
       </View>
-      </TouchableWithoutFeedback>
+      </Pressable>
     </View>
   );
 };
