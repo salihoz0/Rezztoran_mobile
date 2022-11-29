@@ -5,34 +5,43 @@ import {
   TextInput,
   View,
   Modal,
-  Alert,
+  StyleSheet,
   Image,
   Pressable,
+  TouchableOpacity,
+  FlatList,
 } from 'react-native';
 import Restorant_Data from '../../../assets/Data/Restorant_data.json';
 import {useNavigation} from '@react-navigation/native';
 import categories_data from '../../../assets/Data/Categories_data.json';
-import {StyleSheet} from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 const SearchBar = props => {
   const navigation = useNavigation();
   const [a, SetA] = useState(0);
-  const [value, setValue] = useState();
+  const [b, SetB] = useState(0);
+  const [value] = useState();
   const [list, setList] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
+
+  const Image_pressed = () => {
+    setModalVisible(!modalVisible), console.log('image pressed');
+    handleSearch('');
+  };
+
   const handleSearch = text => {
     const filteredList = Restorant_Data.filter(Restorant => {
       const searchedText = text.toLowerCase();
       const currentTitle = Restorant.title.toLowerCase();
       const currentcate = Restorant.category.toLowerCase();
       const currentcity = Restorant.city.toLowerCase();
-      
 
-      return currentTitle.indexOf(searchedText) > -1 || currentcate.indexOf(searchedText) > -1 || currentcity.indexOf(searchedText) > -1;
-
+      return (
+        currentTitle.indexOf(searchedText) > -1 ||
+        currentcate.indexOf(searchedText) > -1 ||
+        currentcity.indexOf(searchedText) > -1
+      );
     });
 
     const filteredListCategory = filteredList.filter(Category => {
@@ -48,26 +57,24 @@ const SearchBar = props => {
     SetA(1);
     setList(filteredListCity);
   };
+
   useEffect(() => {
     a > 0
       ? navigation.navigate('SearchedRest', {data: list})
       : console.log('Boş Giriş');
   }, [list]);
-
-  const Image_pressed = item => {
-      setSelectedCategory(item),
-      setModalVisible(!modalVisible),
-      handleSearch('');
-  };
+  useEffect(() => {
+    b > 0 ? Image_pressed() : console.log('Kategori seçilmedi', b);
+  }, [selectedCategory]);
 
   return (
     <View>
       <View style={styles.container}>
-        <View >
+        <View>
           <TextInput
             style={styles.text_input}
             placeholder="Restorant, Kategori, Şehir ara... "
-            autoComplete='off'
+            autoComplete="off"
             value={value}
             onFocus={() => setModalVisible(!modalVisible)}
             onSubmitEditing={text => {
@@ -77,48 +84,44 @@ const SearchBar = props => {
         </View>
       </View>
 
-      <View>
-        <Modal
-          style={styles.modal}
-          animationType="slide"
-          visible={modalVisible}>
-          <View style={styles.searchbar}>
-            <TextInput
-              style={styles.text_input}
-              placeholder="Restorant, Kategori, Şehir ara... "
-              autoComplete='off'
-              autoFocus
-              value={value}
-              onSubmitEditing={text => {
-                handleSearch(text.nativeEvent.text);
-              }}
-            />
-          </View>
-          <Text style={styles.header}>KATEGORİLER</Text>
-          <FlatList
-            data={categories_data}
-            renderItem={({item}) => (
-              <View style={styles.inner_container}>
-                <Pressable onPress={() => Image_pressed(item.category)}>
-                  <Image style={styles.image} source={{uri: item.imgURL}} />
-                  <Text style={styles.text}>{item.category}</Text>
-                </Pressable>
-              </View>
-            )}
-            numColumns={2}
+      <Modal animationType="fade" visible={modalVisible}>
+        <View style={styles.searchbar}>
+          <TextInput
+            style={styles.text_input}
+            placeholder="Restorant, Kategori, Şehir ara... "
+            autoComplete="off"
+            autoFocus
+            value={value}
+            onSubmitEditing={text => {
+              handleSearch(text.nativeEvent.text);
+            }}
           />
-          <Pressable
-            style={styles.icon}
-            onPress={() => setModalVisible(!modalVisible)}>
-            <Icon
-              name="arrow-circle-left"
-              size={50}
-              color={'black'}
-              backgroundColor={'white'}
-            />
-          </Pressable>
-        </Modal>
-      </View>
+        </View>
+        <Text style={styles.header}>KATEGORİLER</Text>
+        <FlatList
+          data={categories_data}
+          renderItem={({item}) => (
+            <View style={styles.inner_container}>
+              <Pressable
+                onPress={() => (setSelectedCategory(item.category), SetB(1))}>
+                <Image style={styles.image} source={{uri: item.imgURL}} />
+                <Text style={styles.text}>{item.category}</Text>
+              </Pressable>
+            </View>
+          )}
+          numColumns={2}
+        />
+        <TouchableOpacity
+          style={styles.icon}
+          onPress={() => setModalVisible(!modalVisible)}>
+          <Icon
+            name="arrow-circle-left"
+            size={60}
+            color={'black'}
+            backgroundColor={'white'}
+          />
+        </TouchableOpacity>
+      </Modal>
     </View>
   );
 };
@@ -167,6 +170,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height / 1.5,
     marginTop: 20,
+    backgroundColor: '#eceff1',
   },
   header: {
     fontSize: 20,
@@ -186,7 +190,7 @@ const styles = StyleSheet.create({
   icon: {
     zIndex: 1,
     position: 'absolute',
-    marginRight: Dimensions.get('window').width / 1.12,
+    marginRight: Dimensions.get('window').width / 1.15,
     marginTop: Dimensions.get('window').height / 1.02,
     backgroundColor: 'white',
     borderRadius: 50,
