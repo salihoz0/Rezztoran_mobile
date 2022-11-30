@@ -20,7 +20,6 @@ const DateTimePicker = () => {
   const [selected, setSelected] = useState('');
   const [dateData, setDateData] = useState();
 
-
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
@@ -34,9 +33,9 @@ const DateTimePicker = () => {
   const hideDatePicker = () => {
     setDatePickerVisibility(false);
   };
-  const reservationCreate =()=>[
+  const reservationCreate = () => [
     //verileri alıp rezervasyonlarım sayfasına gönder
-  ]
+  ];
   return (
     <ImageBackground source={backgr} style={styles.backgr}>
       <View style={styles.container}>
@@ -129,7 +128,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    color:'black'
+    color: 'black',
   },
 });
 

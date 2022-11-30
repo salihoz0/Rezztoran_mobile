@@ -1,5 +1,5 @@
-import React from "react";
-import { View, StyleSheet, Text, TextInput } from "react-native";
+import React from 'react';
+import {View, StyleSheet, Text, TextInput} from 'react-native';
 
 const App = ({
   value,
@@ -26,9 +26,9 @@ const App = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
-    width: "100%",
-    borderColor: "#e8e8e8",
+    backgroundColor: 'white',
+    width: '100%',
+    borderColor: '#e8e8e8',
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
@@ -38,14 +38,25 @@ const styles = StyleSheet.create({
     height: 40,
   },
   container_PRICE: {
-    backgroundColor: "white",
-    width: "30%",
-    borderColor: "#e8e8e8",
+    backgroundColor: 'white',
+    width: '30%',
+    borderColor: '#e8e8e8',
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
     marginVertical: 5,
-    marginLeft: 60
+    marginLeft: 60,
+  },
+  container_MAINMENUINPUT: {
+    backgroundColor: 'white',
+    width: 300,
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 20,
+    paddingHorizontal: 10,
+    marginVertical: 5,
+    marginLeft: 50,
+    marginTop: 30,
   },
 });
 export default App;

@@ -4,55 +4,63 @@
     "title": "Elit Restorant",
     "imgURL": "https://www.thegalataistanbul.com/wp-content/uploads/sites/73/2021/03/Mesai7-1500x999.jpg",
     "city": "İSTANBUL ",
-    "category": "Balık"
+    "category": "Balık",
+    "point": 1.1
   },
   {
     "id": 1,
     "title": "Osteria Francescana",
     "imgURL": "https://www.mewithmysuitcase.com/wp-content/uploads/2019/03/OsteriaFrancescana28529.jpg",
     "city": "sivas ",
-    "category": "Et"
+    "category": "Et",
+    "point": 1.1
   },
   {
     "id": 2,
     "title": "Mikla",
     "imgURL": "https://i.lezzet.com.tr/images-xxlarge-secondary/michelin-yildizli-mikla-restoran-be986372-d507-45ea-b8d0-2cb85e2aa828",
     "city": "sivas ",
-    "category": "Türk Mutfağı"
+    "category": "Türk Mutfağı",
+    "point": 1.1
   },
   {
     "id": 3,
     "title": "Neolokal",
     "imgURL": "https://lh3.googleusercontent.com/p/AF1QipMlOLvEGmMHQImIGH8oBlcCAO7XNw7e5_-Y474O=s680-w680-h510",
     "city": "afyonkarahisar",
-    "category": "Çin Mutfağı"
+    "category": "Çin Mutfağı",
+    "point": 1.1
   },
   {
     "id": 4,
     "title": "Zuma",
     "imgURL": "https://fastly.4sqi.net/img/general/558x200/2025969_N1wU5V_dN82JX-SGc7Xz0xwNPLrivFVgperzef6mo_g.jpg",
     "city": "afyonkarahisar",
-    "category": "Pastane"
+    "category": "Pastane",
+    "point": 1.1
   },
   {
     "id": 5,
     "title": "Ent Restaurant",
     "imgURL": "http://gezgintatbilir.com/wp-content/uploads/2019/03/4709fdd994c4051d4f3d9d0878f21692_featured_v2-300x201.jpg",
     "city": "edirne ",
-    "category": "İtalyan Mutfağı"
+    "category": "İtalyan Mutfağı",
+    "point": 1.1
   },
   {
     "id": 6,
     "title": "Mürver Restaurant Novotel",
     "imgURL": "http://www.murverrestaurant.com/wp-content/uploads/2019/11/murver_yeni_30.jpg",
     "city": "EDİRNE ",
-    "category": "Amerikan Mutfağı"
+    "category": "Amerikan Mutfağı",
+    "point": 1.1
   },
   {
     "id": 7,
     "title": "Elit Restorant",
     "imgURL": "https://marketplace.canva.com/EAFDe720Qnc/3/0/1131w/canva-kahverengi%2C-d%C3%BCzenli%2C-geleneksel-t%C3%BCrk-mutfa%C4%9F%C4%B1-lezzetleri-men%C3%BC-32L9iX9FLNk.jpg",
     "city": "İSTANBUL ",
-    "category": "Vejeteryan"
-  },
+    "category": "Vejeteryan",
+    "point": 1.1
+  }
 ]
