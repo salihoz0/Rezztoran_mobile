@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import mainPhoto from '../../../assets/images/mainMenuPhoto.png';
 import Restaurants_data from '../../../assets/Data/Restorant_data.json';
 import styles from './HomeScreen.style';
-
+import SearchBar from '../../components/CustomSearchBar/CustomSearchBar'
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
@@ -17,7 +17,7 @@ const HomeScreen = () => {
           <Text style={styles.text}>Restoranlar</Text>
         </TouchableOpacity>
         <View style={styles.input}>
-          <CustomInput type="MAINMENUINPUT" placeholder="Restoran Deneyin" />
+         <SearchBar/>
         </View>
         <Text style={styles.offerText}>ŞUNLAR HOŞUNUZA GİDEBİLİR</Text>
       </ImageBackground>

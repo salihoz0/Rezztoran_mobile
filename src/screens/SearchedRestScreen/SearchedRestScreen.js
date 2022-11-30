@@ -15,78 +15,62 @@ import {useNavigation} from '@react-navigation/native';
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import StarComponent from '../../components/StarComponent';
-import {SelectList} from 'react-native-dropdown-select-list';
-import City_data from '../../../assets/Data/City_data.json';
-import { Modal } from 'react-native-paper';
-
-
-
+import SearchBar from '../../components/CustomSearchBar/CustomSearchBar';
+import Menu from '../../components/SortMenu';
 const SearchedRestScreen = props => {
   const data = props.route.params.data;
   const navigation = useNavigation();
   const [filterMenuShow, setFilterMenuShow] = useState(false);
+  const [sortMenuShow, setSortMenuShow] = useState(false);
+  const [a, SetA] = useState(0);
+  const [b, SetB] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
 
   return (
     <ImageBackground source={backgr} style={{flex: 1}}>
       <View style={styles.container}>
-        <View style={styles.carouselImage}>
-          <View style={{flexDirection: 'row'}}>
-            <View style={styles.icon}>
-              <Pressable onPress={()=>setFilterMenuShow(!filterMenuShow)}>
-              {!filterMenuShow ? (
-              <Icon name="filter-menu" size={30} color={'gray'} />
-            ) : (
-              <Icon name="filter-remove" size={30} color={'gray'} />
-            )}
-              </Pressable>
-            </View>
-          </View>
-           
-          <Modal style={{zIndex:2}}
-          visible={filterMenuShow} 
-          animationType="fade">
-            <SelectList
-              dropdownShown={false}
-              placeholder={'Şehirinizi Seçin'}
-              maxHeight={100}
-              boxStyles={{backgroundColor: 'white', margin: 3,width:220,zIndex:2,alignSelf:'flex-start',}}
-              dropdownStyles={{backgroundColor: 'white',zIndex:2,width:220,}}
-              setSelected={val => setSelectedCity(val)}
-              save="value"
-              data={City_data}
-              dropdownItemStyles={{
-                borderWidth: 0.3,
-                borderRadius: 10,
-                margin: 3,
-                width:210,  
-                zIndex:2,
-                alignSelf:'flex-start'
-              }}
-            />
-          </Modal>
-    
- 
-      </View>
-          <FlatList
-            data={data}
-            renderItem={({item}) => (
-              <View>
-                <View>
-                  <Text style={styles.title}>{item.title} </Text>
-                  <TouchableWithoutFeedback
-                    onPress={() => {
-                      navigation.navigate('RestorantDetail', {
-                        title: item.title,
-                      });
-                    }}
-                    pressRetentionOffset>
-                    <Image style={styles.image} source={{uri: item.imgURL}} />
-                  </TouchableWithoutFeedback>
-                </View>
-              </View>
-            )}
-          />
+        <View style={styles.header_container}>
+          <Text style={styles.header}>Keşfedin</Text>
         </View>
+        <SearchBar />
+        <View style={{flexDirection: 'row'}}>
+          <View>
+            <Menu data={data} />
+          </View>
+          <Pressable
+            style={styles.icon}
+            onPress={() => setFilterMenuShow(!filterMenuShow)}>
+            {!filterMenuShow ? (
+              <Icon name="filter-menu" size={35} color={'gray'} />
+            ) : (
+              <Icon name="filter-remove" size={35} color={'gray'} />
+            )}
+          </Pressable>
+        </View>
+
+        <FlatList
+          data={data}
+          numColumns={2}
+          renderItem={({item}) => (
+            <View style={styles.flatlist}>
+              <View>
+                <TouchableWithoutFeedback
+                  onPress={() => {
+                    navigation.navigate('RestorantDetail', {
+                      title: item.title,
+                    });
+                  }}
+                  pressRetentionOffset>
+                  <Image style={styles.image} source={{uri: item.imgURL}} />
+                  <Text style={styles.title}>{item.title} </Text>
+                  <StarComponent star={item.star} />
+                </TouchableWithoutFeedback>
+              </View>
+            </View>
+          )}
+        />
+      </View>
     </ImageBackground>
   );
 };
@@ -100,8 +84,10 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height / 4,
+    borderRadius: 30,
+    resizeMode: 'stretch',
+    width: Dimensions.get('window').width / 2.1,
+    height: Dimensions.get('window').height / 5,
   },
   title: {
     alignSelf: 'center',
@@ -109,17 +95,49 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   icon: {
-    width: Dimensions.get('window').width / 2,
-    borderRadius: 50,
+    width: Dimensions.get('screen').width / 2,
+    borderRadius: 20,
     backgroundColor: '#e0e0e0',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+
+    elevation: 3,
   },
-  inner_Menu: {
-    justifyContent: 'space-evenly',
-    flexDirection: 'row',
-    backgroundColor:'white',
-    marginTop:30,
-    borderRadius:40,
+  menu: {
+    width: Dimensions.get('screen').width / 2,
+    borderRadius: 20,
+    marginTop: 40,
+    backgroundColor: 'white',
+    alignItems: 'center',
+  },
+  menu_item: {
+    borderBottomWidth: 0.5,
+    borderColor: 'gray',
+  },
+  header: {
+    fontSize: 25,
+    paddingLeft: 25,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+
+    elevation: 3,
+  },
+  flatlist: {
+    borderRadius: 30,
+    width: Dimensions.get('window').width / 2,
+    height: Dimensions.get('window').height / 4,
+    marginTop: 25,
   },
 });
 

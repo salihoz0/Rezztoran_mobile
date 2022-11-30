@@ -76,52 +76,12 @@ const SearchBar = props => {
             placeholder="Restorant, Kategori, Şehir ara... "
             autoComplete="off"
             value={value}
-            onFocus={() => setModalVisible(!modalVisible)}
             onSubmitEditing={text => {
               handleSearch(text.nativeEvent.text);
             }}
           />
         </View>
       </View>
-
-      <Modal animationType="fade" visible={modalVisible}>
-        <View style={styles.searchbar}>
-          <TextInput
-            style={styles.text_input}
-            placeholder="Restorant, Kategori, Şehir ara... "
-            autoComplete="off"
-            autoFocus
-            value={value}
-            onSubmitEditing={text => {
-              handleSearch(text.nativeEvent.text);
-            }}
-          />
-        </View>
-        <Text style={styles.header}>KATEGORİLER</Text>
-        <FlatList
-          data={categories_data}
-          renderItem={({item}) => (
-            <View style={styles.inner_container}>
-              <Pressable
-                onPress={() => (setSelectedCategory(item.category), SetB(1))}>
-                <Image style={styles.image} source={{uri: item.imgURL}} />
-                <Text style={styles.text}>{item.category}</Text>
-              </Pressable>
-            </View>
-          )}
-          numColumns={2}
-        />
-        <TouchableOpacity
-          style={styles.icon}
-          onPress={() => setModalVisible(!modalVisible)}>
-          <Icon
-            name="arrow-circle-left"
-            size={60}
-            color={'black'}
-            backgroundColor={'white'}
-          />
-        </TouchableOpacity>
-      </Modal>
     </View>
   );
 };

@@ -18,10 +18,11 @@ const Restorants = ({Restorant}) => {
         <View style={styles.container}>
           <Image style={styles.image} source={{uri: Restorant.imgURL}} />
         </View>
-        <Text style={styles.text}>{Restorant.point}</Text>
+        <Text style={styles.text}>{Restorant.star}</Text>
         <Pressable
           onPress={() => setLiked(isLiked => !isLiked)}
-          style={styles.like}>
+          style={styles.like} >
+
           <Icon
             name={liked ? 'heart' : 'heart'}
             size={20}

@@ -13,7 +13,7 @@ const CarouselComponent = ({data}) => {
         <Restorants Restorant={item} />
         <Text style={styles.titleImage}>{item.title}</Text>
         <View style={styles.star}>
-          <StarComponent />
+        <StarComponent star={item.star} />
         </View>
       </View>
     );
