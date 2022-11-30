@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, ImageBackground, Text, TouchableOpacity} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CarouselComponent from '../../components/CarouselComponent';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import mainPhoto from '../../../assets/images/mainMenuPhoto.png';
 import Restaurants_data from '../../../assets/Data/Restorant_data.json';
 import styles from './HomeScreen.style';
@@ -13,7 +13,7 @@ const HomeScreen = () => {
       <ImageBackground source={mainPhoto} style={styles.imageBackground}>
         <Text style={styles.title}>Keşfedin</Text>
         <TouchableOpacity style={styles.button}>
-          <Icon name="search" size={20} />
+          <Icon name="silverware-fork-knife" size={20} />
           <Text style={styles.text}>Restoranlar</Text>
         </TouchableOpacity>
         <View style={styles.input}>

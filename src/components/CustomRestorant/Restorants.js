@@ -21,7 +21,8 @@ const Restorants = ({Restorant}) => {
         <Text style={styles.text}>{Restorant.star}</Text>
         <Pressable
           onPress={() => setLiked(isLiked => !isLiked)}
-          style={styles.like} >
+          style={styles.like}
+          pressRetentionOffset >
 
           <Icon
             name={liked ? 'heart' : 'heart'}

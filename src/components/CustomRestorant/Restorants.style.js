@@ -17,10 +17,9 @@ export default StyleSheet.create({
     color: 'black',
     backgroundColor: 'white',
     marginHorizontal: 10,
-    width: Dimensions.get('window').width / 8,
     paddingHorizontal: 10,
     borderRadius: 10,
-    color: 'green',
+    color: '#5BA366',
   },
   like: {
     backgroundColor: 'white',
