@@ -13,7 +13,6 @@ import Restorant_data from '../../../assets/Data/Restorant_data.json';
 import Restorants from '../../components/CustomRestorant/Restorants';
 import CustomMenu from '../../components/CustomMenu/CustomMenu';
 import DateTimePicker from '../../components/DateTimePicker/DateTimePicker';
-import {useNavigation} from '@react-navigation/native';
 
 const RestorantDetailScreen = props => {
   const selectTitle = props.route.params.title;
@@ -51,8 +50,7 @@ const RestorantDetailScreen = props => {
             <Text style={styles.header}>Menü</Text>
             <CustomMenu />
           </View>
-        ) 
-        : (
+        ) : (
           <View style={styles.reserve}>
             <DateTimePicker />
           </View>
@@ -62,13 +60,13 @@ const RestorantDetailScreen = props => {
         onPress={() => {
           setShowMenu(!showMenu);
         }}
-        style={styles.button} 
-        activeOpacity={0.9}
-        >
-          {
-          showMenu ? (<Text style={styles.text}>REZERVASYON YAP</Text>)
-          :(<Text style={styles.text}>İPTAL ET</Text>)
-        }
+        style={styles.button}
+        activeOpacity={0.9}>
+        {showMenu ? (
+          <Text style={styles.text}>REZERVASYON YAP</Text>
+        ) : (
+          <Text style={styles.text}>İPTAL ET</Text>
+        )}
       </TouchableOpacity>
     </ImageBackground>
   );
@@ -93,17 +91,16 @@ const styles = StyleSheet.create({
   Menu: {
     height: Dimensions.get('window').height / 1.53,
   },
-  reserve:{
-    flex:1
-
+  reserve: {
+    flex: 1,
   },
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth:0.5,
+    borderWidth: 0.5,
     borderRadius: 30,
     width: Dimensions.get('window').width,
-    borderColor:'#1e88e5',
+    borderColor: '#1e88e5',
     backgroundColor: '#e0e0e0',
     margin: 2,
     marginTop: 0,
@@ -111,7 +108,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    color:'black'
+    color: 'black',
   },
 });
 

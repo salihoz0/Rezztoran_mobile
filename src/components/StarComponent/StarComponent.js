@@ -3,10 +3,9 @@ import React from 'react';
 import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const StarComponent = ({title}) => {
+const StarComponent = () => {
   return (
     <View>
-      <Text style={styles.text}>{title}</Text>
       <Stars
         default={2.5}
         count={5}
@@ -38,10 +37,6 @@ const styles = StyleSheet.create({
   },
   myEmptyStarStyle: {
     color: 'white',
-  },
-  text: {
-    marginBottom: 5,
-    fontWeight: 'bold',
   },
 });
 
