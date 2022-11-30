@@ -16,7 +16,7 @@ import {useNavigation} from '@react-navigation/native';
 import Navigation from '../../navigation';
 import data from '../../../assets/Data/Restorant_data.json';
 export function DrawerContent(props) {
-  const navigation = useNavigation();
+  const navigation = useNavigation(); 
 
   return (
     <View style={{flex: 1}}>
