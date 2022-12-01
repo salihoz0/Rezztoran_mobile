@@ -7,7 +7,9 @@
     "category": "Et",
     "star": 1,
     "price": 3,
-    "most_rated": 2
+    "most_rated": 2,
+    "liked":false
+
   },
   {
     "id": 1,
@@ -16,8 +18,10 @@
     "city": "sivas ",
     "category": "Et",
     "star": 4.5,
-    "price": 3,
-    "most_rated": 4
+    "price": 1,
+    "most_rated": 4,
+    "liked":false
+
   },
   {
     "id": 2,
@@ -25,9 +29,10 @@
     "imgURL": "https://i.lezzet.com.tr/images-xxlarge-secondary/michelin-yildizli-mikla-restoran-be986372-d507-45ea-b8d0-2cb85e2aa828",
     "city": "sivas ",
     "category": "Et",
-    "star": 3.8,
+    "star": 3.5,
     "price": 5,
-    "most_rated": 1
+    "most_rated": 1,
+    "liked":false
   },
   {
     "id": 3,
@@ -36,8 +41,9 @@
     "city": "afyonkarahisar",
     "category": "Çin Mutfağı",
     "star": 4,
-    "price": 3,
-    "most_rated": 2
+    "price": 2,
+    "most_rated": 2,
+    "liked":false
   },
   {
     "id": 4,
@@ -47,7 +53,8 @@
     "category": "Pastane",
     "star": 4,
     "price": 3,
-    "most_rated": 3
+    "most_rated": 1,
+    "liked":false
   },
   {
     "id": 5,
@@ -57,7 +64,8 @@
     "category": "İtalyan Mutfağı",
     "star": 2,
     "price": 3,
-    "most_rated": 5
+    "most_rated": 5,
+    "liked":false
   },
   {
     "id": 6,
@@ -66,8 +74,10 @@
     "city": "EDİRNE ",
     "category": "Amerikan Mutfağı",
     "star": 3,
-    "price": 3,
-    "most_rated": 4
+    "price":1,
+    "most_rated": 4,
+    "liked":false
+
   },
   {
     "id": 7,
@@ -76,7 +86,9 @@
     "city": "İSTANBUL ",
     "category": "Vejeteryan",
     "star": 5,
-    "price": 3,
-    "most_rated": 5
+    "price": 2,
+    "most_rated": 5,
+    "liked":false
+    
   }
 ]

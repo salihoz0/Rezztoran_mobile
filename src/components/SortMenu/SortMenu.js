@@ -125,10 +125,15 @@ const SortMenu = props => {
 const styles = StyleSheet.create({
   icon: {
     width: Dimensions.get('screen').width / 2,
+    height:40,
+    backgroundColor: 'white',
+    marginLeft:13,
     borderRadius: 20,
-    backgroundColor: '#e0e0e0',
+    borderTopRightRadius:0,
+    borderBottomRightRadius:0,
+    marginTop:5,
     alignItems: 'center',
-    shadowColor: '#000',
+    shadowColor: 'black',
     shadowOffset: {
       width: 0,
       height: 3,

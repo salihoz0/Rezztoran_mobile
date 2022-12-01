@@ -11,8 +11,11 @@ export default StyleSheet.create({
     paddingHorizontal: 2,
   },
   star: {
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    justifyContent:'space-evenly',
+    flexDirection:'row',
     paddingRight: 255,
     paddingTop: 10,
+    paddingLeft:20
   },
 });

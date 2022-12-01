@@ -13,7 +13,9 @@ const CarouselComponent = ({data}) => {
         <Restorants Restorant={item} />
         <Text style={styles.titleImage}>{item.title}</Text>
         <View style={styles.star}>
-        <StarComponent star={item.star} />
+        <StarComponent count={item.star} select={"star"} />
+        <StarComponent count={item.price}  />
+
         </View>
       </View>
     );

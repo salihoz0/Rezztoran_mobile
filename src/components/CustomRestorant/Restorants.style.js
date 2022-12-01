@@ -22,9 +22,8 @@ export default StyleSheet.create({
     color: '#5BA366',
   },
   like: {
-    backgroundColor: 'white',
     position: 'absolute',
-    marginHorizontal: 175,
+    marginHorizontal: 205,
     marginVertical: 5,
     borderRadius: 20,
     paddingHorizontal: 5,

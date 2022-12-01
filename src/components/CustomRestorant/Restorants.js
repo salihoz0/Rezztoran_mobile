@@ -6,7 +6,7 @@ import styles from './Restorants.style';
 
 const Restorants = ({Restorant}) => {
   const navigation = useNavigation();
-  const [liked, setLiked] = useState(false);
+  const [liked, setLiked] = useState(Restorant.liked);
 
   return (
     <View>
@@ -20,14 +20,14 @@ const Restorants = ({Restorant}) => {
         </View>
         <Text style={styles.text}>{Restorant.star}</Text>
         <Pressable
-          onPress={() => setLiked(isLiked => !isLiked)}
+          onPress={() => (setLiked(isLiked => !isLiked),(Restorant.liked=!Restorant.liked))}
           style={styles.like}
           pressRetentionOffset >
 
           <Icon
-            name={liked ? 'heart' : 'heart'}
+            name='heart'
             size={20}
-            color={liked ? 'red' : 'black'}
+            color={liked ? 'red' : 'white'}
             style={styles.like}
           />
         </Pressable>

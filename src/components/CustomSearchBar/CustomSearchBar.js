@@ -24,6 +24,7 @@ const SearchBar = props => {
   const [selectedCity, setSelectedCity] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [text, setText] = useState('');
 
   const handleSearch = text => {
     const filteredList = Restorant_Data.filter(Restorant => {
@@ -32,11 +33,7 @@ const SearchBar = props => {
       const currentcate = Restorant.category.toLowerCase();
       const currentcity = Restorant.city.toLowerCase();
 
-      return (
-        currentTitle.indexOf(searchedText) > -1 ||
-        currentcate.indexOf(searchedText) > -1 ||
-        currentcity.indexOf(searchedText) > -1
-      );
+      return currentTitle.indexOf(searchedText) > -1;
     });
 
     const filteredListCategory = filteredList.filter(Category => {
@@ -65,14 +62,18 @@ const SearchBar = props => {
         <View style={styles.inner_container}>
           <TextInput
             style={styles.text_input}
-            placeholder="Restorant, Kategori, Şehir ara... "
+            placeholder="Restoran deneyin ...  "
             autoComplete="off"
             value={value}
+            placeholderTextColor="black"
+            onChangeText={text => setText(text)}
             onSubmitEditing={text => {
               handleSearch(text.nativeEvent.text);
             }}
           />
-          <Icon name="ios-search-outline" size={35} />
+          <Pressable onPress={() => handleSearch(text)}>
+            <Icon name="ios-search-outline" size={35} />
+          </Pressable>
         </View>
       </View>
     </View>
@@ -81,27 +82,25 @@ const SearchBar = props => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#eceff1',
+    backgroundColor: 'white',
     padding: 5,
     margin: 5,
     alignSelf: 'center',
     borderRadius: 40,
     borderColor: 'black',
-    borderWidth: 1,
     width: Dimensions.get('window').width / 1.2,
     height: Dimensions.get('window').height / 17,
   },
   inner_container: {
     flexDirection: 'row',
-    justifyContent:'space-evenly'
+    justifyContent: 'space-evenly',
   },
 
   text_input: {
     textAlign: 'center',
-    fontSize: 15,
-    fontWeight: '700',
+    fontSize: 20,
     textAlignVertical: 'bottom',
-    width: Dimensions.get('screen').width / 2,
+    width: Dimensions.get('screen').width / 1.5,
   },
 });
 

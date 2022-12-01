@@ -10,19 +10,24 @@ import {
   Pressable,
 } from 'react-native';
 import backgr from '../../../assets/images/arkaplan.png';
+import Restorants from '../../components/CustomRestorant/Restorants';
 import {useNavigation} from '@react-navigation/native';
+import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import StarComponent from '../../components/StarComponent';
 import SearchBar from '../../components/CustomSearchBar/CustomSearchBar';
 import Menu from '../../components/SortMenu';
-const SearchedRestScreen = props => {
-  const data = props.route.params.data;
+import data from '../../../assets/Data/Restorant_data.json';
+
+/* Tab bar daki arayın ikonunana basınca buraya geliyor ,eskiden searchedScreene yönlendiriyorduk ama searched screende normalde aranan değeri route.params komutu 
+ile alıyor ama biz arama yapmadığımız için herhangi bir değer gelmiyor hata veriyordu,ne yaptıysam çözemedim bende aynı iki tane sayfa oluşturdum bundaki datamız
+direkt restorant data searched screendeki de CustomSearchbar dan gelen data */
+
+const ExploreScreen = props => {
   const navigation = useNavigation();
   const [filterMenuShow, setFilterMenuShow] = useState(false);
   const [sortMenuShow, setSortMenuShow] = useState(false);
-  const [liked, setLiked] = useState(data.liked); //senin yaptığın liked olayını kopyaladım ama sıkıntı şu birisini beğenince hepsi kırmızı oluyor
-  //nasıl yapabiliriz aklıma birşey gelmedi,onu yapabilirsen yap sen
-
+  const [liked, setLiked] = useState(data.liked);
   return (
     <ImageBackground source={backgr} style={{flex: 1}}>
       <View style={styles.container}>
@@ -184,4 +189,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SearchedRestScreen;
+export default ExploreScreen;

@@ -36,6 +36,8 @@ export default StyleSheet.create({
   text: {
     marginLeft: 10,
     fontSize: 20,
+    fontWeight:'bold',
+    color:'black',
     textShadowColor: 'gray',
     textShadowOffset: {
       width: 0,
@@ -46,8 +48,11 @@ export default StyleSheet.create({
   offerText: {
     color: 'black',
     fontSize: 23,
-    marginVertical: 90,
+    marginTop:170,
     marginHorizontal: 20,
     fontWeight: 'bold',
   },
+  input:{
+    marginTop:20
+  }
 });
