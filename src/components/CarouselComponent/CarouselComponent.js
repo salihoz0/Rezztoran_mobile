@@ -4,6 +4,7 @@ import Carousel from 'react-native-reanimated-carousel';
 import Restorants from '../CustomRestorant/Restorants';
 import StarComponent from '../StarComponent/StarComponent';
 import styles from './CarouselComponent.style';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const CarouselComponent = ({data}) => {
   const width = Dimensions.get('window').width;
@@ -23,17 +24,19 @@ const CarouselComponent = ({data}) => {
 
   return (
     <View style={styles.container}>
+      <GestureHandlerRootView>
       <Carousel
-        loop
-        style={styles.carousel}
-        width={width}
-        mode="parallax"
-        height={width / 1.5}
-        autoPlay={true}
-        data={data}
-        scrollAnimationDuration={2000}
+          loop
+          
+          style={styles.carousel}
+          width={width}
+          mode='parallax'
+          height={width /1.8}
+          autoPlay={true}
+          data={data}
+          scrollAnimationDuration={2000}
         renderItem={renderItem}
-      />
+      /></GestureHandlerRootView>
     </View>
   );
 };
