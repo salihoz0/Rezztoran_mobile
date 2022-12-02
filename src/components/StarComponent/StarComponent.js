@@ -3,8 +3,8 @@ import React from 'react';
 import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const StarComponent = ({count, select,}) => {
-  return select == "star" ? (
+const StarComponent = ({count, select}) => {
+  return select == 'star' ? (
     <View>
       <Stars
         default={count}
@@ -12,7 +12,7 @@ const StarComponent = ({count, select,}) => {
         half={true}
         disabled={true}
         starSize={50}
-        fullStar={<Icon name="star" size={20}  style={[styles.myStarStyle]} />}
+        fullStar={<Icon name="star" size={20} style={[styles.myStarStyle]} />}
         emptyStar={
           <Icon
             name="star-o"
@@ -21,8 +21,7 @@ const StarComponent = ({count, select,}) => {
           />
         }
         halfStar={
-          
-          <Icon size={20} name="star-half-empty"  style={[styles.myStarStyle]} />
+          <Icon size={20} name="star-half-empty" style={[styles.myStarStyle]} />
         }
       />
     </View>
@@ -34,7 +33,7 @@ const StarComponent = ({count, select,}) => {
         half={true}
         disabled={true}
         starSize={50}
-        fullStar={<Text  style={[styles.priceStyle]}>{'\u20BA'}</Text>}
+        fullStar={<Text style={[styles.priceStyle]}>{'\u20BA'}</Text>}
         emptyStar={<Text></Text>}
       />
     </View>
@@ -43,16 +42,15 @@ const StarComponent = ({count, select,}) => {
 
 const styles = StyleSheet.create({
   myStarStyle: {
-    color:'yellow',
+    color: 'yellow',
     backgroundColor: 'transparent',
     textShadowColor: 'black',
     textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 2,
-
   },
-  priceStyle:{
-    color:'black',
-    fontSize:20
+  priceStyle: {
+    color: 'black',
+    fontSize: 20,
   },
   myEmptyStarStyle: {
     color: 'white',

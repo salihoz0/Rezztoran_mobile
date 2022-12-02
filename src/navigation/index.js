@@ -10,12 +10,13 @@ import HomeScreen from '../screens/HomeScreen';
 import RestorantDetailScreen from '../screens/RestorantDetailScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import SearchedRestScreen from '../screens/SearchedRestScreen';
+import FavoritesScreen from '../screens/FavoritesScreen/FavoritesScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-import data from  '../../assets/Data/Restorant_data.json'
+import data from '../../assets/Data/Restorant_data.json';
 
 const NavigationStack = () => {
   return (
@@ -29,6 +30,7 @@ const NavigationStack = () => {
       <Stack.Screen name="RestorantDetail" component={RestorantDetailScreen} />
       <Stack.Screen name="SearchedRest" component={SearchedRestScreen} />
       <Stack.Screen name="ExploreScreen" component={ExploreScreen} />
+      <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
     </Stack.Navigator>
   );
 };
@@ -36,16 +38,14 @@ const NavigationStack = () => {
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-      tabC>
+      <Tab.Navigator tabC>
         <Tab.Screen
           name="Anasayfa"
           component={NavigationStack}
           options={{
             headerShown: false,
             tabBarIcon: () => {
-              return <Icon name="home" size={20} 
-              />;
+              return <Icon name="home" size={20} />;
             },
           }}
         />
@@ -55,15 +55,13 @@ const Navigation = () => {
           options={{
             headerShown: false,
             tabBarIcon: () => {
-              return <Icon name="search" size={20}
-            />;
+              return <Icon name="search" size={20} />;
             },
-            
           }}
         />
         <Tab.Screen
           name="Favoriler"
-          component={NavigationStack}
+          component={FavoritesScreen}
           options={{
             headerShown: false,
             tabBarIcon: () => {
