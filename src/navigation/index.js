@@ -11,6 +11,7 @@ import RestorantDetailScreen from '../screens/RestorantDetailScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import SearchedRestScreen from '../screens/SearchedRestScreen';
 import FavoritesScreen from '../screens/FavoritesScreen/FavoritesScreen';
+import ProfilesScreen from '../screens/ProfilesScreen/Profiles';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const Stack = createNativeStackNavigator();
@@ -81,7 +82,7 @@ const Navigation = () => {
         />
         <Tab.Screen
           name="Profil"
-          component={NavigationStack}
+          component={ProfilesScreen}
           options={{
             headerShown: false,
             tabBarIcon: () => {
