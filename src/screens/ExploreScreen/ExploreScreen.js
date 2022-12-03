@@ -34,13 +34,38 @@ const ExploreScreen = props => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [place, setPlace] = useState('');
   const [price, setPrice] = useState('');
-  const [star, setStar] = useState('');
-  const [category, setCategory] = useState('Et');
-  const [open, setOpen] = useState(false);
+  const [restaurant, setRestaurant] = useState('');
+  const [category, setCategory] = useState('');
   const [selected, setSelected] = useState(0);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
+  };
+
+  const handleSearch = () => {
+    const filteredList = data.filter(Restorant => {
+      const currentTitle = Restorant.title.toLowerCase();
+      const currentcate = Restorant.category.toLowerCase();
+      const currentcity = Restorant.city.toLowerCase();
+
+      return (
+        currentTitle.indexOf(searchedText) > -1 ||
+        currentcate.indexOf(searchedText) > -1 ||
+        currentcity.indexOf(searchedText) > -1
+      );
+    });
+
+    const filteredListCategory = filteredList.filter(Category => {
+      const currentCategory = Category.category;
+
+      return currentCategory.indexOf(selectedCategory) > -1;
+    });
+    const filteredListCity = filteredListCategory.filter(Cities => {
+      const currentCity = Cities.city;
+
+      return currentCity.indexOf(selectedCity) > -1;
+    });
+    setList(filteredListCity);
   };
 
   return (
@@ -67,11 +92,20 @@ const ExploreScreen = props => {
               animationOut="slideOutRight">
               <View style={{flex: 1}}>
                 <View style={styles.Modalitem}>
-                  <Text style={styles.Modaltitle}>Restaurant</Text>
+                  <Text style={styles.Modaltitle}>Şehir</Text>
                   <TextInput
                     onChangeText={setPlace}
                     value={place}
-                    placeholder="Restoran Giriniz"
+                    placeholder="Şehir Giriniz"
+                    style={styles.ModalInput}
+                  />
+                </View>
+                <View style={styles.Modalitem}>
+                  <Text style={styles.Modaltitle}>Restorant giriniz</Text>
+                  <TextInput
+                    onChangeText={setRestaurant}
+                    value={restaurant}
+                    placeholder="Restaurant Giriniz"
                     style={styles.ModalInput}
                   />
                 </View>
