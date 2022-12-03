@@ -2,7 +2,7 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import styles from './StarComponentStyles'
+import styles from './StarComponentStyles';
 const StarComponent = ({count, select}) => {
   return select == 'star' ? (
     <View>
@@ -10,7 +10,7 @@ const StarComponent = ({count, select}) => {
         default={count}
         count={5}
         half={true}
-        disabled={true}
+        disabled={false}
         starSize={50}
         fullStar={<Icon name="star" size={20} style={[styles.myStarStyle]} />}
         emptyStar={
@@ -39,7 +39,5 @@ const StarComponent = ({count, select}) => {
     </View>
   );
 };
-
-
 
 export default StarComponent;

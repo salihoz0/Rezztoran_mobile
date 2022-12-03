@@ -14,13 +14,14 @@ import {
 import backgr from '../../../assets/images/arkaplan.png';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import StarComponent from '../../components/StarComponent';
+import Stars from 'react-native-stars';
 import SearchBar from '../../components/CustomSearchBar/CustomSearchBar';
 import Menu from '../../components/SortMenu';
 import data from '../../../assets/Data/Restorant_data.json';
 import styles from './ExploreScreenStyles';
 import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
 import Modal from 'react-native-modal';
+import StarComponent from '../../components/StarComponent/StarComponent';
 /* Tab bar daki arayın ikonunana basınca buraya geliyor ,eskiden searchedScreene yönlendiriyorduk ama searched screende normalde aranan değeri route.params komutu 
 ile alıyor ama biz arama yapmadığımız için herhangi bir değer gelmiyor hata veriyordu,ne yaptıysam çözemedim bende aynı iki tane sayfa oluşturdum bundaki datamız
 direkt restorant data searched screendeki de CustomSearchbar dan gelen data */
@@ -32,6 +33,8 @@ const ExploreScreen = props => {
   const [liked, setLiked] = useState(data.liked);
   const [isModalVisible, setModalVisible] = useState(false);
   const [place, setPlace] = useState('');
+  const [price, setPrice] = useState('');
+  const [star, setStar] = useState('');
   const [category, setCategory] = useState('Et');
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(0);
@@ -39,8 +42,7 @@ const ExploreScreen = props => {
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
-  console.log(category);
-  console.log(selected);
+
   return (
     <ImageBackground source={backgr} style={{flex: 1}}>
       <View style={styles.container}>
@@ -158,11 +160,17 @@ const ExploreScreen = props => {
                 </View>
                 <View>
                   <Text style={styles.title}>Price</Text>
+                  <TextInput
+                    onChangeText={setPrice}
+                    value={price}
+                    placeholder="Tutar Giriniz"
+                    style={styles.ModalInput}
+                  />
                 </View>
                 <View>
                   <Text style={styles.title}>Yıldız</Text>
+                  <StarComponent count={2.5} select="star" />
                 </View>
-
                 <Button title="Hide modal" onPress={toggleModal} />
               </View>
             </Modal>
