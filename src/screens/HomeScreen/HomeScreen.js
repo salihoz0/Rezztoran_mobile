@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {View, ImageBackground, Text, TouchableOpacity} from 'react-native';
+import {
+  View,
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CarouselComponent from '../../components/CarouselComponent';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -9,13 +15,14 @@ import styles from './HomeScreen.style';
 import SearchBar from '../../components/CustomSearchBar/CustomSearchBar';
 import backgr from '../../../assets/images/arkaplan.png';
 import {useNavigation} from '@react-navigation/native';
+import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      <ImageBackground style={styles.container} source={backgr}>
+    <ImageBackground style={styles.backgr} source={backgr}>
+      <View style={styles.container}>
         <ImageBackground source={mainPhoto} style={styles.imageBackground}>
           <Text style={styles.title}>Keşfedin</Text>
           <TouchableOpacity
@@ -33,8 +40,13 @@ const HomeScreen = () => {
           <Text style={styles.offerText}>Şunlar hoşunuza gidebilir</Text>
         </ImageBackground>
         <CarouselComponent data={Restaurants_data} />
-      </ImageBackground>
-    </View>
+      </View>
+      <Image
+        source={BlurLogo}
+        resizeMode={'contain'}
+        style={styles.blur_logo}
+      />
+    </ImageBackground>
   );
 };
 

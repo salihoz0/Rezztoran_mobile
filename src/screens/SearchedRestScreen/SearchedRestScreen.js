@@ -13,7 +13,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import StarComponent from '../../components/StarComponent';
 import SearchBar from '../../components/CustomSearchBar/CustomSearchBar';
 import Menu from '../../components/SortMenu';
-import styles from './SearchedRestScreenStyles'
+import styles from './SearchedRestScreenStyles';
+import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
 const SearchedRestScreen = props => {
   const data = props.route.params.data;
   const navigation = useNavigation();
@@ -23,6 +24,7 @@ const SearchedRestScreen = props => {
 
   return (
     <ImageBackground source={backgr} style={{flex: 1}}>
+      
       <View style={styles.container}>
         <View style={styles.header_container}>
           <Text style={styles.header}>Keşfedin</Text>
@@ -42,6 +44,7 @@ const SearchedRestScreen = props => {
           </Pressable>
         </View>
         <View style={styles.flatlist_container}>
+        
           <FlatList
             data={data}
             numColumns={2}
@@ -86,6 +89,8 @@ const SearchedRestScreen = props => {
           />
         </View>
       </View>
+      <Image source={BlurLogo} resizeMode={'contain'} style={styles.blur_logo} />
+
     </ImageBackground>
   );
 };

@@ -4,6 +4,8 @@ import Favorites from '../../../assets/Data/Favorites.json';
 import StarComponent from '../../components/StarComponent/StarComponent';
 import styles from './FavoritesScreen.style';
 import backgr from '../../../assets/images/arkaplan.png';
+import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
+
 
 const FavoritesScreen = () => {
   const [favorite, setFavorite] = useState(Favorites);
@@ -46,10 +48,13 @@ const FavoritesScreen = () => {
       <ImageBackground style={styles.container} source={backgr}>
         <Text style={styles.title}>Favori Restoranlarım</Text>
         <FlatList
+        style={{zIndex:1}}
           keyExtractor={item => item.id}
           renderItem={renderItem}
           data={favorite}
         />
+      <Image source={BlurLogo} resizeMode={'contain'} style={styles.blur_logo} />
+
       </ImageBackground>
     </View>
   );

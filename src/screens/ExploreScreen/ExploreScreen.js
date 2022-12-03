@@ -15,6 +15,8 @@ import SearchBar from '../../components/CustomSearchBar/CustomSearchBar';
 import Menu from '../../components/SortMenu';
 import data from '../../../assets/Data/Restorant_data.json';
 import styles from './ExploreScreenStyles';
+import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
+
 
 /* Tab bar daki arayın ikonunana basınca buraya geliyor ,eskiden searchedScreene yönlendiriyorduk ama searched screende normalde aranan değeri route.params komutu 
 ile alıyor ama biz arama yapmadığımız için herhangi bir değer gelmiyor hata veriyordu,ne yaptıysam çözemedim bende aynı iki tane sayfa oluşturdum bundaki datamız
@@ -26,6 +28,7 @@ const ExploreScreen = props => {
   const [liked, setLiked] = useState(data.liked);
   return (
     <ImageBackground source={backgr} style={{flex: 1}}>
+      
       <View style={styles.container}>
         <View style={styles.header_container}>
           <Text style={styles.header}>Keşfedin</Text>
@@ -45,10 +48,11 @@ const ExploreScreen = props => {
           </Pressable>
         </View>
         <View style={styles.flatlist_container}>
+        
           <FlatList
             data={data}
             numColumns={2}
-            contentContainerStyle={{paddingBottom: 100}}
+            contentContainerStyle={{ paddingBottom: 100 }}
             showsVerticalScrollIndicator={false}
             renderItem={({item}) => (
               <View style={styles.flatlist}>
@@ -89,6 +93,8 @@ const ExploreScreen = props => {
           />
         </View>
       </View>
+      <Image source={BlurLogo} resizeMode={'contain'} style={styles.blur_logo} />
+
     </ImageBackground>
   );
 };

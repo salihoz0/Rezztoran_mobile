@@ -51,4 +51,10 @@ export default StyleSheet.create({
   star: {
     marginRight: 15,
   },
+  blur_logo: {
+    zIndex: 0,
+    position: 'absolute',
+    marginTop: Dimensions.get('window').height / 1.7,
+    alignSelf:'center'
+  },
 });

@@ -5,6 +5,7 @@ export default styles = StyleSheet.create({
       flex: 1,
       borderRadius: 10,
       margin: 2,
+      zIndex:1
     },
     
     image: {
@@ -105,5 +106,11 @@ export default styles = StyleSheet.create({
       justifyContent: 'space-between',
       paddingRight: 40,
       flexDirection: 'row',
+    },
+    blur_logo: {
+      zIndex: 0,
+      position: 'absolute',
+      marginTop: Dimensions.get('window').height / 1.7,
+      alignSelf:'center'
     },
     });

@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, ImageBackground} from 'react-native';
+import {View, Text, TouchableOpacity, ImageBackground,Image} from 'react-native';
 import styles from './Profiles.style';
 import backgr from '../../../assets/images/arkaplan.png';
 import {useNavigation} from '@react-navigation/native';
+import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
 
 const Profiles = () => {
   const navigation = useNavigation();
@@ -24,6 +25,8 @@ const Profiles = () => {
           </TouchableOpacity>
         </View>
       </ImageBackground>
+      <Image source={BlurLogo} resizeMode={'contain'} style={styles.blur_logo} />
+
     </View>
   );
 };

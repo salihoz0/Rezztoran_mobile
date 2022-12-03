@@ -39,4 +39,10 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
   },
+  blur_logo: {
+    zIndex: 0,
+    position: 'absolute',
+    marginTop: Dimensions.get('window').height / 1.7,
+    alignSelf:'center',
+  },
 });
