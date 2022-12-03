@@ -15,9 +15,9 @@ const Restorants = ({Restorant}) => {
           navigation.navigate('RestorantDetail', {title: Restorant.title});
         }}
         pressRetentionOffset>
-        <View style={styles.container}>
+        <View >
           <Image style={styles.image} source={{uri: Restorant.imgURL}} />
-        </View>
+        
         <Text style={styles.text}>{Restorant.star}</Text>
         <Pressable
           onPress={() => (setLiked(isLiked => !isLiked),(Restorant.liked=!Restorant.liked))}
@@ -31,6 +31,7 @@ const Restorants = ({Restorant}) => {
             style={styles.like}
           />
         </Pressable>
+        </View>
       </Pressable>
     </View>
   );

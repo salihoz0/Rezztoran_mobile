@@ -2,11 +2,9 @@ import React, {useState} from 'react';
 import {
   Text,
   FlatList,
-  StyleSheet,
   View,
   ImageBackground,
   Image,
-  Dimensions,
   Pressable,
 } from 'react-native';
 import backgr from '../../../assets/images/arkaplan.png';
@@ -15,11 +13,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import StarComponent from '../../components/StarComponent';
 import SearchBar from '../../components/CustomSearchBar/CustomSearchBar';
 import Menu from '../../components/SortMenu';
+import styles from './SearchedRestScreenStyles'
 const SearchedRestScreen = props => {
   const data = props.route.params.data;
   const navigation = useNavigation();
   const [filterMenuShow, setFilterMenuShow] = useState(false);
-  const [sortMenuShow, setSortMenuShow] = useState(false);
   const [liked, setLiked] = useState(data.liked); //senin yaptığın liked olayını kopyaladım ama sıkıntı şu birisini beğenince hepsi kırmızı oluyor
   //nasıl yapabiliriz aklıma birşey gelmedi,onu yapabilirsen yap sen
 
@@ -47,6 +45,7 @@ const SearchedRestScreen = props => {
           <FlatList
             data={data}
             numColumns={2}
+            contentContainerStyle={{ paddingBottom: 100 }}
             showsVerticalScrollIndicator={false}
             renderItem={({item}) => (
               <View style={styles.flatlist}>
@@ -59,14 +58,10 @@ const SearchedRestScreen = props => {
                     }}
                     pressRetentionOffset>
                     <Image style={styles.image} source={{uri: item.imgURL}} />
+                    <Text style={styles.likednumber}>{item.star}</Text>
 
                     <Text style={styles.title}>{item.title} </Text>
-                    <View
-                      style={{
-                        alignItems: 'flex-start',
-                        justifyContent: 'space-evenly',
-                        flexDirection: 'row',
-                      }}>
+                    <View style={styles.starAndPrice}>
                       <StarComponent count={item.star} select={'star'} />
                       <StarComponent count={item.price} />
                     </View>
@@ -94,94 +89,5 @@ const SearchedRestScreen = props => {
     </ImageBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    borderRadius: 10,
-    margin: 2,
-  },
-
-  image: {
-    borderRadius: 30,
-    resizeMode: 'stretch',
-    width: Dimensions.get('window').width / 2.3,
-    height: Dimensions.get('window').height / 5,
-  },
-  title: {
-    alignSelf: 'flex-start',
-    color: 'black',
-    fontSize: 20,
-  },
-  icon: {
-    width: Dimensions.get('screen').width / 2.3,
-    height: 40,
-    borderRadius: 20,
-    marginTop: 5,
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
-
-    elevation: 3,
-  },
-  menu: {
-    width: Dimensions.get('screen').width / 2,
-    borderRadius: 20,
-    marginTop: 40,
-    backgroundColor: 'white',
-    alignItems: 'center',
-  },
-  menu_item: {
-    borderBottomWidth: 0.5,
-    borderColor: 'gray',
-  },
-  header: {
-    fontSize: 40,
-    marginTop: 74,
-    marginLeft: 46,
-    marginBottom: 10,
-    color: 'black',
-    fontWeight: 'bold',
-    textShadowColor: 'black',
-    textShadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    textShadowRadius: 4,
-    shadowOpacity: 0.29,
-  },
-  flatlist: {
-    borderRadius: 30,
-    width: Dimensions.get('window').width / 2.2,
-    height: Dimensions.get('window').height / 4,
-    marginTop: 25,
-  },
-  inner_icon: {
-    flexDirection: 'row',
-    alignSelf: 'center',
-  },
-  text: {
-    alignSelf: 'center',
-  },
-  flatlist_container: {
-    marginTop: 20,
-    marginLeft: 25,
-    height: Dimensions.get('window').height / 1.41,
-  },
-  like: {
-    position: 'absolute',
-    marginHorizontal: 80,
-    borderRadius: 20,
-    paddingVertical: 5,
-  },
-});
 
 export default SearchedRestScreen;

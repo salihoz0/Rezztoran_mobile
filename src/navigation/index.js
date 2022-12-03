@@ -12,6 +12,7 @@ import ExploreScreen from '../screens/ExploreScreen';
 import SearchedRestScreen from '../screens/SearchedRestScreen';
 import FavoritesScreen from '../screens/FavoritesScreen/FavoritesScreen';
 import ProfilesScreen from '../screens/ProfilesScreen/Profiles';
+import ReservationsScreen from '../screens/ResevervationsScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const Stack = createNativeStackNavigator();
@@ -32,6 +33,7 @@ const NavigationStack = () => {
       <Stack.Screen name="SearchedRest" component={SearchedRestScreen} />
       <Stack.Screen name="ExploreScreen" component={ExploreScreen} />
       <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
+      <Stack.Screen name="ReservationsScreen" component={ReservationsScreen} />
     </Stack.Navigator>
   );
 };
@@ -44,6 +46,7 @@ const Navigation = () => {
           name="Anasayfa"
           component={NavigationStack}
           options={{
+            tabBarHideOnKeyboard: true,
             headerShown: false,
             tabBarIcon: () => {
               return <Icon name="home" size={20} />;
@@ -54,6 +57,7 @@ const Navigation = () => {
           name="Arayın"
           component={ExploreScreen}
           options={{
+            tabBarHideOnKeyboard: true,
             headerShown: false,
             tabBarIcon: () => {
               return <Icon name="search" size={20} />;
@@ -64,6 +68,7 @@ const Navigation = () => {
           name="Favoriler"
           component={FavoritesScreen}
           options={{
+            tabBarHideOnKeyboard: true,
             headerShown: false,
             tabBarIcon: () => {
               return <Icon name="heart" size={20} />;
@@ -71,12 +76,13 @@ const Navigation = () => {
           }}
         />
         <Tab.Screen
-          name="Yorumlar"
-          component={NavigationStack}
+          name="Rezervasyonlarım"
+          component={ReservationsScreen}
           options={{
+            tabBarHideOnKeyboard: true,
             headerShown: false,
             tabBarIcon: () => {
-              return <Icon name="comment" size={20} />;
+              return <Icon name="calendar-check-o" size={20} />;
             },
           }}
         />
@@ -84,6 +90,7 @@ const Navigation = () => {
           name="Profil"
           component={ProfilesScreen}
           options={{
+            tabBarHideOnKeyboard: true,
             headerShown: false,
             tabBarIcon: () => {
               return <Icon name="user" size={20} />;

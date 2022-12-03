@@ -44,7 +44,7 @@ const FavoritesScreen = () => {
   return (
     <View style={styles.container}>
       <ImageBackground style={styles.container} source={backgr}>
-        <Text style={styles.title}>FavoritesScreen</Text>
+        <Text style={styles.title}>Favori Restoranlarım</Text>
         <FlatList
           keyExtractor={item => item.id}
           renderItem={renderItem}

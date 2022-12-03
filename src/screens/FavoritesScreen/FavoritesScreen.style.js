@@ -5,7 +5,8 @@ export default StyleSheet.create({
     flex: 1,
   },
   title: {
-    fontSize: 30,
+    alignSelf:'center',
+    fontSize: 40,
     color: 'black',
     marginHorizontal: 25,
     marginVertical: 10,

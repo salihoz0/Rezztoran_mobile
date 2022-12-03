@@ -16,6 +16,6 @@ export default StyleSheet.create({
     flexDirection:'row',
     paddingRight: 255,
     paddingTop: 10,
-    paddingLeft:20
+    paddingLeft:20,
   },
 });

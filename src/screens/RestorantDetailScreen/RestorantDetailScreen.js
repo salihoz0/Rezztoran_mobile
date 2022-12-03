@@ -2,10 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {
   Text,
   FlatList,
-  StyleSheet,
   View,
   ImageBackground,
-  Dimensions,
   TouchableOpacity,
 } from 'react-native';
 import backgr from '../../../assets/images/arkaplan.png';
@@ -13,6 +11,7 @@ import Restorant_data from '../../../assets/Data/Restorant_data.json';
 import Restorants from '../../components/CustomRestorant/Restorants';
 import CustomMenu from '../../components/CustomMenu/CustomMenu';
 import DateTimePicker from '../../components/DateTimePicker/DateTimePicker';
+import styles from './RestoranDetailScreenStyles'
 
 const RestorantDetailScreen = props => {
   const selectTitle = props.route.params.title;
@@ -72,44 +71,5 @@ const RestorantDetailScreen = props => {
   );
 };
 
-const styles = StyleSheet.create({
-  backgr: {
-    flex: 1,
-  },
-
-  header: {
-    textAlign: 'center',
-    fontSize: 25,
-    fontWeight: 'bold',
-    color: 'black',
-  },
-  header_view: {
-    backgroundColor: '#e0e0e0',
-    opacity: 0.8,
-    maxHeight: 100,
-  },
-  Menu: {
-    height: Dimensions.get('window').height / 1.53,
-  },
-  reserve: {
-    flex: 1,
-  },
-  button: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 0.5,
-    borderRadius: 30,
-    width: Dimensions.get('window').width,
-    borderColor: '#1e88e5',
-    backgroundColor: '#e0e0e0',
-    margin: 2,
-    marginTop: 0,
-    height: Dimensions.get('window').height / 15,
-  },
-  text: {
-    fontSize: 20,
-    color: 'black',
-  },
-});
 
 export default RestorantDetailScreen;

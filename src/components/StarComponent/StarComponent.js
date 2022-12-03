@@ -1,8 +1,8 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text} from 'react-native';
 import React from 'react';
 import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import styles from './StarComponentStyles'
 const StarComponent = ({count, select}) => {
   return select == 'star' ? (
     <View>
@@ -40,25 +40,6 @@ const StarComponent = ({count, select}) => {
   );
 };
 
-const styles = StyleSheet.create({
-  myStarStyle: {
-    color: 'yellow',
-    backgroundColor: 'transparent',
-    textShadowColor: 'black',
-    textShadowOffset: {width: 1, height: 1},
-    textShadowRadius: 2,
-  },
-  priceStyle: {
-    color: 'black',
-    fontSize: 20,
-  },
-  myEmptyStarStyle: {
-    color: 'white',
-  },
-  text: {
-    marginBottom: 5,
-    fontWeight: 'bold',
-  },
-});
+
 
 export default StarComponent;

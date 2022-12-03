@@ -1,9 +1,7 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
 export default StyleSheet.create({
-  container: {
-    alignItems: 'center',
-  },
+
   image: {
     height: Dimensions.get('screen').height / 4.3,
     width: Dimensions.get('screen').width,
@@ -11,6 +9,7 @@ export default StyleSheet.create({
     borderRadius: 25,
   },
   text: {
+    alignSelf:'flex-start',
     position: 'absolute',
     top: Dimensions.get('window').height / 75,
     fontSize: 20,
@@ -23,10 +22,9 @@ export default StyleSheet.create({
   },
   like: {
     position: 'absolute',
-    marginHorizontal: 205,
+    alignSelf:'flex-end',
     marginVertical: 5,
+    paddingRight:20,
     borderRadius: 20,
-    paddingHorizontal: 5,
-    paddingVertical: 5,
   },
 });

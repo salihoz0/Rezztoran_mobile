@@ -48,8 +48,9 @@ export default StyleSheet.create({
   offerText: {
     color: 'black',
     fontSize: 23,
-    marginTop:170,
-    marginHorizontal: 20,
+    position:'absolute',
+    marginTop:Dimensions.get('window').height/2,
+    paddingLeft:5,
     fontWeight: 'bold',
   },
   input:{
