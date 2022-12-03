@@ -2,10 +2,11 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,zIndex:1
+    flex: 1,
+    zIndex: 1,
   },
-  backgr:{
-    flex:1,
+  backgr: {
+    flex: 1,
   },
   imageBackground: {
     width: Dimensions.get('window').width,
@@ -39,8 +40,8 @@ export default StyleSheet.create({
   text: {
     marginLeft: 10,
     fontSize: 20,
-    fontWeight:'bold',
-    color:'black',
+    fontWeight: 'bold',
+    color: 'black',
     textShadowColor: 'gray',
     textShadowOffset: {
       width: 0,
@@ -51,25 +52,25 @@ export default StyleSheet.create({
   offerText: {
     color: 'black',
     fontSize: 23,
-    position:'absolute',
-    marginTop:Dimensions.get('window').height/2,
-    paddingLeft:5,
+    position: 'absolute',
+    marginTop: Dimensions.get('window').height / 2,
+    paddingLeft: 5,
     fontWeight: 'bold',
-      textShadowColor: 'gray',
+    textShadowColor: 'gray',
     textShadowOffset: {
       width: 0,
       height: 1,
     },
     textShadowRadius: 2,
   },
-  
-  input:{
-    marginTop:20
+
+  input: {
+    marginTop: 20,
   },
   blur_logo: {
     zIndex: 0,
     position: 'absolute',
     marginTop: Dimensions.get('window').height / 1.6,
-    alignSelf:'center',
+    alignSelf: 'center',
   },
 });

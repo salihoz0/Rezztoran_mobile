@@ -24,7 +24,6 @@ const SearchedRestScreen = props => {
 
   return (
     <ImageBackground source={backgr} style={{flex: 1}}>
-      
       <View style={styles.container}>
         <View style={styles.header_container}>
           <Text style={styles.header}>Keşfedin</Text>
@@ -44,11 +43,10 @@ const SearchedRestScreen = props => {
           </Pressable>
         </View>
         <View style={styles.flatlist_container}>
-        
           <FlatList
             data={data}
             numColumns={2}
-            contentContainerStyle={{ paddingBottom: 100 }}
+            contentContainerStyle={{paddingBottom: 100}}
             showsVerticalScrollIndicator={false}
             renderItem={({item}) => (
               <View style={styles.flatlist}>
@@ -89,8 +87,11 @@ const SearchedRestScreen = props => {
           />
         </View>
       </View>
-      <Image source={BlurLogo} resizeMode={'contain'} style={styles.blur_logo} />
-
+      <Image
+        source={BlurLogo}
+        resizeMode={'contain'}
+        style={styles.blur_logo}
+      />
     </ImageBackground>
   );
 };

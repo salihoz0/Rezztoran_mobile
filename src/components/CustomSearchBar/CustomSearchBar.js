@@ -4,7 +4,8 @@ import Restorant_Data from '../../../assets/Data/Restorant_data.json';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './CustomSearchBarStyles';
-const SearchBar = props => {
+
+const SearchBar = () => {
   const navigation = useNavigation();
   const [a, SetA] = useState(0);
   const [value] = useState();
