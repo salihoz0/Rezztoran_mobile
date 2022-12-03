@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   Text,
   FlatList,
@@ -7,6 +7,9 @@ import {
   Image,
   Pressable,
   Button,
+  TextInput,
+  TouchableOpacity,
+  Picker,
 } from 'react-native';
 import backgr from '../../../assets/images/arkaplan.png';
 import {useNavigation} from '@react-navigation/native';
@@ -18,19 +21,25 @@ import data from '../../../assets/Data/Restorant_data.json';
 import styles from './ExploreScreenStyles';
 import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
 import Modal from 'react-native-modal';
-
 /* Tab bar daki arayın ikonunana basınca buraya geliyor ,eskiden searchedScreene yönlendiriyorduk ama searched screende normalde aranan değeri route.params komutu 
 ile alıyor ama biz arama yapmadığımız için herhangi bir değer gelmiyor hata veriyordu,ne yaptıysam çözemedim bende aynı iki tane sayfa oluşturdum bundaki datamız
 direkt restorant data searched screendeki de CustomSearchbar dan gelen data */
+
+// Price ve Yıldız sayısını Range Slider ile yapmaya çalıştım ama kütüphaneleri çalıştıramadım şimdilik bu şekilde kalsın
 
 const ExploreScreen = props => {
   const navigation = useNavigation();
   const [liked, setLiked] = useState(data.liked);
   const [isModalVisible, setModalVisible] = useState(false);
+  const [place, setPlace] = useState('');
+  const [category, setCategory] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState('java');
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
+  console.log(category);
 
   return (
     <ImageBackground source={backgr} style={{flex: 1}}>
@@ -55,7 +64,68 @@ const ExploreScreen = props => {
               animationIn="slideInRight"
               animationOut="slideOutRight">
               <View style={{flex: 1}}>
-                <Text>Hello!</Text>
+                <View style={styles.item}>
+                  <Text style={styles.title}>Restaurant</Text>
+                  <TextInput
+                    onChangeText={setPlace}
+                    value={place}
+                    placeholder="Restoran Giriniz"
+                    style={styles.input}
+                  />
+                </View>
+                <View>
+                  <Text style={styles.title}>Categoriler</Text>
+                  <View>
+                    <TouchableOpacity
+                      onPress={() => {
+                        setCategory([...category, {category: 'Et'}]);
+                      }}>
+                      <Text>Et</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => {
+                        setCategory([...category, {category: 'Çin Mutfağı'}]);
+                      }}>
+                      <Text>Çin Mutfağı</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => {
+                        setCategory([...category, {category: 'Pastane'}]);
+                      }}>
+                      <Text>Pastane</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => {
+                        setCategory([
+                          ...category,
+                          {category: 'İtalyan Mutfağı'},
+                        ]);
+                      }}>
+                      <Text>İtalyan Mutfağı</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => {
+                        setCategory([
+                          ...category,
+                          {category: 'Amerikan Mutfağı'},
+                        ]);
+                      }}>
+                      <Text>Amerikan Mutfağı</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => {
+                        setCategory([...category, {category: 'Vejeteryan'}]);
+                      }}>
+                      <Text>Vejeteryan</Text>
+                    </TouchableOpacity>
+                  </View>
+                  <View>
+                    <Text style={styles.title}>Price</Text>
+                  </View>
+                  <View>
+                    <Text style={styles.title}>Yıldız</Text>
+                  </View>
+                </View>
                 <Button title="Hide modal" onPress={toggleModal} />
               </View>
             </Modal>
