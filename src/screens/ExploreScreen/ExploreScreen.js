@@ -32,35 +32,6 @@ const ExploreScreen = props => {
     setModalVisible(!isModalVisible);
   };
 
-  const handleSearch = text => {
-    const filteredList = data.filter(Restorant => {
-      const searchedText = text.toLowerCase();
-      const currentTitle = Restorant.title.toLowerCase();
-      const currentcate = Restorant.category.toLowerCase();
-      const currentcity = Restorant.city.toLowerCase();
-
-      return (
-        currentTitle.indexOf(searchedText) > -1 ||
-        currentcate.indexOf(searchedText) > -1 ||
-        currentcity.indexOf(searchedText) > -1
-      );
-    });
-
-    const filteredListCategory = filteredList.filter(Category => {
-      const currentCategory = Category.category;
-
-      return currentCategory.indexOf(selectedCategory) > -1;
-    });
-
-    const filteredListCity = filteredListCategory.filter(Cities => {
-      const currentCity = Cities.city;
-
-      return currentCity.indexOf(selectedCity) > -1;
-    });
-
-    setList(filteredListCity);
-  };
-
   return (
     <ImageBackground source={backgr} style={{flex: 1}}>
       <View style={styles.container}>
