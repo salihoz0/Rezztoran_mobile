@@ -32,15 +32,15 @@ const ExploreScreen = props => {
   const [liked, setLiked] = useState(data.liked);
   const [isModalVisible, setModalVisible] = useState(false);
   const [place, setPlace] = useState('');
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState('Et');
   const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('java');
+  const [selected, setSelected] = useState(0);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
   console.log(category);
-
+  console.log(selected);
   return (
     <ImageBackground source={backgr} style={{flex: 1}}>
       <View style={styles.container}>
@@ -64,68 +64,105 @@ const ExploreScreen = props => {
               animationIn="slideInRight"
               animationOut="slideOutRight">
               <View style={{flex: 1}}>
-                <View style={styles.item}>
-                  <Text style={styles.title}>Restaurant</Text>
+                <View style={styles.Modalitem}>
+                  <Text style={styles.Modaltitle}>Restaurant</Text>
                   <TextInput
                     onChangeText={setPlace}
                     value={place}
                     placeholder="Restoran Giriniz"
-                    style={styles.input}
+                    style={styles.ModalInput}
                   />
                 </View>
                 <View>
-                  <Text style={styles.title}>Categoriler</Text>
-                  <View>
+                  <Text style={styles.Modaltitle}>Categoriler</Text>
+                  <View style={styles.ModalAllCategory}>
                     <TouchableOpacity
                       onPress={() => {
-                        setCategory([...category, {category: 'Et'}]);
-                      }}>
+                        setCategory('Et');
+                        setSelected(1);
+                      }}
+                      style={[
+                        styles.Modalcategory,
+                        {
+                          borderColor: selected === 1 ? 'red' : 'white',
+                        },
+                      ]}>
                       <Text>Et</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                       onPress={() => {
-                        setCategory([...category, {category: 'Çin Mutfağı'}]);
-                      }}>
+                        setCategory('Çin Mutfağı');
+                        setSelected(2);
+                      }}
+                      style={[
+                        styles.Modalcategory,
+                        {
+                          borderColor: selected === 2 ? 'red' : 'white',
+                        },
+                      ]}>
                       <Text>Çin Mutfağı</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                       onPress={() => {
-                        setCategory([...category, {category: 'Pastane'}]);
-                      }}>
+                        setCategory('Pastane');
+                        setSelected(3);
+                      }}
+                      style={[
+                        styles.Modalcategory,
+                        {
+                          borderColor: selected === 3 ? 'red' : 'white',
+                        },
+                      ]}>
                       <Text>Pastane</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                       onPress={() => {
-                        setCategory([
-                          ...category,
-                          {category: 'İtalyan Mutfağı'},
-                        ]);
-                      }}>
+                        setCategory('İtalyan Mutfağı');
+                        setSelected(4);
+                      }}
+                      style={[
+                        styles.Modalcategory,
+                        {
+                          borderColor: selected === 4 ? 'red' : 'white',
+                        },
+                      ]}>
                       <Text>İtalyan Mutfağı</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                       onPress={() => {
-                        setCategory([
-                          ...category,
-                          {category: 'Amerikan Mutfağı'},
-                        ]);
-                      }}>
+                        setCategory('Amerikan Mutfağı');
+                        setSelected(5);
+                      }}
+                      style={[
+                        styles.Modalcategory,
+                        {
+                          borderColor: selected === 5 ? 'red' : 'white',
+                        },
+                      ]}>
                       <Text>Amerikan Mutfağı</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                       onPress={() => {
-                        setCategory([...category, {category: 'Vejeteryan'}]);
-                      }}>
+                        setCategory('Vejeteryan');
+                        setSelected(6);
+                      }}
+                      style={[
+                        styles.Modalcategory,
+                        {
+                          borderColor: selected === 6 ? 'red' : 'white',
+                        },
+                      ]}>
                       <Text>Vejeteryan</Text>
                     </TouchableOpacity>
                   </View>
-                  <View>
-                    <Text style={styles.title}>Price</Text>
-                  </View>
-                  <View>
-                    <Text style={styles.title}>Yıldız</Text>
-                  </View>
                 </View>
+                <View>
+                  <Text style={styles.title}>Price</Text>
+                </View>
+                <View>
+                  <Text style={styles.title}>Yıldız</Text>
+                </View>
+
                 <Button title="Hide modal" onPress={toggleModal} />
               </View>
             </Modal>
