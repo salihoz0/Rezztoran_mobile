@@ -13,13 +13,13 @@ const SocialSignInButtons = () => {
   return (
     <>
       <CustomButton
-        text="Sign In with Google"
+        text="Google ile Giriş Yap"
         onPress={onSignInGoogle}
         bgColor="#FAE9EA"
         fgColor="#DD4D44"
       />
       <CustomButton
-        text="Sign In with Apple"
+        text="Apple ile Giriş Yap"
         onPress={onSignInApple}
         bgColor="#e3e3e3"
         fgColor="#363636"

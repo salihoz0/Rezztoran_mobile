@@ -12,18 +12,19 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import StarComponent from '../../components/StarComponent';
 import SearchBar from '../../components/CustomSearchBar/CustomSearchBar';
-import Menu from '../../components/SortMenu';
+import SortMenu from '../../components/SortMenu';
 import styles from './SearchedRestScreenStyles';
 import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
+import FilterMenu from '../../components/FilterMenu/FilterMenu';
+
 const SearchedRestScreen = props => {
   const data = props.route.params.data;
   const navigation = useNavigation();
-  const [filterMenuShow, setFilterMenuShow] = useState(false);
   const [liked, setLiked] = useState(data.liked); //senin yaptığın liked olayını kopyaladım ama sıkıntı şu birisini beğenince hepsi kırmızı oluyor
   //nasıl yapabiliriz aklıma birşey gelmedi,onu yapabilirsen yap sen
 
   return (
-    <ImageBackground source={backgr} style={{flex: 1}}>
+   <ImageBackground source={backgr} style={{flex: 1}}>
       <View style={styles.container}>
         <View style={styles.header_container}>
           <Text style={styles.header}>Keşfedin</Text>
@@ -31,16 +32,9 @@ const SearchedRestScreen = props => {
         <SearchBar />
         <View style={{flexDirection: 'row'}}>
           <View>
-            <Menu data={data} />
+            <SortMenu data={data} />
           </View>
-          <Pressable
-            style={styles.icon}
-            onPress={() => setFilterMenuShow(!filterMenuShow)}>
-            <View style={styles.inner_icon}>
-              <Icon name="filter-outline" size={35} color={'gray'} />
-              <Text style={styles.text}>Filtrele</Text>
-            </View>
-          </Pressable>
+         <FilterMenu data={data}/>
         </View>
         <View style={styles.flatlist_container}>
           <FlatList

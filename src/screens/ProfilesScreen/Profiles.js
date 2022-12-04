@@ -8,8 +8,8 @@ import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
 const Profiles = () => {
   const navigation = useNavigation();
 
-  const navigateToSingUp = () => {
-    navigation.navigate('SignUp');
+  const navigateToSingIn = () => {
+    navigation.navigate('SignIn');
   };
 
   return (
@@ -20,7 +20,7 @@ const Profiles = () => {
           <Text style={styles.loginText}>
             Rezervasyonları yönetmek ve yorum yapabilmek için giriş yapın
           </Text>
-          <TouchableOpacity onPress={navigateToSingUp} style={styles.button}>
+          <TouchableOpacity onPress={navigateToSingIn} style={styles.button}>
             <Text style={styles.buttonText}>Giriş Yap</Text>
           </TouchableOpacity>
         </View>

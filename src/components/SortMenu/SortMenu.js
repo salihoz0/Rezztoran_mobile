@@ -12,32 +12,6 @@ const SortMenu = props => {
   const [a, SetA] = useState(0);
   const [selectedSort, setSelectedSort] = useState('');
 
-  const handleSearch = text => {
-    const filteredList = data.filter(Restorant => {
-      const searchedText = text.toLowerCase();
-      const currentTitle = Restorant.title.toLowerCase();
-      const currentcate = Restorant.category.toLowerCase();
-      const currentcity = Restorant.city.toLowerCase();
-
-      return (
-        currentTitle.indexOf(searchedText) > -1 ||
-        currentcate.indexOf(searchedText) > -1 ||
-        currentcity.indexOf(searchedText) > -1
-      );
-    });
-
-    const filteredListCategory = filteredList.filter(Category => {
-      const currentCategory = Category.category;
-
-      return currentCategory.indexOf(selectedCategory) > -1;
-    });
-    const filteredListCity = filteredListCategory.filter(Cities => {
-      const currentCity = Cities.city;
-
-      return currentCity.indexOf(selectedCity) > -1;
-    });
-    setList(filteredListCity);
-  };
   const handleSort = () => {
     //datamızdaki restoranları seçilen değere göre sıralama işlemini yapacak
     if (selectedSort == 'Artan Fiyat') {

@@ -25,18 +25,18 @@ const ConfirmEmailScreen = () => {
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
         <Text style={styles.title}>Confirm your email</Text>
-        <CustomInput placeholder="Enter your confirmation code" value={code} setValue={setCode} />
+        <CustomInput placeholder="Doğrulama kodunu girin" value={code} setValue={setCode} />
 
-        <CustomButton text="Confirm" onPress={onConfirmPressed} />
+        <CustomButton text="Doğrula" onPress={onConfirmPressed} />
 
         <CustomButton
-          text="Resend code"
+          text="Tekrar Gönder"
           onPress={onResendPress}
           type="SECONDARY"
         />
 
         <CustomButton
-          text="Back to Sign in"
+          text="Giriş Sayfasına Dön"
           onPress={onSignInPress}
           type="TERTIARY"
         />

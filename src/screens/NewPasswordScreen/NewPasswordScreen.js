@@ -21,17 +21,17 @@ const NewPasswordScreen = () => {
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
         <Text style={styles.title}>Reset your password</Text>
-        <CustomInput placeholder="Code" value={code} setValue={setCode} />
+        <CustomInput placeholder="Kod" value={code} setValue={setCode} />
         <CustomInput
-          placeholder="Enter your new password"
+          placeholder="Yeni Şifrenizi Girin"
           value={newPassword}
           setValue={setNewPassword}
         />
 
-        <CustomButton text="Submit" onPress={onSubmitPressed} type="PRIMARY" />
+        <CustomButton text="Onayla" onPress={onSubmitPressed} type="PRIMARY" />
 
         <CustomButton
-          text="Back to Sign in"
+          text="Giriş Sayfasına Dön"
           onPress={onSignInPress}
           type="TERTIARY"
         />

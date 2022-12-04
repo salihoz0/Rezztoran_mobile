@@ -22,16 +22,16 @@ const ForgotPasswordScreen = () => {
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
         <Text style={styles.title}>Forgot password</Text>
-        <CustomInput placeholder="username" value={username} setValue={setUsername} />
+        <CustomInput placeholder="Kullanıcı Adı" value={username} setValue={setUsername} />
 
         <CustomButton
-          text="Send"
+          text="Gönder"
           onPress={onSendPressed}
           type="PRIMARY"
         />
 
         <CustomButton
-          text="Back to Sign in"
+          text="Giriş Sayfasına Dön"
           onPress={onSignInPress}
           type="TERTIARY"
         />

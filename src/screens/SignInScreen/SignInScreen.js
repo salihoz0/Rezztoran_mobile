@@ -47,21 +47,21 @@ const SignInScreen = () => {
           resizeMode="contain"
         />
         <CustomInput
-          placeholder="username"
+          placeholder="Kullanıcı Adı"
           value={username}
           setValue={setUsername}
         
         />
         <CustomInput
-          placeholder="password"
+          placeholder="Şifre"
           value={password}
           setValue={setPassword}
           secureTextEntry
           style={{width:500}}
         />
-        <CustomButton text="Sign In" onPress={onSignInPressed} />
+        <CustomButton text="Giriş Yap" onPress={onSignInPressed} />
         <CustomButton
-          text="Forgot password?"
+          text="Şifremi Unuttum"
           onPress={onForgotPasswordPressed}
           
         />
@@ -69,7 +69,7 @@ const SignInScreen = () => {
         <SocialSignInButton />
         
         <CustomButton
-          text="Don't have an account? Create one"
+          text="Hesabınız yok mu? Bir tane oluşturun"
           onPress={onSignUpPress}
           type="TERTIARY"
         />

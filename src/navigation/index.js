@@ -74,7 +74,7 @@ const Navigation = () => {
           }}
         />
         <Tab.Screen
-          name="Rezervasyonlarım"
+          name="Rezervasyonlar"
           component={ReservationsScreen}
           options={{
             tabBarHideOnKeyboard: true,

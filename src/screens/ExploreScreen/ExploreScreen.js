@@ -6,67 +6,26 @@ import {
   ImageBackground,
   Image,
   Pressable,
-  Button,
-  TextInput,
-  TouchableOpacity,
-  Picker,
 } from 'react-native';
 import backgr from '../../../assets/images/arkaplan.png';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Stars from 'react-native-stars';
 import SearchBar from '../../components/CustomSearchBar/CustomSearchBar';
 import Menu from '../../components/SortMenu';
 import data from '../../../assets/Data/Restorant_data.json';
 import styles from './ExploreScreenStyles';
 import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
-import Modal from 'react-native-modal';
 import StarComponent from '../../components/StarComponent/StarComponent';
+import FilterMenu from '../../components/FilterMenu/FilterMenu';
 /* Tab bar daki arayın ikonunana basınca buraya geliyor ,eskiden searchedScreene yönlendiriyorduk ama searched screende normalde aranan değeri route.params komutu 
 ile alıyor ama biz arama yapmadığımız için herhangi bir değer gelmiyor hata veriyordu,ne yaptıysam çözemedim bende aynı iki tane sayfa oluşturdum bundaki datamız
 direkt restorant data searched screendeki de CustomSearchbar dan gelen data */
 
 // Price ve Yıldız sayısını Range Slider ile yapmaya çalıştım ama kütüphaneleri çalıştıramadım şimdilik bu şekilde kalsın
 
-const ExploreScreen = props => {
+const ExploreScreen = () => {
   const navigation = useNavigation();
   const [liked, setLiked] = useState(data.liked);
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [place, setPlace] = useState('');
-  const [price, setPrice] = useState('');
-  const [restaurant, setRestaurant] = useState('');
-  const [category, setCategory] = useState('');
-  const [selected, setSelected] = useState(0);
-
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
-
-  const handleSearch = () => {
-    const filteredList = data.filter(Restorant => {
-      const currentTitle = Restorant.title.toLowerCase();
-      const currentcate = Restorant.category.toLowerCase();
-      const currentcity = Restorant.city.toLowerCase();
-
-      return (
-        currentTitle.indexOf(searchedText) > -1 ||
-        currentcate.indexOf(searchedText) > -1 ||
-        currentcity.indexOf(searchedText) > -1
-      );
-    });
-
-    const filteredListCategory = filteredList.filter(Category => {
-      const currentCategory = Category.category;
-
-      return currentCategory.indexOf(selectedCategory) > -1;
-    });
-    const filteredListCity = filteredListCategory.filter(Cities => {
-      const currentCity = Cities.city;
-
-      return currentCity.indexOf(selectedCity) > -1;
-    });
-    setList(filteredListCity);
-  };
 
   return (
     <ImageBackground source={backgr} style={{flex: 1}}>
@@ -79,136 +38,7 @@ const ExploreScreen = props => {
           <View>
             <Menu data={data} />
           </View>
-          <Pressable style={styles.icon} onPress={toggleModal}>
-            <View style={styles.inner_icon}>
-              <Icon name="filter-outline" size={35} color={'gray'} />
-              <Text style={styles.text}>Filtrele</Text>
-            </View>
-            <Modal
-              isVisible={isModalVisible}
-              backdropColor={'white'}
-              backdropOpacity={1}
-              animationIn="slideInRight"
-              animationOut="slideOutRight">
-              <View style={{flex: 1}}>
-                <View style={styles.Modalitem}>
-                  <Text style={styles.Modaltitle}>Şehir</Text>
-                  <TextInput
-                    onChangeText={setPlace}
-                    value={place}
-                    placeholder="Şehir Giriniz"
-                    style={styles.ModalInput}
-                  />
-                </View>
-                <View style={styles.Modalitem}>
-                  <Text style={styles.Modaltitle}>Restorant giriniz</Text>
-                  <TextInput
-                    onChangeText={setRestaurant}
-                    value={restaurant}
-                    placeholder="Restaurant Giriniz"
-                    style={styles.ModalInput}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.Modaltitle}>Categoriler</Text>
-                  <View style={styles.ModalAllCategory}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        setCategory('Et');
-                        setSelected(1);
-                      }}
-                      style={[
-                        styles.Modalcategory,
-                        {
-                          borderColor: selected === 1 ? 'red' : 'white',
-                        },
-                      ]}>
-                      <Text>Et</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => {
-                        setCategory('Çin Mutfağı');
-                        setSelected(2);
-                      }}
-                      style={[
-                        styles.Modalcategory,
-                        {
-                          borderColor: selected === 2 ? 'red' : 'white',
-                        },
-                      ]}>
-                      <Text>Çin Mutfağı</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => {
-                        setCategory('Pastane');
-                        setSelected(3);
-                      }}
-                      style={[
-                        styles.Modalcategory,
-                        {
-                          borderColor: selected === 3 ? 'red' : 'white',
-                        },
-                      ]}>
-                      <Text>Pastane</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => {
-                        setCategory('İtalyan Mutfağı');
-                        setSelected(4);
-                      }}
-                      style={[
-                        styles.Modalcategory,
-                        {
-                          borderColor: selected === 4 ? 'red' : 'white',
-                        },
-                      ]}>
-                      <Text>İtalyan Mutfağı</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => {
-                        setCategory('Amerikan Mutfağı');
-                        setSelected(5);
-                      }}
-                      style={[
-                        styles.Modalcategory,
-                        {
-                          borderColor: selected === 5 ? 'red' : 'white',
-                        },
-                      ]}>
-                      <Text>Amerikan Mutfağı</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => {
-                        setCategory('Vejeteryan');
-                        setSelected(6);
-                      }}
-                      style={[
-                        styles.Modalcategory,
-                        {
-                          borderColor: selected === 6 ? 'red' : 'white',
-                        },
-                      ]}>
-                      <Text>Vejeteryan</Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-                <View>
-                  <Text style={styles.title}>Price</Text>
-                  <TextInput
-                    onChangeText={setPrice}
-                    value={price}
-                    placeholder="Tutar Giriniz"
-                    style={styles.ModalInput}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.title}>Yıldız</Text>
-                  <StarComponent count={2.5} select="star" />
-                </View>
-                <Button title="Hide modal" onPress={toggleModal} />
-              </View>
-            </Modal>
-          </Pressable>
+         <FilterMenu data={data} />
         </View>
         <View style={styles.flatlist_container}>
           <FlatList

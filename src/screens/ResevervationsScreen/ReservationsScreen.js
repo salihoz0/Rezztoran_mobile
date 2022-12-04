@@ -26,7 +26,7 @@ const ReservationsScreen = () => {
       <Text style={styles.header}>Rezervasyonlarım</Text>
 
       <FlatList
-      style={{zIndex:1}}
+        style={{zIndex: 1}}
         data={Reservations}
         showsVerticalScrollIndicator={false}
         renderItem={({item}) => (
@@ -72,14 +72,18 @@ const ReservationsScreen = () => {
                   buttonColor="#474747"
                   textColor={'#F8B95C'}
                   compact={true}
-                  style={styles.content}>
+                  style={styles.content}
+                  onPress={()=> console.log('Rezervasyonu Düzenle')}
+                  >
                   Rezervasyonu Düzenle
                 </Button>
                 <Button
+                  compact={true}
                   mode="contained"
                   buttonColor="#DD7272"
                   textColor={'white'}
-                  style={styles.content}>
+                  style={styles.contentCancel}
+                  onPress={()=>console.log('iptal edildi')}>
                   İptal Et
                 </Button>
               </View>
@@ -87,7 +91,11 @@ const ReservationsScreen = () => {
           </View>
         )}
       />
-      <Image source={BlurLogo} resizeMode={'contain'} style={styles.blur_logo} />
+      <Image
+        source={BlurLogo}
+        resizeMode={'contain'}
+        style={styles.blur_logo}
+      />
     </ImageBackground>
   );
 };

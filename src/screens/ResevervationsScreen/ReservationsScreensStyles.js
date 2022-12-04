@@ -8,7 +8,10 @@ export default styles = StyleSheet.create({
     flexDirection: 'row',
     borderRadius: 20,
     backgroundColor: 'white',
-    margin: 20,
+    marginTop:20,
+    marginBottom:20,
+    alignSelf:'center',
+    width:Dimensions.get('window').width/1.05
   },
   image: {
     height: Dimensions.get('screen').height / 6,
@@ -42,7 +45,7 @@ export default styles = StyleSheet.create({
     marginTop: 20,
   },
   text: {
-    alignSelf: 'flex-start',
+    alignSelf:'flex-start',
     position: 'absolute',
     top: Dimensions.get('window').height / 75,
     fontSize: 20,
@@ -69,10 +72,15 @@ export default styles = StyleSheet.create({
   button_container: {
     marginTop: 10,
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+  
+    justifyContent: 'flex-start',
     width: Dimensions.get('window').width / 1.9,
   },
   content: {
+    borderRadius: 15,
+    width: Dimensions.get('window').width /2.6,
+  },
+  contentCancel: {
     borderRadius: 15,
   },
   blur_logo: {

@@ -32,43 +32,43 @@ const SignUpScreen = () => {
     <ImageBackground source={backgr}  style={{flex:1}} >
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={styles.title}>Create an account</Text>
+        <Text style={styles.title}>Hesap Oluştur</Text>
         <CustomInput
-          placeholder="Username"
+          placeholder="Kullanıcı Adı"
           value={username}
           setValue={setUsername}
         />
-        <CustomInput placeholder="email" value={email} setValue={setEmail} />
+        <CustomInput placeholder="E-Posta" value={email} setValue={setEmail} />
         <CustomInput
-          placeholder="Password"
+          placeholder="Şifre"
           value={password}
           setValue={setPassword}
           secureTextEntry
         />
         <CustomInput
-          placeholder="Repeat Password"
+          placeholder="Şifre Tekrar"
           value={passwordRepeat}
           setValue={setPasswordRepeat}
           secureTextEntry
         />
 
-        <CustomButton text="Register" onPress={onRegisterPressed} />
+        <CustomButton text="Kayıt Ol" onPress={onRegisterPressed} />
 
         <Text style={styles.text}>
-          By registering, you confirm that you accept our{' '}
+        Kaydolarak, kabul ettiğinizi onaylamış olursunuz.{' '}
           <Text style={styles.link} onPress={onTermsOfUsePressed}>
-            Term of Use
+            Kullanım Şartları
           </Text>{' '}
-          and{' '}
+          ve{' '}
           <Text style={styles.link} onPress={onPrivacyPressed}>
-            Privacy Policy
+           Gizlilik Politikamızı
           </Text>
         </Text>
 
         <SocialSignInButtons /> 
 
         <CustomButton
-          text="have an account? Sign in"
+          text="Zaten Bir Hesabınız Var Mı? Oturum Aç"
           onPress={onSignInPress}
           type="TERTIARY"
         />
