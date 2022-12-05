@@ -73,7 +73,7 @@ const ExploreScreen = () => {
                       pressRetentionOffset>
                       <Icon
                         name={'heart'}
-                        size={20}
+                        size={25}
                         color={item.liked ? 'red' : 'white'}
                         style={styles.like}
                       />

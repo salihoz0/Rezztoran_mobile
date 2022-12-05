@@ -12,7 +12,7 @@ const Restorants = ({Restorant}) => {
     <View>
       <Pressable
         onPress={() => {
-          navigation.navigate('RestorantDetail', {title: Restorant.title});
+          navigation.navigate('RestorantDetail', {title: Restorant.title, star:Restorant.star, price:Restorant.price});
         }}
         pressRetentionOffset>
         <View >
@@ -26,7 +26,7 @@ const Restorants = ({Restorant}) => {
 
           <Icon
             name='heart'
-            size={20}
+            size={30}
             color={liked ? 'red' : 'white'}
             style={styles.like}
           />

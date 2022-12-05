@@ -1,29 +1,23 @@
 import {StyleSheet} from 'react-native';
 
 export default styles = StyleSheet.create({
-    inner_container: {
-      alignItems: 'flex-start',
-      borderWidth: 0.5,
-      borderRadius:10,
-      padding:5,
-      marginLeft:1,
-      marginRight:1,
-      marginBottom:3,
-      marginTop:3,
-      backgroundColor:'#e0e0e0'
-  
-    },
-    title: {
-      borderBottomWidth: 0.8,
-    },
-    header:{
-      fontSize:18,
-      fontWeight:'bold',
-      fontStyle:'italic',
-      color:'black'
-    },
-    text: {
-      color:'black',
-      fontStyle:'italic'
-    },
-  });
+  inner_container: {
+    alignItems: 'flex-start',
+    borderRadius: 10,
+    marginLeft: 10,
+    marginRight: 10,
+    backgroundColor: 'white',
+  },
+  header: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+    color: 'black',
+    fontFamily: 'Poppins-Thin',
+    marginTop:10
+  },
+  text: {
+    color: 'black',
+    fontStyle: 'italic',
+  },
+});

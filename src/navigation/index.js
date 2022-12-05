@@ -44,7 +44,6 @@ const Navigation = () => {
           name="Anasayfa"
           component={NavigationStack}
           options={{
-            tabBarHideOnKeyboard: true,
             headerShown: false,
             tabBarIcon: () => {
               return <Icon name="home" size={20} />;

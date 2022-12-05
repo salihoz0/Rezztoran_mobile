@@ -1,16 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {
-  Text,
-  View,
-  Pressable,
-  TouchableOpacity,
-} from 'react-native';
+import {Text, View, Pressable, TouchableOpacity} from 'react-native';
 import backgr from '../../../assets/images/arkaplan.png';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './FilterMenuStyles';
 import Modal from 'react-native-modal';
-import Restoran_data from '../../../assets/Data/Restorant_data.json'
+import Restoran_data from '../../../assets/Data/Restorant_data.json';
 import {Button} from 'react-native-paper';
 import {SelectList} from 'react-native-dropdown-select-list';
 import City_data from '../../../assets/Data/City_data.json';
@@ -26,25 +21,25 @@ const FilterMenu = props => {
   const [selected, setSelected] = useState(0);
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
-    setSelected(0)
-    setCategory('')
-    setSelectedCity('')
+    setSelected(0);
+    setCategory('');
+    setSelectedCity('');
   };
   const Cities = [...City_data].sort((a, b) => a.key - b.key); //şehirleri plaka numarasına(key) göre sıralıyor
 
   toggleModalWithFilter = () => {
-    setModalVisible(!isModalVisible)
+    setModalVisible(!isModalVisible);
     handleFilter();
     SetA(1);
   };
 
-const FilterClear =()=>{
-  setModalVisible(!isModalVisible)
-  navigation.navigate('SearchedRest', {data: Restoran_data})
-  setSelected(0)
-  setCategory('')
-  setSelectedCity('')
-}
+  const FilterClear = () => {
+    setModalVisible(!isModalVisible);
+    navigation.navigate('SearchedRest', {data: Restoran_data});
+    setSelected(0);
+    setCategory('');
+    setSelectedCity('');
+  };
   const handleFilter = () => {
     const filteredListCategory = props.data.filter(Category => {
       const currentCategory = Category.category;
@@ -57,12 +52,12 @@ const FilterClear =()=>{
       return currentCity.indexOf(selectedCity) > -1;
     });
     setList(filteredListCity);
-    
   };
-  useEffect( 
-    ()=>{ a >0 ? navigation.navigate('SearchedRest', {data: list})
-    :console.log("x")}
-,[list]);
+  useEffect(() => {
+    a > 0
+      ? navigation.navigate('SearchedRest', {data: list})
+      : console.log('x');
+  }, [list]);
 
   return (
     <View>
@@ -79,8 +74,8 @@ const FilterClear =()=>{
           animationIn="slideInRight"
           animationOut="slideOutRight">
           <View style={{flex: 1}}>
-            <TouchableOpacity onPress={()=>FilterClear()}>
-               <Text style={{color:'#42a5f5'}}>Filtreleri temizle</Text>
+            <TouchableOpacity onPress={() => FilterClear()}>
+              <Text style={{color: '#42a5f5'}}>Filtreleri temizle</Text>
             </TouchableOpacity>
             <View style={styles.Modalitem}>
               <Text style={styles.Modaltitle}>Şehir Seç</Text>
@@ -92,16 +87,15 @@ const FilterClear =()=>{
                 dropdownTextStyles={{color: 'black'}}
                 notFoundText={'Türkiyede yaşadığınıza emin misiniz?'}
                 setSelected={setSelectedCity}
-              />  
+              />
             </View>
             <View>
-              
               <Text style={styles.Modaltitle}>Mutfaklar</Text>
               <View style={styles.ModalAllCategory}>
                 <TouchableOpacity
                   onPress={() => {
-                    setCategory("Et");
-                    setSelected(1)
+                    setCategory('Et');
+                    setSelected(1);
                   }}
                   style={styles.Modalcategory}>
                   <Text style={{color: selected === 1 ? 'blue' : 'black'}}>
@@ -166,7 +160,6 @@ const FilterClear =()=>{
               onPress={toggleModalWithFilter}
               mode={'contained'}
               style={styles.button}>
-              {' '}
               Filtrele
             </Button>
             <Button
@@ -174,7 +167,6 @@ const FilterClear =()=>{
               onPress={toggleModal}
               mode={'contained'}
               style={styles.button}>
-              {' '}
               İptal
             </Button>
           </View>

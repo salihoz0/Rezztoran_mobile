@@ -10,7 +10,7 @@ const StarComponent = ({count, select}) => {
         default={count}
         count={5}
         half={true}
-        disabled={false}
+        disabled={true}
         starSize={50}
         fullStar={<Icon name="star" size={20} style={[styles.myStarStyle]} />}
         emptyStar={

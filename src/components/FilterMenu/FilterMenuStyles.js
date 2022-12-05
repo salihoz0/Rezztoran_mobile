@@ -85,7 +85,7 @@ export default styles = StyleSheet.create({
   button: {
     marginTop: 10,
     width:Dimensions.get('window').width/2,
-    alignSelf:'center'
+    alignSelf:'center',
   },
 
 });

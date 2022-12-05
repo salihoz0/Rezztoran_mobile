@@ -1,119 +1,114 @@
 [
-    {
-      "id": "94298",
-      "name": "3 Chicken Wings",
-      "position": 1,
-      "description": "Tender, Spicy and Juicy. Original or Peri-Crusted",
-      "images": [],
-      "category_name": "Appeteasers"
-    
-    },
-    {
-      "id": "94301",
-      "name": "Chicken Livers and Portuguese Roll",
-      "position": 2,
-      "description": "Chicken Livers Topped with PERi-PERi Sauce, Served with A Roll To Soak Up The Sauce",
-      "images": [],
-      "category_name": "Appeteasers"
-      
-    },
-    {
-      "id": "94304",
-      "name": "Spicy Mixed Olives (V)",
-      "position": 3,
-      "description": "Co-Starring Garlic, Pepper and Chili",
-      "images": [],
-      "category_name": "Appeteasers"
-    },
-    {
-      "id": "94307",
-      "name": "Hummus with PERI-PERI Drizzle (V)",
-      "position": 4,
-      "description": "Pour Smoky PERi-PERi Oil Over Creamy Hummus and Dig in with Strips Of Warm Pita",
-      "images": [],
-      "category_name": "Appeteasers"
-      
-    },
-    {
-      "id": "94310",
-      "name": "Red Pepper Dip (V)",
-      "position": 5,
-      "description": "Dive Into Temping Roasted Red Pepper and Chili Spice Dip with Warm Pita Strips",
-      "images": [],
-      "category_name": "Appeteasers"
-    },
-    {
-      "id": "94313",
-      "name": "Appeteaser Platter",
-      "position": 6,
-      "description": "Choose any Three Appeteasers",
-      "images": [],
-      "category_name": "Appeteasers"
-    },
-    {
-      "id": "94316",
-      "name": "All Together Now (V)",
-      "position": 7,
-      "description": "Spicy Mixed Olives, Red Pepper Dip, Hummus with PERi-PERi Drizzle and Warm Pita Strips",
-      "images": [],
-      "category_name": "Appeteasers"
-    },   {
-      "id": "94220",
-      "name": "3 Chicken Wings",
-      "position": 1,
-      "description": "Tender, Spicy and Juicy. Original or Peri-Crusted",
-      "images": [],
-      "category_name": "Appeteasers"
-    
-    },
-    {
-      "id": "94321",
-      "name": "Chicken Livers and Portuguese Roll",
-      "position": 2,
-      "description": "Chicken Livers Topped with PERi-PERi Sauce, Served with A Roll To Soak Up The Sauce",
-      "images": [],
-      "category_name": "Appeteasers"
-      
-    },
-    {
-      "id": "94322",
-      "name": "Spicy Mixed Olives (V)",
-      "position": 3,
-      "description": "Co-Starring Garlic, Pepper and Chili",
-      "images": [],
-      "category_name": "Appeteasers"
-    },
-    {
-      "id": "94323",
-      "name": "Hummus with PERI-PERI Drizzle (V)",
-      "position": 4,
-      "description": "Pour Smoky PERi-PERi Oil Over Creamy Hummus and Dig in with Strips Of Warm Pita",
-      "images": [],
-      "category_name": "Appeteasers"
-      
-    },
-    {
-      "id": "94324",
-      "name": "Red Pepper Dip (V)",
-      "position": 5,
-      "description": "Dive Into Temping Roasted Red Pepper and Chili Spice Dip with Warm Pita Strips",
-      "images": [],
-      "category_name": "Appeteasers"
-    },
-    {
-      "id": "94325",
-      "name": "Appeteaser Platter",
-      "position": 6,
-      "description": "Choose any Three Appeteasers",
-      "images": [],
-      "category_name": "Appeteasers"
-    },
-    {
-      "id": "94326",
-      "name": "All Together Now (V)",
-      "position": 7,
-      "description": "Spicy Mixed Olives, Red Pepper Dip, Hummus with PERi-PERi Drizzle and Warm Pita Strips",
-      "images": [],
-      "category_name": "Appeteasers"
-    },
-  ]
+  {
+    "id": "94298",
+    "name": "Safran Soslu Badem Çorbası",
+    "position": 1,
+    "description": "Kemik iliği ve Süt ile Pişirilmiş, Muskat ile Tatlandırılmış.",
+    "images": [],
+    "category_name": "Çorbalar"
+  },
+  {
+    "id": "94301",
+    "name": "Vişneli Yaprak Sarma",
+    "position": 2,
+    "description": "Vişneli, Zeytin Yağlı Yaprak Sarması.",
+    "images": [],
+    "category_name": "Soğuk İştah Açıcılar"
+  },
+  {
+    "id": "94304",
+    "name": "Zeytinyağlı Enginar Dolması",
+    "position": 3,
+    "description": "Bezelye, Havuç, Patates ve Dere Otu.",
+    "images": [],
+    "category_name": "Soğuk İştah Açıcılar"
+  },
+  {
+    "id": "94324",
+    "name": "Nar Ekşili Çoban Salatası",
+    "position": 5,
+    "description": "Domates, Salatalık, Kırmızı ve Yeşil Biber.",
+    "images": [],
+    "category_name": "Salatalar"
+  },
+  {
+    "id": "94325",
+    "name": "Kırmızı Pancar Turşusu",
+    "position": 6,
+    "description": "Pekmez, Defne Yaprağı, Sarımsak ile Tatlandırılmış",
+    "images": [],
+    "category_name": "Salatalar"
+  },
+  {
+    "id": "94307",
+    "name": "Bostan Patlıcanında Reyhanlı Bıldırcın",
+    "position": 4,
+    "description": "Biber Salçası, Bal, Zeytin Yağı, Taze Reyhan.",
+    "images": [],
+    "category_name": "Ana Yemekler"
+  },
+  {
+    "id": "94310",
+    "name": "Kavun Dolması",
+    "position": 5,
+    "description": "Zırhla Çekilmiş Dana Eti, Pirinç, Badem, Kuş Üzümü, Çam Fıstığı, Baharatlar.",
+    "images": [],
+    "category_name": "Ana Yemekler"
+  },
+  {
+    "id": "94313",
+    "name": "Mutancana",
+    "position": 6,
+    "description": "Güveçte Kuzu eti, Kuru Kayısı, Arpacık Soğanı, Kuru Üzüm, İncir, Bal ve Badem.",
+    "images": [],
+    "category_name": "Ana Yemekler"
+  },
+  {
+    "id": "94316",
+    "name": "Kağıtta Kişnişli Deniz Levreği",
+    "position": 7,
+    "description": "Kişniş, Defne Yaprağı, Domates, Yeşil Biber, Dere Otu, Limon.",
+    "images": [],
+    "category_name": "Ana Yemekler"
+  },
+  {
+    "id": "94220",
+    "name": "Halep Dolması",
+    "position": 1,
+    "description": "Safran ile tatlandırılmış Patlıcan, Pirinç, Bulgur, Tarçın, Kakule, Kuru Nane.",
+    "images": [],
+    "category_name": "Ana Yemekler"
+  },
+  {
+    "id": "94321",
+    "name": "Tarçınlı Tavuk Beğendili",
+    "position": 2,
+    "description": "Sote Tavuk, Tarçın, Tane Badem, Beğendi eşliğinde.",
+    "images": [],
+    "category_name": "Ana Yemekler"
+  },
+  {
+    "id": "94322",
+    "name": "Beğendili Kuzu İncik",
+    "position": 3,
+    "description": "Köz Patlıcan ile",
+    "images": [],
+    "category_name": "Ana Yemekler"
+  },
+  {
+    "id": "94323",
+    "name": "Leblebi Helvası",
+    "position": 4,
+    "description": "Leblebi Unu, Şeker, Tereyağ ve Süt.",
+    "images": [],
+    "category_name": "Tatlılar"
+  },
+  {
+    "id": "94326",
+    "name": "Helatiye",
+    "position": 7,
+    "description": "Damla Sakızlı ve Gül Suyu Puding, Badem, Antep Fıstığı & Mevsim Meyveleri.",
+    "images": [],
+    "category_name": "Tatlılar"
+  }
+]

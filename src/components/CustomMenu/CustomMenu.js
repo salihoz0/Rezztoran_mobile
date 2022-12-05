@@ -10,18 +10,16 @@ import styles from './CustomMenuStyles'
 const CustomMenu = () => {
   const navigation = useNavigation();
   return (
-    <View >
+    <View style={styles.inner_container} >
       <FlatList
         showsVerticalScrollIndicator={false}
         data={Menu_data}
         renderItem={({item}) => (
-          <View style={styles.inner_container}>
-            <View style={styles.title}>
+          <View >
               <Text style={styles.header}>{item.name} </Text>
-            </View>
             <View >
-              <Text style={styles.text}>Description: {item.description} </Text>
-              <Text style={styles.text}>Category:{item.category_name} </Text>
+              <Text style={styles.text}>Açıklama:{item.description} </Text>
+              <Text style={styles.text}>Kategori: {item.category_name} </Text>
             </View>
           </View>
         )}

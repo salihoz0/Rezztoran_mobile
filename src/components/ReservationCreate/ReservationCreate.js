@@ -6,17 +6,18 @@ import {
   Pressable,
   TextInput,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {SelectList} from 'react-native-dropdown-select-list';
 import backgr from '../../../assets/images/arkaplan.png';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import data from '../../../assets/Data/NumberOfPeople_data.json';
 import moment from 'moment';
-import styles from './DateTimePickerStyles'
+import styles from './ReservationCreateStyles';
 const DateTimePicker = () => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState('2');
   const [dateData, setDateData] = useState();
 
   const showDatePicker = () => {
@@ -35,6 +36,15 @@ const DateTimePicker = () => {
   const reservationCreate = () => [
     //verileri alıp rezervasyonlarım sayfasına gönder
   ];
+  const placeholder = () => {
+    return (
+      <View style={styles.numberTextContain}>
+          <Icon name="person-add" size={30} color={'black'} />
+          <Text style={styles.numberText}>  {selected} Kişi</Text>
+       
+      </View>
+    );
+  };
   return (
     <ImageBackground source={backgr} style={styles.backgr}>
       <View style={styles.container}>
@@ -42,21 +52,31 @@ const DateTimePicker = () => {
           <SelectList
             search={false}
             dropdownShown={false}
-            placeholder={'Kişi Sayısı'}
+            placeholder={placeholder()}
             defaultOption={1}
-            boxStyles={{backgroundColor: 'white'}}
+            dropdownTextStyles={{color:'red',fontSize:15,fontWeight:'bold'}}
+            inputStyles={{color:'red',alignSelf:'center'}}
+            boxStyles={{backgroundColor: 'white',}}
             dropdownStyles={{backgroundColor: 'white'}}
             setSelected={val => setSelected(val)}
             save="value"
             data={data}
-            dropdownItemStyles={{borderWidth: 0.3, borderRadius: 10, margin: 3}}
+            arrowicon={<Icon name="keyboard-arrow-down" size={30} color={'black'} />}
+            dropdownItemStyles={{marginLeft: 8,borderBottomWidth:0.3,marginRight: 8}}
           />
         </View>
 
         <View>
-          <Pressable onPress={showDatePicker}>
-            <Text>Tarih Seç</Text>
-            <Icon name="calendar-clock-outline" size={50} color={'gray'} />
+          <Pressable onPress={showDatePicker} style={styles.datePick}>
+            <View style={styles.datePickInner}>
+              <Icon name="calendar-today" size={30} color={'black'} />
+              <Text style={styles.datePickText}>
+                {' '}
+                {new Date().getDate()}/{new Date().getMonth()}/
+                {new Date().getFullYear()}{' '}
+              </Text>
+            </View>
+            <Icon name="keyboard-arrow-down" size={30} color={'black'} />
 
             <DateTimePickerModal
               is24Hour
@@ -64,7 +84,6 @@ const DateTimePicker = () => {
               mode="datetime"
               onConfirm={handleConfirm}
               onCancel={hideDatePicker}
-              maximumTime={22}
             />
           </Pressable>
           <TextInput
