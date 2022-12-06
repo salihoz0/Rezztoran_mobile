@@ -42,7 +42,7 @@ const Navigation = () => {
       <Tab.Navigator tabC>
         <Tab.Screen
           name="Anasayfa"
-          component={NavigationStack}
+          component={HomeScreen}
           options={{
             headerShown: false,
             tabBarIcon: () => {

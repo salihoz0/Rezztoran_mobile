@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "add-splash":"npx react-native generate-bootsplash assets/bootsplash_logo_original.png --background-color=ff702a --logo-width=288 --assets-path=assets --flavor=main"
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
@@ -24,6 +25,7 @@
     "react": "18.1.0",
     "react-native": "0.70.6",
     "react-native-asset": "^2.0.1",
+    "react-native-bootsplash": "^4.4.0",
     "react-native-dropdown-select-list": "^2.0.2",
     "react-native-gesture-handler": "^2.8.0",
     "react-native-material-menu": "^2.0.0",

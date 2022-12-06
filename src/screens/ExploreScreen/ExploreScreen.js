@@ -52,7 +52,7 @@ const ExploreScreen = () => {
                   <Pressable
                     onPress={() => {
                       navigation.navigate('RestorantDetail', {
-                        title: item.title,
+                        title: item.title, star:item.star, price:item.price
                       });
                     }}
                     pressRetentionOffset>
