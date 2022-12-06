@@ -5,7 +5,7 @@ import RNBootSplash from "react-native-bootsplash";
  
 const App = () => {
   useEffect(()=> {
-    RNBootSplash.hide({ fade: true });
+    RNBootSplash.hide();
   },[]);
   return (
     <SafeAreaView style={styles.root}>
