@@ -27,12 +27,49 @@ const ExploreScreen = () => {
   const navigation = useNavigation();
   const [liked, setLiked] = useState(data.liked);
 
+  const renderItem = ({item}) => {
+    return (
+      <View style={styles.flatlist}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('RestorantDetail', {
+              title: item.title,
+              star: item.star,
+              price: item.price,
+            });
+          }}
+          pressRetentionOffset>
+          <Image style={styles.image} source={{uri: item.imgURL}} />
+          <Text style={styles.likednumber}>{item.star}</Text>
+          <Text style={styles.title} numberOfLines={1}>
+            {item.title}
+          </Text>
+          <View style={styles.starAndPrice}>
+            <StarComponent count={item.star} select={'star'} />
+            <StarComponent count={item.price} />
+          </View>
+          <Pressable
+            onPress={() => (
+              setLiked(isLiked => !isLiked), (item.liked = !item.liked)
+            )}
+            style={styles.like}
+            pressRetentionOffset>
+            <Icon
+              name={'heart'}
+              size={25}
+              color={item.liked ? 'red' : 'white'}
+              style={styles.like}
+            />
+          </Pressable>
+        </Pressable>
+      </View>
+    );
+  };
+
   return (
     <ImageBackground source={backgr} style={{flex: 1}}>
       <View style={styles.container}>
-        <View style={styles.header_container}>
-          <Text style={styles.header}>Keşfedin</Text>
-        </View>
+        <Text style={styles.header}>Keşfedin</Text>
         <SearchBar />
         <View style={{flexDirection: 'row'}}>
           <View>
@@ -40,53 +77,14 @@ const ExploreScreen = () => {
           </View>
           <FilterMenu data={data} />
         </View>
-        <View style={styles.flatlist_container}>
-          <FlatList
-            style={{marginBottom: 30}}
-            data={data}
-            numColumns={2}
-            contentContainerStyle={{paddingBottom: 100}}
-            showsVerticalScrollIndicator={false}
-            renderItem={({item}) => (
-              <View style={styles.flatlist}>
-                <View>
-                  <Pressable
-                    onPress={() => {
-                      navigation.navigate('RestorantDetail', {
-                        title: item.title,
-                        star: item.star,
-                        price: item.price,
-                      });
-                    }}
-                    pressRetentionOffset>
-                    <Image style={styles.image} source={{uri: item.imgURL}} />
-                    <Text style={styles.likednumber}>{item.star}</Text>
-
-                    <Text style={styles.title}>{item.title} </Text>
-                    <View style={styles.starAndPrice}>
-                      <StarComponent count={item.star} select={'star'} />
-                      <StarComponent count={item.price} />
-                    </View>
-                    <Pressable
-                      onPress={() => (
-                        setLiked(isLiked => !isLiked),
-                        (item.liked = !item.liked)
-                      )}
-                      style={styles.like}
-                      pressRetentionOffset>
-                      <Icon
-                        name={'heart'}
-                        size={25}
-                        color={item.liked ? 'red' : 'white'}
-                        style={styles.like}
-                      />
-                    </Pressable>
-                  </Pressable>
-                </View>
-              </View>
-            )}
-          />
-        </View>
+        <FlatList
+          data={data}
+          style={{zIndex: 1}}
+          numColumns={2}
+          contentContainerStyle={{paddingBottom: 100}}
+          showsVerticalScrollIndicator={false}
+          renderItem={renderItem}
+        />
       </View>
       <Image
         source={BlurLogo}

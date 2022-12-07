@@ -21,75 +21,46 @@ const ReservationsScreen = () => {
   const navigation = useNavigation();
   const [liked, setLiked] = useState(Reservations.liked);
 
+  const renderItem = ({item}) => {
+    return (
+      <View style={styles.container}>
+        <Image style={styles.image} source={{uri: item.imgURL}} />
+        <View style={styles.info_container}>
+          <Text style={styles.titleImage}>{item.title}</Text>
+          <Text style={styles.info}>{item.Date}</Text>
+          <View style={styles.button_container}>
+            <Button
+              mode="contained"
+              buttonColor="#474747"
+              textColor={'#F8B95C'}
+              compact={true}
+              style={styles.content}
+              onPress={() => console.log('Rezervasyonu Düzenle')}>
+              Rezervasyonu Düzenle
+            </Button>
+            <Button
+              compact={true}
+              mode="contained"
+              buttonColor="#DD7272"
+              textColor={'white'}
+              style={styles.contentCancel}
+              onPress={() => console.log('iptal edildi')}>
+              İptal Et
+            </Button>
+          </View>
+        </View>
+      </View>
+    );
+  };
+
   return (
     <ImageBackground source={backgr} style={styles.ImageBackground}>
       <Text style={styles.header}>Rezervasyonlarım</Text>
-
       <FlatList
         style={{zIndex: 1}}
         data={Reservations}
         showsVerticalScrollIndicator={false}
-        renderItem={({item}) => (
-          <View style={styles.container}>
-            <Pressable
-              onPress={() => {
-                navigation.navigate('RestorantDetail', {title: item.title});
-              }}
-              pressRetentionOffset>
-              <View style={styles.Restorants}>
-                <Image style={styles.image} source={{uri: item.imgURL}} />
-
-                <Text style={styles.text}>{item.star}</Text>
-                <Pressable
-                  onPress={() => (
-                    setLiked(isLiked => !isLiked), (item.liked = !item.liked)
-                  )}
-                  style={styles.like}
-                  pressRetentionOffset>
-                  <Icon
-                    name="heart"
-                    size={20}
-                    color={liked ? 'red' : 'white'}
-                    style={styles.like}
-                  />
-                </Pressable>
-              </View>
-            </Pressable>
-            <View>
-              <Text style={styles.titleImage}>{item.title}</Text>
-              <View style={styles.star}>
-                <StarComponent count={item.star} select={'star'} />
-                <StarComponent count={item.price} />
-              </View>
-              <Text style={styles.info}>
-                Kişi Sayısı: {item.numberOfPeople}{' '}
-              </Text>
-              <Text style={styles.info}>{item.Date} </Text>
-              <Text style={styles.info}>Notunuz: {item.comment} </Text>
-              <View style={styles.button_container}>
-                <Button
-                  mode="contained"
-                  buttonColor="#474747"
-                  textColor={'#F8B95C'}
-                  compact={true}
-                  style={styles.content}
-                  onPress={()=> console.log('Rezervasyonu Düzenle')}
-                  >
-                  Rezervasyonu Düzenle
-                </Button>
-                <Button
-                  compact={true}
-                  mode="contained"
-                  buttonColor="#DD7272"
-                  textColor={'white'}
-                  style={styles.contentCancel}
-                  onPress={()=>console.log('iptal edildi')}>
-                  İptal Et
-                </Button>
-              </View>
-            </View>
-          </View>
-        )}
+        renderItem={renderItem}
       />
       <Image
         source={BlurLogo}
@@ -101,3 +72,29 @@ const ReservationsScreen = () => {
 };
 
 export default ReservationsScreen;
+
+/*
+<Text style={styles.text}>{item.star}</Text>
+            <Pressable
+              onPress={() => (
+                setLiked(isLiked => !isLiked), (item.liked = !item.liked)
+              )}
+              style={styles.like}
+              pressRetentionOffset>
+              <Icon
+                name="heart"
+                size={20}
+                color={liked ? 'red' : 'white'}
+                style={styles.like}
+              />
+                        <View style={styles.star}>
+            <StarComponent count={item.star} select={'star'} />
+            <StarComponent count={item.price} />
+            
+          <Text style={styles.info}>Kişi Sayısı: {item.numberOfPeople} </Text>
+          </View>
+
+
+
+</Pressable>
+*/
