@@ -1,4 +1,4 @@
-import {View, Text,Dimensions} from 'react-native';
+import {View, Text, Dimensions} from 'react-native';
 import React from 'react';
 import Carousel from 'react-native-reanimated-carousel';
 import Restorants from '../CustomRestorant/Restorants';
@@ -10,7 +10,7 @@ const CarouselComponent = ({data}) => {
   const width = Dimensions.get('window').width;
   const renderItem = ({item}) => {
     return (
-      <View >
+      <View>
         <Restorants Restorant={item} />
         <Text style={styles.titleImage}>{item.title}</Text>
         <View style={styles.star}>
@@ -29,7 +29,7 @@ const CarouselComponent = ({data}) => {
           style={styles.carousel}
           width={width}
           mode="parallax"
-          height={width / 1.8}
+          height={width / 1.6}
           autoPlay={true}
           data={data}
           scrollAnimationDuration={2000}

@@ -13,24 +13,24 @@ import CustomMenu from '../../components/CustomMenu/CustomMenu';
 import ReservationCreate from '../../components/ReservationCreate/ReservationCreate';
 import styles from './RestoranDetailScreenStyles';
 import StarComponent from '../../components/StarComponent';
-import  Icon  from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const RestorantDetailScreen = props => {
   const selectTitle = props.route.params.title;
   const star = props.route.params.star;
   const price = props.route.params.price;
   const [list, setList] = useState(Restorant_data);
-  const renderRestorant = ({item}) => <Restorants Restorant={item} />;
   const [showMenu, setShowMenu] = useState(true);
+  const renderRestorant = ({item}) => <Restorants Restorant={item} />;
 
-  const pressed = () => {
-    const filteredList = Restorant_data.filter(Restorant => {
-      const currentTitle = Restorant.title;
-      return currentTitle.indexOf(selectTitle) > -1;
-    });
-    setList(filteredList);
-  };
   useEffect(() => {
+    const pressed = () => {
+      const filteredList = Restorant_data.filter(Restorant => {
+        const currentTitle = Restorant.title;
+        return currentTitle.indexOf(selectTitle) > -1;
+      });
+      setList(filteredList);
+    };
     pressed();
   }, []);
 
@@ -51,24 +51,25 @@ const RestorantDetailScreen = props => {
             <StarComponent count={star} select={'star'} />
             <StarComponent count={price} />
             <View>
-              <View style={{flexDirection:'row',alignItems:'center'}}>
-              <Text style={{color: 'black', fontWeight: '700', fontSize: 15}}>
-                Çalışma Saaatleri
-              </Text>
-              <Icon name="clock-outline" size={25} color={'black'} /></View>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Text style={{color: 'black', fontWeight: '700', fontSize: 15}}>
+                  Çalışma Saaatleri
+                </Text>
+                <Icon name="clock-outline" size={25} color={'black'} />
+              </View>
               <Text
                 style={{
                   alignSelf: 'center',
                   color: 'black',
                   fontWeight: '500',
                 }}>
-                09:00-23.00 
+                09:00-23.00
               </Text>
-               </View>
+            </View>
           </View>
         </View>
         {showMenu ? (
-            <CustomMenu />
+          <CustomMenu />
         ) : (
           <View style={styles.reserve}>
             <ReservationCreate />
