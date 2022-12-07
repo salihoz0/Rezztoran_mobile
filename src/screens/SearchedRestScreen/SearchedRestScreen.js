@@ -24,7 +24,7 @@ const SearchedRestScreen = props => {
   //nasıl yapabiliriz aklıma birşey gelmedi,onu yapabilirsen yap sen
 
   return (
-   <ImageBackground source={backgr} style={{flex: 1}}>
+    <ImageBackground source={backgr} style={{flex: 1}}>
       <View style={styles.container}>
         <View style={styles.header_container}>
           <Text style={styles.header}>Keşfedin</Text>
@@ -34,10 +34,11 @@ const SearchedRestScreen = props => {
           <View>
             <SortMenu data={data} />
           </View>
-         <FilterMenu data={data}/>
+          <FilterMenu data={data} />
         </View>
         <View style={styles.flatlist_container}>
           <FlatList
+            style={{marginBottom: 30}}
             data={data}
             numColumns={2}
             contentContainerStyle={{paddingBottom: 100}}
@@ -48,7 +49,9 @@ const SearchedRestScreen = props => {
                   <Pressable
                     onPress={() => {
                       navigation.navigate('RestorantDetail', {
-                        title: item.title, star:item.star, price:item.price
+                        title: item.title,
+                        star: item.star,
+                        price: item.price,
                       });
                     }}
                     pressRetentionOffset>

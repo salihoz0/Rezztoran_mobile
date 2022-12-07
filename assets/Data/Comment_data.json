@@ -1,0 +1,45 @@
+[
+    {
+        "id": 1,
+        "name":"S....",
+        "comment": "Güzeldi",
+        "star":4
+        
+    },    {
+        "id": 2,
+        "name":"A.....",
+        "comment": "Beğenmedim",
+        "star":1
+        
+    },    {
+        "id": 3,
+        "name":"O....",
+        "comment": "Gayet lezzetli ve hızlıydı teşekkürler.",
+        "star":5
+        
+    },    {
+        "id": 4,
+        "name":"T....",
+        "comment": "yemek buz gibiydi",
+        "star":3.5
+        
+    },    {
+        "id": 5,
+        "name":"D....",
+        "comment": "Dile kolay 6-7 sene oldu ve kendini hiç bozmadı. Tat, porsiyon, servis her zaman harika.",
+        "star":5
+        
+    },    {
+        "id": 6,
+        "name":"B....",
+        "comment": "lezzet mükemmel. ayrıca hızınıza ve kuryenize teşekkür ederiz",
+        "star":4.5
+        
+    },    {
+        "id": 7,
+        "name":"M....",
+        "comment": "Porsiyon çok az. Yemeğin yanında ekmek bile konmamıştı.",
+        "star":0.5
+        
+    }
+]

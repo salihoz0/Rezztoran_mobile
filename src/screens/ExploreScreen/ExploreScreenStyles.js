@@ -67,7 +67,7 @@ export default styles = StyleSheet.create({
   flatlist: {
     borderRadius: 30,
     width: Dimensions.get('window').width / 2.2,
-    height: Dimensions.get('window').height / 4,
+    height: Dimensions.get('window').height / 3.5,
     marginTop: 20,
   },
   inner_icon: {

@@ -38,10 +38,11 @@ const ExploreScreen = () => {
           <View>
             <Menu data={data} />
           </View>
-         <FilterMenu data={data} />
+          <FilterMenu data={data} />
         </View>
         <View style={styles.flatlist_container}>
           <FlatList
+            style={{marginBottom: 30}}
             data={data}
             numColumns={2}
             contentContainerStyle={{paddingBottom: 100}}
@@ -52,7 +53,9 @@ const ExploreScreen = () => {
                   <Pressable
                     onPress={() => {
                       navigation.navigate('RestorantDetail', {
-                        title: item.title, star:item.star, price:item.price
+                        title: item.title,
+                        star: item.star,
+                        price: item.price,
                       });
                     }}
                     pressRetentionOffset>

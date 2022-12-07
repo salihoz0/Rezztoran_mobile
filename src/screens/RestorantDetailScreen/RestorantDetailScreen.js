@@ -68,10 +68,7 @@ const RestorantDetailScreen = props => {
           </View>
         </View>
         {showMenu ? (
-          <View style={styles.Menu}>
-            <Text style={styles.headerMenu}>Menü</Text>
             <CustomMenu />
-          </View>
         ) : (
           <View style={styles.reserve}>
             <ReservationCreate />

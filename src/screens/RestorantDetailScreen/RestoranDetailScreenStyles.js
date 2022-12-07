@@ -30,11 +30,6 @@ export default styles = StyleSheet.create({
     },
     textShadowRadius: 5,
   },
-  Menu: {
-    flex: 1,
-    paddingBottom: 50,
-    backgroundColor: 'white',
-  },
   reserve: {
     flex: 1,
   },
