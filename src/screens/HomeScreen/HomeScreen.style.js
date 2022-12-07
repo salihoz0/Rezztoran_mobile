@@ -63,7 +63,6 @@ export default StyleSheet.create({
     },
     textShadowRadius: 2,
   },
-
   input: {
     marginTop: 20,
   },

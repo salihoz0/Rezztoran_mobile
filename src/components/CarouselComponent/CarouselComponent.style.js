@@ -12,10 +12,10 @@ export default StyleSheet.create({
   },
   star: {
     alignItems: 'flex-start',
-    justifyContent:'space-evenly',
-    flexDirection:'row',
+    justifyContent: 'space-evenly',
+    flexDirection: 'row',
     paddingRight: 255,
     paddingTop: 10,
-    paddingLeft:20,
+    paddingLeft: 20,
   },
 });
