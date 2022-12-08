@@ -6,6 +6,10 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 import backgr from '../../../assets/images/arkaplan.png';
 import Restorant_data from '../../../assets/Data/Restorant_data.json';
 import Restorants from '../../components/CustomRestorant/Restorants';
@@ -36,8 +40,8 @@ const RestorantDetailScreen = props => {
 
   return (
     <ImageBackground source={backgr} style={styles.backgr}>
-      <View style={{flex: 1}}>
-        <View>
+      <View style={styles.container}>
+        <View style={{height: hp('28%')}}>
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -45,14 +49,15 @@ const RestorantDetailScreen = props => {
             renderItem={renderRestorant}
           />
         </View>
-        <View>
+        <View style={{height: hp('12%')}}>
           <Text style={styles.header}>{selectTitle}</Text>
           <View style={styles.info}>
             <StarComponent count={star} select={'star'} />
             <StarComponent count={price} />
             <View>
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Text style={{color: 'black', fontWeight: '700', fontSize: 15}}>
+                <Text
+                  style={{color: 'black', fontWeight: '700', fontSize: hp(2)}}>
                   Çalışma Saaatleri
                 </Text>
                 <Icon name="clock-outline" size={25} color={'black'} />
@@ -68,26 +73,30 @@ const RestorantDetailScreen = props => {
             </View>
           </View>
         </View>
-        {showMenu ? (
-          <CustomMenu />
-        ) : (
-          <View style={styles.reserve}>
-            <ReservationCreate />
-          </View>
-        )}
+        <View style={styles.Menu}>
+          {showMenu ? (
+            <CustomMenu />
+          ) : (
+            <View style={styles.reserve}>
+              <ReservationCreate />
+            </View>
+          )}
+        </View>
       </View>
-      <TouchableOpacity
-        onPress={() => {
-          setShowMenu(!showMenu);
-        }}
-        style={showMenu ? styles.button : styles.button_cancel}
-        activeOpacity={0.9}>
-        {showMenu ? (
-          <Text style={styles.text}>REZERVASYON YAP</Text>
-        ) : (
-          <Text style={styles.text_cancel}>İPTAL ET</Text>
-        )}
-      </TouchableOpacity>
+      <View style={{height: hp(7)}}>
+        <TouchableOpacity
+          onPress={() => {
+            setShowMenu(!showMenu);
+          }}
+          style={showMenu ? styles.button : styles.button_cancel}
+          activeOpacity={0.9}>
+          {showMenu ? (
+            <Text style={styles.text}>REZERVASYON YAP</Text>
+          ) : (
+            <Text style={styles.text_cancel}>İPTAL ET</Text>
+          )}
+        </TouchableOpacity>
+      </View>
     </ImageBackground>
   );
 };

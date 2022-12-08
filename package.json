@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "add-splash":"npx react-native generate-bootsplash assets/bootsplash_logo_original.png --background-color=ff702a --logo-width=288 --assets-path=assets --flavor=main"
+    "add-splash": "npx react-native generate-bootsplash assets/bootsplash_logo_original.png --background-color=ff702a --logo-width=288 --assets-path=assets --flavor=main"
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
@@ -34,6 +34,7 @@
     "react-native-paper": "^5.0.0-rc.10",
     "react-native-reanimated": "^2.13.0",
     "react-native-reanimated-carousel": "^3.1.5",
+    "react-native-responsive-screen": "^1.4.2",
     "react-native-safe-area-context": "^4.4.1",
     "react-native-screens": "^3.18.2",
     "react-native-stars": "^1.2.2",
