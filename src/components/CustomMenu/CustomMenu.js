@@ -29,10 +29,10 @@ const CustomMenu = () => {
       </View>
 
       {selected == 1 ? (
-        <View style={styles.inner_container}>
+        <View >
           <Text style={styles.header}>Menü</Text>
           <FlatList
-            
+            style={styles.inner_container}
             showsVerticalScrollIndicator={false}
             data={Menu_data}
             renderItem={({item}) => (
@@ -49,9 +49,10 @@ const CustomMenu = () => {
           />
         </View>
       ) : (
-        <View style={styles.inner_container}>
+        <View >
           <Text style={styles.header}>Yorumlar</Text>
           <FlatList
+          style={styles.inner_container}
             showsVerticalScrollIndicator={false}
             data={comment_data}
             renderItem={({item}) => (

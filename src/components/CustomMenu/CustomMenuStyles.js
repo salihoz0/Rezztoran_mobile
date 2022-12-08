@@ -32,7 +32,6 @@ flex:1
   comment_container: {
     borderColor: 'black',
     borderBottomWidth: hp(0.1),
-    margin: wp(1),
     padding: wp(1),
     flexDirection: 'row',
     justifyContent:'space-between'
@@ -40,13 +39,14 @@ flex:1
   },
   comment:{
     alignItems:'flex-start',
-    width: wp('67%'),
+    width: wp(68),
     padding:hp(1),
     marginLeft:wp(1),
     backgroundColor:'white',
     borderRadius:20
   },
   comment_icon:{
-    justifyContent:'center'
+    justifyContent:'center',
+    width:wp(25)
   }
 });
