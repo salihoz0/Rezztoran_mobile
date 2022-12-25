@@ -51,7 +51,7 @@ const Navigation = () => {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen
-          name="Anasayfaaaa"
+          name="Anasayfa"
           component={NavigationStack}
           options={{
             headerShown: false,
