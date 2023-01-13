@@ -85,10 +85,13 @@ export default styles = StyleSheet.create({
   },
   content: {
     borderRadius: 10,
-    width: Dimensions.get('window').width / 2.9,
+    width: Dimensions.get('window').width / 4,
   },
   contentCancel: {
     borderRadius: 10,
+    width: Dimensions.get('window').width / 4,
+    marginLeft:2
+
   },
   blur_logo: {
     zIndex: 0,

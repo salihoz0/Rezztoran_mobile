@@ -1,8 +1,16 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, ScrollView, Text} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  Text,
+  ImageBackground,
+} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
+import backgr from '../../../assets/images/arkaplan.png';
+
 
 const NewPasswordScreen = () => {
   const [code, setCode] = useState('');
@@ -18,29 +26,36 @@ const NewPasswordScreen = () => {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.root}>
-        <Text style={styles.title}>Reset your password</Text>
-        <CustomInput placeholder="Kod" value={code} setValue={setCode} />
-        <CustomInput
-          placeholder="Yeni Şifrenizi Girin"
-          value={newPassword}
-          setValue={setNewPassword}
-        />
+    <ImageBackground source={backgr} style={styles.ImageBackground}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.root}>
+          <Text style={styles.title}>Şifreni Sıfırla</Text>
+          <CustomInput placeholder="Kod" value={code} setValue={setCode} />
+          <CustomInput
+            placeholder="Yeni Şifrenizi Girin"
+            value={newPassword}
+            setValue={setNewPassword}
+          />
 
-        <CustomButton text="Onayla" onPress={onSubmitPressed} type="PRIMARY" />
+          <CustomButton
+            text="Onayla"
+            onPress={onSubmitPressed}
+            type="PRIMARY"
+          />
 
-        <CustomButton
-          text="Giriş Sayfasına Dön"
-          onPress={onSignInPress}
-          type="TERTIARY"
-        />
-      </View>
-    </ScrollView>
+          <CustomButton
+            text="Giriş Sayfasına Dön"
+            onPress={onSignInPress}
+            type="TERTIARY"
+          />
+        </View>
+      </ScrollView>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  ImageBackground:{flex:1},
   root: {
     alignItems: 'center',
     padding: 20,
@@ -58,6 +73,7 @@ const styles = StyleSheet.create({
   link: {
     color: '#FDB075',
   },
+
 });
 
 export default NewPasswordScreen;

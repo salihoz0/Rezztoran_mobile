@@ -15,8 +15,7 @@ import FavoritesScreen from '../screens/FavoritesScreen/FavoritesScreen';
 import ProfilesScreen from '../screens/ProfilesScreen/Profiles';
 import ReservationsScreen from '../screens/ResevervationsScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {useDispatch, useSelector} from 'react-redux';
-import {logout} from '../store/auth';
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -40,13 +39,7 @@ const NavigationStack = () => {
 };
 
 const Navigation = () => {
-  const dispatch = useDispatch();
-  const credientals = useSelector(state => state.auth.value);
-  const doLogout = () => {
-    dispatch(logout());
-    navigation.navigate('HomeScreen');
-  };
-
+ 
   return (
     <NavigationContainer>
       <Tab.Navigator>

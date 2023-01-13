@@ -36,7 +36,7 @@ const ReservationsScreen = () => {
               compact={true}
               style={styles.content}
               onPress={() => console.log('Rezervasyonu Düzenle')}>
-              Rezervasyonu Düzenle
+              Düzenle
             </Button>
             <Button
               compact={true}
