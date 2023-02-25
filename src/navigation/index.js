@@ -169,7 +169,7 @@ const TabNavigation = () => {
 
 return(
   <NavigationContainer>
-    {!loginControl ? <AuthNavigation/> : <StackNavigation/> } 
+    {loginControl ? <AuthNavigation/> : <StackNavigation/> } 
   </NavigationContainer>
 )
 
