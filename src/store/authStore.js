@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   isLoggedIn: false,
-  myToken: '',
+  myToken: undefined,
   myDetails: {},
 }
 
@@ -11,14 +11,14 @@ export const authStore = createSlice({
   initialState,
   reducers: {
     setAuth: (state, action) => {
-      state.myToken = action.payload.myToken;
-      state.myDetails = action.payload.myDetails;
+      state.myToken = action.payload.myToken ||state.myToken;
+      state.myDetails = action.payload.myDetails ||state.myDetails;
       state.isLoggedIn = true;
     },
     resetAuth: (state) => {
-      state.value.myToken = '';
-      state.value.isLoggedIn = false;
-      state.value.myDetails = {};
+      state.myToken = undefined;
+      state.isLoggedIn = false;
+      state.myDetails = {};
     },
   },
 });

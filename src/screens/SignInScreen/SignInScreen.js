@@ -40,7 +40,6 @@ const SignInScreen = () => {
           Keychain.setGenericPassword(credientals.username, credientals.password)
           setUsername('')
           setPassword('')
-          navigation.navigate('HomeScreen');
           console.log('başarılı')
         },
         onError: () => {
