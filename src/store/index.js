@@ -1,18 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit';
-import {combineReducers} from 'redux';
-
-import auth from './auth';
-
-const reducer = combineReducers({
-  auth,
-});
+import authStore from './authStore';
 
 const store = configureStore({
-  reducer,
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
-});
+  reducer: {
+    authStore,
+  }
+})
 
 export default store;

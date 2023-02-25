@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   StyleSheet,
@@ -14,38 +14,41 @@ import CustomButton from '../../components/CustomButton';
 import SocialSignInButton from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/native';
 import backgr from '../../../assets/images/arkaplan.png';
-import {login} from '../../store/auth';
-import {loginUser} from '../../api/apiCalls';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
+import { useLogin } from '../../api/auth';
+import { setAuth } from '../../store/authStore';
+import * as Keychain from 'react-native-keychain'
 
 const SignInScreen = () => {
   const dispatch = useDispatch();
+  const { mutate: login} = useLogin()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
-  const [credientals, setCredientals] = useState({
-    username: '',
-    password: '',
-  });
-
-  const doLogin = e => {
-    console.log(credientals);
-    loginUser(credientals)
-      .then(x => {
-        const data = x.data;
-        console.log('istek attim');
-        console.log(data);
-        dispatch(
-          login({
-            myToken: data.accessToken,
-            myDetails: data.user,
-          }),
-        );
-        navigation.navigate('HomeScreen');
+  const doLogin = async (credientals={username, password}) => {
+    console.log(credientals)
+    new Promise((resolve, reject) => {
+      login(credientals,{
+        onSuccess: data => {
+          resolve(undefined)
+          dispatch(
+            setAuth({
+              myToken: data.accessToken,
+              myDetails: data.user,
+            })
+          )
+          Keychain.setGenericPassword(credientals.username, credientals.password)
+          setUsername('')
+          setPassword('')
+          navigation.navigate('HomeScreen');
+          console.log('başarılı')
+        },
+        onError: () => {
+          reject
+          console.log('istek başarısız')
+        }
       })
-      .catch(e => {
-        Alert.alert('HATA', e.response.data.error);
-        console.log(e.e.response.data.error);
-        console.log('hata');
-      });
+    },)
   };
 
   const {height} = useWindowDimensions();
@@ -71,17 +74,17 @@ const SignInScreen = () => {
           />
           <CustomInput
             placeholder="Kullanıcı Adı"
-            value={credientals.username}
-            setValue={val => setCredientals({...credientals, username: val})}
+            value={username}
+            setValue={val => setUsername(val)}
           />
           <CustomInput
             placeholder="Şifre"
-            value={credientals.password}
-            setValue={val => setCredientals({...credientals, password: val})}
+            value={password}
+            setValue={val => setPassword(val)}
             secureTextEntry
             style={{width: 500}}
           />
-          <CustomButton text="Giriş Yap" onPress={doLogin} />
+          <CustomButton text="Giriş Yap" onPress={() => doLogin({username: username, password: password})} />
           <CustomButton
             text="Şifremi Unuttum"
             onPress={onForgotPasswordPressed}
