@@ -32,3 +32,14 @@ const postRegister = async (values = {username, mail, password, name, surname}) 
 export const useRegister = () => {
     return useMutation(postRegister)
 }
+
+//============== ME =================
+const getMe = async () => {
+    const response = await axios.get(END_POINTS.AUTH_CONTROLLER.ME)
+    return response.data
+}
+
+export const useGetMe = () => {
+    const {data} = useQuery(['getMe'], () => getMe())
+    return {data}
+}
