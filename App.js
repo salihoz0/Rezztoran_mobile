@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
-import {View, StyleSheet, SafeAreaView, Text} from 'react-native';
+import {StyleSheet, SafeAreaView} from 'react-native';
 import Navigation from './src/navigation';
 import RNBootSplash from 'react-native-bootsplash';
 import {Provider} from 'react-redux';
 import store from './src/store';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 const App = () => {
   useEffect(() => {
@@ -11,9 +12,11 @@ const App = () => {
   }, []);
   return (
     <Provider store={store}>
+      <PaperProvider>
       <SafeAreaView style={styles.root}>
         <Navigation />
       </SafeAreaView>
+      </PaperProvider>
     </Provider>
   );
 };
