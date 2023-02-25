@@ -30,9 +30,7 @@ const SearchBar = () => {
   }, [list]);
 
   return (
-    <View>
       <View style={styles.container}>
-        <View style={styles.inner_container}>
           <TextInput
             style={styles.text_input}
             placeholder="Restoran deneyin ...  "
@@ -43,13 +41,11 @@ const SearchBar = () => {
             onSubmitEditing={text => {
               handleSearch(text.nativeEvent.text);
             }}
-          />
-          <Pressable onPress={() => handleSearch(text)}>
-            <Icon name="ios-search-outline" size={35} />
-          </Pressable>
-        </View>
+            autoFocus ={true}
+            inlineImageLeft='search'
+            inlineImagePadding={5}
+            />
       </View>
-    </View>
   );
 };
 

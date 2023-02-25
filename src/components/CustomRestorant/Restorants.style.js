@@ -3,10 +3,11 @@ import {StyleSheet, Dimensions} from 'react-native';
 export default StyleSheet.create({
 
   image: {
-    height: Dimensions.get('screen').height / 4.3,
+    height: Dimensions.get('screen').height / 4.8,
     width: Dimensions.get('screen').width,
     resizeMode: 'stretch',
-    borderRadius: 25,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10
   },
   text: {
     alignSelf:'flex-start',

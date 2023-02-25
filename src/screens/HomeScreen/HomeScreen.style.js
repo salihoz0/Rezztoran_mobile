@@ -39,31 +39,31 @@ export default StyleSheet.create({
     paddingRight: 15,
   },
   text: {
-    marginLeft: 10,
-    fontSize: 20,
+    // marginLeft: 10,
+    // fontSize: 20,
     // fontWeight: 'bold',
-    // color: 'black',
+    color: '#000000',
     // textShadowColor: 'gray',
     // textShadowOffset: {
     //   width: 0,
     //   height: 1,
     // },
-    // textShadowRadius: 2,
-    fontFamily: 'Inter-Thin'
+    textShadowRadius: 2,
+    fontFamily: 'Poppins-Thin'
   },
   offerText: {
-    color: 'black',
     fontSize: 23,
     position: 'absolute',
     marginTop: Dimensions.get('window').height / 2,
     paddingLeft: 5,
-    fontWeight: 'bold',
     textShadowColor: 'gray',
     textShadowOffset: {
       width: 0,
       height: 1,
     },
     textShadowRadius: 2,
+    color: '#000000',
+    fontFamily: 'Inter-Bold',
   },
   input: {
     marginTop: 20,

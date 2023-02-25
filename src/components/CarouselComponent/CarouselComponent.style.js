@@ -4,6 +4,10 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
+  title: {
+    marginVertical: 10,
+    fontFamily: 'Inter-Medium'
+  },
   titleImage: {
     fontSize: 20,
     color: 'black',
@@ -11,11 +15,8 @@ export default StyleSheet.create({
     paddingHorizontal: 2,
   },
   star: {
-    alignItems: 'flex-start',
-    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     flexDirection: 'row',
-    paddingRight: 255,
-    paddingTop: 10,
-    paddingLeft: 20,
   },
 });

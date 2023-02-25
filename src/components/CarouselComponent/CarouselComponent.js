@@ -1,23 +1,26 @@
-import {View, Text, Dimensions} from 'react-native';
+import {View, Dimensions} from 'react-native';
 import React from 'react';
 import Carousel from 'react-native-reanimated-carousel';
 import Restorants from '../CustomRestorant/Restorants';
 import StarComponent from '../StarComponent/StarComponent';
 import styles from './CarouselComponent.style';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import { Avatar, Button, Card, Text } from 'react-native-paper';
 
 const CarouselComponent = ({data}) => {
   const width = Dimensions.get('window').width;
   const renderItem = ({item}) => {
     return (
-      <View>
+      <Card mode='elevated'>
         <Restorants Restorant={item} />
-        <Text style={styles.titleImage}>{item.title}</Text>
-        <View style={styles.star}>
+        <Card.Content>
+          <Text variant="titleLarge" style={styles.title}>{item.title}</Text>
+        </Card.Content>
+        <Card.Content style={styles.star}>
           <StarComponent count={item.star} select={'star'} />
           <StarComponent count={item.price} />
-        </View>
-      </View>
+        </Card.Content>
+      </Card>
     );
   };
 
@@ -26,7 +29,6 @@ const CarouselComponent = ({data}) => {
       <GestureHandlerRootView>
         <Carousel
           loop
-          style={styles.carousel}
           width={width}
           mode="parallax"
           height={width / 1.6}

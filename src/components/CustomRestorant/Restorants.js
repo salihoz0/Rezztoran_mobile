@@ -23,7 +23,6 @@ const Restorants = ({Restorant}) => {
           onPress={() => (setLiked(isLiked => !isLiked),(Restorant.liked=!Restorant.liked))}
           style={styles.like}
           pressRetentionOffset >
-
           <Icon
             name='heart'
             size={30}
