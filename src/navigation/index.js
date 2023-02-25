@@ -25,8 +25,8 @@ const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const Navigation = () => {
-const {myDetails} = useSelector((state) => state.authStore)
-const [loginControl, setLoginControl] = useState(false)
+const {myDetails, isLoggedIn} = useSelector((state) => state.authStore)
+// const [loginControl, setLoginControl] = useState(false)
 const dispatch = useDispatch()
 const { mutate: login} = useLogin()
 console.log('nav: ',myDetails)
@@ -56,10 +56,10 @@ const isLogged = async () => {
         setUsername('')
         setPassword('')
         console.log('başarılı')
+        setLoginControl(true)
         setTimeout(() => {
           SplashScreen.hide()
         },1000)
-        return true
       },
       onError: () => {
         reject
@@ -67,7 +67,6 @@ const isLogged = async () => {
         console.log('istek başarısız')
         SplashScreen.hide()
         setLoginControl(false)
-        return false
       }
     })
   }else{
@@ -105,12 +104,11 @@ const TabNavigation = () => {
   return (
       <Tab.Navigator
         initialRouteName="Home"
-        activeColor="#f0edf6"
-        inactiveColor="#3e2465"
-        barStyle={{ backgroundColor: '#694fad'}}
+        activeColor="#3e2465"
+        barStyle={{ backgroundColor: '#DBDBDB'}}
       >
         <Tab.Screen
-          name="HomeScreen"
+          name="Ana Sayfa"
           component={HomeScreen}
           options={{
             headerShown: false,
@@ -169,15 +167,10 @@ const TabNavigation = () => {
 
 return(
   <NavigationContainer>
-    {loginControl ? <AuthNavigation/> : <StackNavigation/> } 
+    {!isLoggedIn ? <AuthNavigation/> : <StackNavigation/> } 
   </NavigationContainer>
 )
 
 }
 
 export default Navigation;
-
-// Ayar çekilmesi lazım auth ve page screenleri birbirinden ayırdım
-// bu şekilde uygulama daha güvenli oldu lakin navigasyon sorunları bulunuyor
-// şimdilik bu şekilde kalsın
-//auth screenlere ulaşmak için {!loginControl ? <AuthNavigation/> : <StackNavigation/> } bu satırı 172. satıra kopyalayın

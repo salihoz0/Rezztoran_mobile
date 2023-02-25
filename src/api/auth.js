@@ -1,5 +1,5 @@
 import { END_POINTS } from "./end-points";
-import  {useMutation }from '@tanstack/react-query'
+import  {useMutation, useQuery }from '@tanstack/react-query'
 import axios from 'axios'
 
 //=============== LOGIN =======================
@@ -40,6 +40,6 @@ const getMe = async () => {
 }
 
 export const useGetMe = () => {
-    const {data} = useQuery(['getMe'], () => getMe())
-    return {data}
+    const {data, refetch, isLoading} = useQuery(['getMe'], () => getMe())
+    return {data, refetch, isLoading}
 }

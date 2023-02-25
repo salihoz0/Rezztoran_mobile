@@ -1,42 +1,63 @@
-import React from 'react';
-import {View, Text, TouchableOpacity, ImageBackground,Image} from 'react-native';
-import styles from './Profiles.style';
+import { Card, Avatar, Button } from 'react-native-paper';
+import {ImageBackground, Text} from 'react-native';
 import backgr from '../../../assets/images/arkaplan.png';
 import {useNavigation} from '@react-navigation/native';
-import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
+import React from 'react'
+import { useGetMe } from '../../api/auth';
+import {useDispatch} from 'react-redux'
 import * as Keychain from 'react-native-keychain'
-import {useDispatch, useSelector} from 'react-redux'
 import { resetAuth } from '../../store/authStore';
-import SplashScreen from 'react-native-splash-screen'
 
 const Profiles = () => {
-  const navigation = useNavigation();
   const dispatch = useDispatch()
-  const {myDetails } = useSelector((state) => state.authStore)
+  const navigation = useNavigation();
+  const {data:me} = useGetMe()
+  console.log(me)
 
-  const navigateToSingIn = async () => {
+  const logout = async () => {
     await Keychain.resetGenericPassword()
     dispatch(resetAuth())
-    console.log(myDetails)
-  };
+  }
 
   return (
-    <View style={styles.container}>
-      <ImageBackground style={styles.container} source={backgr}>
-        <Text style={styles.title}>Hesap</Text>
-        <View style={styles.login}>
-          <Text style={styles.loginText}>
-            Rezervasyonları yönetmek ve yorum yapabilmek için giriş yapın
-          </Text>
-          <TouchableOpacity onPress={()=>navigateToSingIn()} style={styles.button}>
-            <Text style={styles.buttonText}>Giriş Yap</Text>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
-      <Image source={BlurLogo} resizeMode={'contain'} style={styles.blur_logo} />
+    <ImageBackground style={{flex:1}} source={backgr}>
+    <Card 
+    style={{
+      marginTop: 40,
+      marginHorizontal: 20,
+      height: '30%',
+      backgroundColor: '#FFFFFF',
+      alignItems:'center',
+    }}
+    >
+      <Card.Content style={{ alignItems: 'center', marginBottom:10}}>
+      <Avatar.Text size={90} label="TG"/>
+      </Card.Content>
+      <Card.Content style={{flexDirection:'row', alignItems: 'center', width: '60%', justifyContent:'space-evenly'}}>
+        <Text style={{fontSize: 20, fontFamily: 'Inter-Medium', color:'#000000'}}>Tomioka</Text>
+        <Text style={{fontSize: 20, fontFamily: 'Inter-Medium', color:'#000000'}}>Giyuu</Text>
+      </Card.Content>
+      <Card.Content style={{ alignItems: 'center', marginTop:10}}>
+      <Text style={{fontSize: 15, fontFamily: 'Inter-Regular', color:'#000000'}}>tomiokaGiyuu@test.com</Text>
+      </Card.Content>
+    </Card>
+    <Card 
+    style={{
+      marginTop: 5,
+      marginHorizontal: 20,
+      height: '13%',
+      backgroundColor: '#FFFFFF',
+      alignItems:'center',
+    }}
+    >
+      <Card.Content style={{ alignItems: 'center', marginTop:10}}>
+      <Button mode="contained" onPress={() => logout()}>
+        Çıkış Yap
+      </Button>      
+      </Card.Content>
+      </Card>
+    </ImageBackground>
+  )
+}
 
-    </View>
-  );
-};
-
-export default Profiles;
+export default Profiles
