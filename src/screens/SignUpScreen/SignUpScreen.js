@@ -5,18 +5,47 @@ import CustomButton from '../../components/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons'
 import {useNavigation} from '@react-navigation/native'
 import backgr from '../../../assets/images/arkaplan.png';
-const SignUpScreen = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordRepeat, setPasswordRepeat] = useState('');
-  const navigation = useNavigation()
+import { useRegister } from '../../api/auth';
+import * as Keychain from 'react-native-keychain'
 
-  const onRegisterPressed = () => {
-      navigation.navigate('ConfirmEmail')
+const SignUpScreen = () => {
+  const {mutate: register} = useRegister()
+  const [registerValues, setRegisterValues] = useState({
+      username: "",
+      mail: "",
+      password: "",
+      name: "",
+      surname: ""
+  })
+
+  const doRegister = async (credientals={username, mail, password, name, surname}) => {
+    console.log(credientals)
+    new Promise((resolve, reject) => {
+      register(registerValues,{
+        onSuccess: data => {
+          resolve(undefined)
+          Keychain.setGenericPassword(registerValues.username, registerValues.password)
+          navigation.navigate('ConfirmEmail')
+          setRegisterValues({
+            username: "",
+            mail: "",
+            password: "",
+            name: "",
+            surname: ""
+          })
+          console.log('başarılı');
+        },
+        onError: () => {
+          reject
+          console.log('istek başarısız')
+        }
+      })
+    },)
   };
 
-  const onSignInPress = () => {
+  const navigation = useNavigation()
+
+  const onSignInPress = () => { 
       navigation.navigate('SignIn')
   };
 
@@ -35,24 +64,34 @@ const SignUpScreen = () => {
         <Text style={styles.title}>Hesap Oluştur</Text>
         <CustomInput
           placeholder="Kullanıcı Adı"
-          value={username}
-          setValue={setUsername}
+          value={registerValues.username}
+          setValue={(val) => setRegisterValues({...registerValues, username: val})}
         />
-        <CustomInput placeholder="E-Posta" value={email} setValue={setEmail} />
+        <CustomInput 
+          placeholder="E-Posta" 
+          value={registerValues.mail} 
+          setValue={(val) => setRegisterValues({...registerValues, mail: val})} />
         <CustomInput
           placeholder="Şifre"
-          value={password}
-          setValue={setPassword}
+          value={registerValues.password}
+          setValue={(val) => setRegisterValues({...registerValues, password: val})}
           secureTextEntry
+        />
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', width:'100%'}}>
+        <CustomInput
+          placeholder="Ad"
+          value={registerValues.name}
+          setValue={(val) => setRegisterValues({...registerValues, name: val})}
+          type='REGISTER'
         />
         <CustomInput
-          placeholder="Şifre Tekrar"
-          value={passwordRepeat}
-          setValue={setPasswordRepeat}
-          secureTextEntry
+          placeholder="Soyad"
+          value={registerValues.surname}
+          setValue={(val) => setRegisterValues({...registerValues, surname: val})}
+          type='REGISTER'
         />
-
-        <CustomButton text="Kayıt Ol" onPress={onRegisterPressed} />
+        </View>
+        <CustomButton text="Kayıt Ol" onPress={() => {doRegister({username:registerValues.username , mail:registerValues.mail, password:registerValues.password, name:registerValues.name, surname:registerValues.surname})}} />
 
         <Text style={styles.text}>
         Kaydolarak, kabul ettiğinizi onaylamış olursunuz.{' '}

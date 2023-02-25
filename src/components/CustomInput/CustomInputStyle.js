@@ -33,4 +33,7 @@ export default styles = StyleSheet.create({
       marginLeft: 50,
       marginTop: 30,
     },
+    container_REGISTER: {
+      width: '47%'
+    },
   });
