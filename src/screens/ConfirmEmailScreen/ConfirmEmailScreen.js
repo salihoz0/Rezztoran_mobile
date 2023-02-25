@@ -24,7 +24,7 @@ const ConfirmEmailScreen = () => {
     <ImageBackground source={backgr} style={{flex:1}}>
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={styles.title}>Confirm your email</Text>
+        <Text style={styles.title}>E-Postanı Doğrula</Text>
         <CustomInput placeholder="Doğrulama kodunu girin" value={code} setValue={setCode} />
 
         <CustomButton text="Doğrula" onPress={onConfirmPressed} />

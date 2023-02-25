@@ -1,34 +1,27 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default styles = StyleSheet.create({
   backgr: {
-    flex: 1,
+flex:1
+  },
+  container:{
+flex:1
   },
 
   header: {
-    fontSize:32,
+    fontSize:hp(4),
     fontWeight: 'bold',
     color: 'black',
-    marginLeft: 30,
+    marginLeft: wp(5),
     textShadowColor: 'black',
     textShadowOffset: {
-      width: 0,
-      height: 1,
+      height: hp(0.1),
     },
     textShadowRadius: 5,
   },
-  headerMenu: {
-    textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: 'black',
-    margin: 5,
-    textShadowColor: 'black',
-    textShadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    textShadowRadius: 5,
+  Menu:{
+   flex:1,
   },
   reserve: {
     flex: 1,
@@ -36,15 +29,13 @@ export default styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1,
-    borderRadius: 30,
+    borderWidth: hp(0.15),
+    borderRadius: hp(5),
     alignSelf: 'center',
-    width: Dimensions.get('window').width / 1.1,
+    width: wp(90),
     borderColor: 'black',
     backgroundColor: 'white',
-    margin: 2,
-    marginTop: 0,
-    height: Dimensions.get('window').height / 15,
+    height: hp(7),
   },
   button_cancel: {
     justifyContent: 'center',
@@ -52,12 +43,12 @@ export default styles = StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 30,
     alignSelf: 'center',
-    width: Dimensions.get('window').width / 1.1,
     borderColor: '#1e88e5',
     backgroundColor: '#DD7272',
+    width: wp(90),
     margin: 2,
     marginTop: 0,
-    height: Dimensions.get('window').height / 15,
+    height: hp(7),
   },
   text: {
     fontSize: 20,

@@ -21,7 +21,7 @@ const ForgotPasswordScreen = () => {
     <ImageBackground source={backgr} style={{flex:1}}>
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={styles.title}>Forgot password</Text>
+        <Text style={styles.title}>Şifremi Unuttum</Text>
         <CustomInput placeholder="Kullanıcı Adı" value={username} setValue={setUsername} />
 
         <CustomButton

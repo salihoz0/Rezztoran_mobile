@@ -1,16 +1,20 @@
-import React,{useEffect} from 'react';
-import { View, StyleSheet, SafeAreaView, Text } from 'react-native';
-import Navigation from './src/navigation'
-import RNBootSplash from "react-native-bootsplash";
- 
+import React, {useEffect} from 'react';
+import {View, StyleSheet, SafeAreaView, Text} from 'react-native';
+import Navigation from './src/navigation';
+import RNBootSplash from 'react-native-bootsplash';
+import {Provider} from 'react-redux';
+import store from './src/store';
+
 const App = () => {
-  useEffect(()=> {
+  useEffect(() => {
     RNBootSplash.hide();
-  },[]);
+  }, []);
   return (
-    <SafeAreaView style={styles.root}>
-      <Navigation />
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={styles.root}>
+        <Navigation />
+      </SafeAreaView>
+    </Provider>
   );
 };
 

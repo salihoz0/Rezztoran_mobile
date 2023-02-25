@@ -15,6 +15,8 @@ import FavoritesScreen from '../screens/FavoritesScreen/FavoritesScreen';
 import ProfilesScreen from '../screens/ProfilesScreen/Profiles';
 import ReservationsScreen from '../screens/ResevervationsScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -37,9 +39,10 @@ const NavigationStack = () => {
 };
 
 const Navigation = () => {
+ 
   return (
     <NavigationContainer>
-      <Tab.Navigator tabC>
+      <Tab.Navigator>
         <Tab.Screen
           name="Anasayfa"
           component={NavigationStack}

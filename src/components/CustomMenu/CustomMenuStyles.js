@@ -1,24 +1,24 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default styles = StyleSheet.create({
   container: {
     alignItems: 'flex-start',
-    borderRadius: 10,
-    marginLeft: 10,
-    marginRight: 10,
-    height: Dimensions.get('window').height / 2.1,
+    borderRadius: 0,
+    marginLeft: wp(2),
+    marginRight: wp(2),
+flex:1
   },
-  inner_container: {
-    height: Dimensions.get('window').height / 2.4,
+  inner_container:{
+    flex:1
   },
-
   header: {
-    fontSize: 18,
+    fontSize: hp(3),
     fontWeight: 'bold',
     fontStyle: 'italic',
     color: 'black',
     fontFamily: 'Poppins-Thin',
-    marginTop: 10,
+    marginTop: hp(1),
     alignSelf: 'center',
   },
   text: {
@@ -26,28 +26,27 @@ export default styles = StyleSheet.create({
     fontStyle: 'italic',
   },
   button: {
-    width: Dimensions.get('window').width / 2.2,
+    width: wp(48),
     borderColor: 'purple',
   },
   comment_container: {
     borderColor: 'black',
-    borderBottomWidth: 1,
-    borderRadius: 20,
-    margin: 3,
-    padding: 5,
+    borderBottomWidth: hp(0.1),
+    padding: wp(1),
     flexDirection: 'row',
     justifyContent:'space-between'
 
   },
   comment:{
     alignItems:'flex-start',
-    width: Dimensions.get('window').width/1.5,
-    padding:10,
-    marginLeft:10,
+    width: wp(68),
+    padding:hp(1),
+    marginLeft:wp(1),
     backgroundColor:'white',
     borderRadius:20
   },
   comment_icon:{
-    justifyContent:'center'
+    justifyContent:'center',
+    width:wp(25)
   }
 });
