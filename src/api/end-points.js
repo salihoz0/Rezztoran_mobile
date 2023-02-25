@@ -1,4 +1,4 @@
-const REZZTORAN_AUTH_SERVICE = "http://192.168.1.40:8080/api/auth"
+const REZZTORAN_AUTH_SERVICE = "http://192.168.1.40:8080/api/auth" // cmd ipconfig yazıp kendi ip adresini yapıştır
 
 export const END_POINTS = {
     AUTH_CONTROLLER: {
