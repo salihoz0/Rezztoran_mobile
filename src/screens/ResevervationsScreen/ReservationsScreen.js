@@ -36,11 +36,7 @@ const ReservationsScreen = () => {
               compact={true}
               style={styles.content}
               onPress={() => console.log('Rezervasyonu Düzenle')}>
-<<<<<<< HEAD
-              Rezervasyonu Düzenle
-=======
               Düzenle
->>>>>>> fed42720980f11ee5f4770632ab15ce5acbc2f4a
             </Button>
             <Button
               compact={true}

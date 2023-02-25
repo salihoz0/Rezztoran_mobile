@@ -56,12 +56,8 @@ const RestorantDetailScreen = props => {
             <StarComponent count={price} />
             <View>
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
-<<<<<<< HEAD
-                <Text style={{color: 'black', fontWeight: '700', fontSize: 15}}>
-=======
                 <Text
                   style={{color: 'black', fontWeight: '700', fontSize: hp(2)}}>
->>>>>>> fed42720980f11ee5f4770632ab15ce5acbc2f4a
                   Çalışma Saaatleri
                 </Text>
                 <Icon name="clock-outline" size={25} color={'black'} />
@@ -77,15 +73,6 @@ const RestorantDetailScreen = props => {
             </View>
           </View>
         </View>
-<<<<<<< HEAD
-        {showMenu ? (
-          <CustomMenu />
-        ) : (
-          <View style={styles.reserve}>
-            <ReservationCreate />
-          </View>
-        )}
-=======
         <View style={styles.Menu}>
           {showMenu ? (
             <CustomMenu />
@@ -109,7 +96,7 @@ const RestorantDetailScreen = props => {
             <Text style={styles.text_cancel}>İPTAL ET</Text>
           )}
         </TouchableOpacity>
->>>>>>> fed42720980f11ee5f4770632ab15ce5acbc2f4a
+
       </View>
     </ImageBackground>
   );
