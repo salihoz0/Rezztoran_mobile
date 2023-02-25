@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import CustomInput from '../../components/CustomInput';
 import CarouselComponent from '../../components/CarouselComponent';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import mainPhoto from '../../../assets/images/mainMenuPhoto.png';

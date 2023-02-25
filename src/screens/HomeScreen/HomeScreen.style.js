@@ -25,6 +25,7 @@ export default StyleSheet.create({
       height: 2,
     },
     textShadowRadius: 5,
+    fontFamily: 'Inter-Thin'
   },
   button: {
     backgroundColor: 'white',
@@ -40,14 +41,15 @@ export default StyleSheet.create({
   text: {
     marginLeft: 10,
     fontSize: 20,
-    fontWeight: 'bold',
-    color: 'black',
-    textShadowColor: 'gray',
-    textShadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    textShadowRadius: 2,
+    // fontWeight: 'bold',
+    // color: 'black',
+    // textShadowColor: 'gray',
+    // textShadowOffset: {
+    //   width: 0,
+    //   height: 1,
+    // },
+    // textShadowRadius: 2,
+    fontFamily: 'Inter-Thin'
   },
   offerText: {
     color: 'black',

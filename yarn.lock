@@ -1792,6 +1792,13 @@
   resolved "https://registry.yarnpkg.com/@react-navigation/elements/-/elements-1.3.16.tgz#58fc337926eae9a26e51931826fec4f43088ade8"
   integrity sha512-KUvL9HvlYuJs5WZ/r4XFo4dYqfNo9VJa8IE5Wdc0Wr5rMwzFFVdna1rHk6Wbqc17fVqQ3B+4uWiM54w8yb89ug==
 
+"@react-navigation/material-bottom-tabs@^6.2.14":
+  version "6.2.14"
+  resolved "https://registry.yarnpkg.com/@react-navigation/material-bottom-tabs/-/material-bottom-tabs-6.2.14.tgz#5f3238796ebc5d3a087fb13fb0b91349f5aec3e2"
+  integrity sha512-QCM+2U1U7QkJAslYrP9ePvrzKEqeKnsz9nCWV9DyfFYEGZN1D8o8CyMR5WnPEaWW0dGD0AjJlvtB7Zc92UVRjw==
+  dependencies:
+    "@react-navigation/elements" "^1.3.16"
+
 "@react-navigation/native-stack@^6.9.2":
   version "6.9.11"
   resolved "https://registry.yarnpkg.com/@react-navigation/native-stack/-/native-stack-6.9.11.tgz#3430b4993fad9f9cdca212aadf15d5ef7a8bd80b"

@@ -15,10 +15,11 @@ import FavoritesScreen from '../screens/FavoritesScreen/FavoritesScreen';
 import ProfilesScreen from '../screens/ProfilesScreen/Profiles';
 import ReservationsScreen from '../screens/ResevervationsScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 
 const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 const NavigationStack = () => {
   return (
@@ -42,7 +43,12 @@ const Navigation = () => {
  
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        initialRouteName="Home"
+        activeColor="#f0edf6"
+        inactiveColor="#3e2465"
+        barStyle={{ backgroundColor: '#694fad'}}
+      >
         <Tab.Screen
           name="Anasayfa"
           component={NavigationStack}
@@ -54,7 +60,7 @@ const Navigation = () => {
           }}
         />
         <Tab.Screen
-          name="Arayın"
+          name="Ara"
           component={ExploreScreen}
           options={{
             tabBarHideOnKeyboard: true,
@@ -76,7 +82,7 @@ const Navigation = () => {
           }}
         />
         <Tab.Screen
-          name="Rezervasyonlar"
+          name="Rezervasyon"
           component={ReservationsScreen}
           options={{
             tabBarHideOnKeyboard: true,
