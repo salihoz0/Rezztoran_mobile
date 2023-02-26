@@ -1,5 +1,5 @@
-import { Card, Avatar, Button } from 'react-native-paper';
-import {ImageBackground, Text} from 'react-native';
+import { Card, Avatar, Button, Divider, Chip } from 'react-native-paper';
+import {ImageBackground, Text, Dimensions} from 'react-native';
 import backgr from '../../../assets/images/arkaplan.png';
 import {useNavigation} from '@react-navigation/native';
 import React from 'react'
@@ -10,10 +10,11 @@ import { resetAuth } from '../../store/authStore';
 
 const Profiles = () => {
   const {myDetails} = useSelector((state) => state.authStore)
+  const width = Dimensions.get('window').width / 1.2;
   // const {data:me} = useGetMe() //Çalışmamakta
   // console.log(me) 
   //<Avatar.Text size={90} label="TG"/> şimdilik bu şekilde kalsın
-  console.log(myDetails)
+  // console.log(myDetails)
 
   const logout = async () => {
     await Keychain.resetGenericPassword()
@@ -46,17 +47,17 @@ const Profiles = () => {
     style={{
       marginTop: 5,
       marginHorizontal: 20,
-      height: '13%',
+      height: '40%',
       backgroundColor: '#FFFFFF',
       alignItems:'center',
     }}
     >
-      <Card.Content style={{ alignItems: 'center', marginTop:10}}>
-      <Button mode="contained" onPress={() => logout()}>
-        Çıkış Yap
-      </Button>      
+      <Card.Content style={{ alignItems: 'center', marginTop:10, gap:50}}>
+      <Chip icon="lock-reset" style={{height:50, width:width, marginBottom: 10}} onPress={() => console.log('Şifreyi Değiştir')}>Şifreyi Değiştir</Chip>    
+      <Chip icon="delete" style={{height:50, width:width, marginBottom: 10}} onPress={() => console.log('Hesabı Sil')}>Hesabı Sil</Chip>
+      <Chip icon="exit-to-app" style={{height:50, width:width}} onPress={() => logout()}>Çıkış Yap</Chip>
       </Card.Content>
-      </Card>
+    </Card>
     </ImageBackground>
   )
 }
