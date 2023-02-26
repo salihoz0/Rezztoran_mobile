@@ -6,6 +6,8 @@ import {Provider} from 'react-redux';
 import store from './src/store';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
+import Toast from 'react-native-toast-message';
+
 const queryClient = new QueryClient()
 
 const App = () => {
@@ -18,6 +20,7 @@ const App = () => {
       <PaperProvider>
       <SafeAreaView style={styles.root}>
         <Navigation />
+        <Toast />
       </SafeAreaView>
       </PaperProvider>
     </Provider>

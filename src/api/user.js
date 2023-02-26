@@ -14,7 +14,7 @@ export const useDeleteUser = () => {
 }
 
 //=========== RESET USER PASSWORD =======
-const postResetUserPassword = async (values={mail, password, code}) => {
+const postResetUserPassword = async (values={mail, password}) => {
     const resetData = {
         mail: values.mail,
         password: values.password,
