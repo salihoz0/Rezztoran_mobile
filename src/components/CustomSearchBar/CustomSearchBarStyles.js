@@ -6,37 +6,15 @@ export default styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 40,
     borderColor: 'black',
-    width: Dimensions.get('window').width / 1.2,
-    height: Dimensions.get('window').height / 17,
+    marginLeft: 15,
+    paddingRight: 50
   },
   text_input: {
     fontSize: 20,
     width: Dimensions.get('screen').width / 1.5,
     alignSelf: 'center',
-    height: 48,
+    fontFamily: 'Poppins-Medium',
+    letterSpacing: 5,
+    lineHeight: 16,
   },
 });
-
-/*
-import * as React from 'react';
-import { Avatar, Button, Card, Text } from 'react-native-paper';
-
-const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
-
-const MyComponent = () => (
-  <Card>
-    <Card.Title title="Card Title" subtitle="Card Subtitle" left={LeftContent} />
-    <Card.Content>
-      <Text variant="titleLarge">Card title</Text>
-      <Text variant="bodyMedium">Card content</Text>
-    </Card.Content>
-    <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-    <Card.Actions>
-      <Button>Cancel</Button>
-      <Button>Ok</Button>
-    </Card.Actions>
-  </Card>
-);
-
-export default MyComponent;
-*/

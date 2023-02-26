@@ -13,43 +13,38 @@ export default StyleSheet.create({
     height: Dimensions.get('window').height / 1.8,
   },
   title: {
-    fontSize: 40,
-    fontWeight: 'bold',
-    color: 'white',
-    margin: 30,
+    marginBottom: 16,
     marginTop: 100,
     marginLeft: 50,
-    textShadowColor: 'black',
     textShadowOffset: {
       width: 0,
       height: 2,
     },
     textShadowRadius: 5,
-    fontFamily: 'Inter-Thin'
+    fontSize: 40,
+    fontFamily: 'Poppins-Medium',
+    lineHeight: 60,
+    color: '#FFFFFF',
   },
   button: {
     backgroundColor: 'white',
-    width: 200,
-    height: 40,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 50,
     borderRadius: 20,
-    paddingRight: 15,
+    width: 200
   },
   text: {
-    // marginLeft: 10,
-    // fontSize: 20,
-    // fontWeight: 'bold',
+    fontSize: 24,
     color: '#000000',
-    // textShadowColor: 'gray',
-    // textShadowOffset: {
-    //   width: 0,
-    //   height: 1,
-    // },
+    textShadowColor: 'gray',
+    textShadowOffset: {
+      width: 0,
+      height: 1,
+    },
     textShadowRadius: 2,
-    fontFamily: 'Poppins-Thin'
+    fontFamily: 'Poppins-Medium'
   },
   offerText: {
     fontSize: 23,
@@ -63,7 +58,7 @@ export default StyleSheet.create({
     },
     textShadowRadius: 2,
     color: '#000000',
-    fontFamily: 'Inter-Bold',
+    fontFamily: 'Poppins-SemiBold',
   },
   input: {
     marginTop: 20,

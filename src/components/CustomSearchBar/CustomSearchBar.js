@@ -33,7 +33,7 @@ const SearchBar = () => {
       <View style={styles.container}>
           <TextInput
             style={styles.text_input}
-            placeholder="Restoran deneyin ...  "
+            placeholder="Restoran deneyin"
             autoComplete="off"
             value={value}
             placeholderTextColor="black"

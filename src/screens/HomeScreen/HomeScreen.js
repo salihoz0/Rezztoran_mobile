@@ -30,7 +30,7 @@ const HomeScreen = () => {
             }}
             style={styles.button}
             activeOpacity={0.8}>
-            <Icon name="silverware-fork-knife" size={20} />
+            <Icon name="silverware-fork-knife" size={20} color={'#000000'} style={{marginRight: 10}}/>
             <Text style={styles.text}>Restoranlar</Text>
           </TouchableOpacity>
           <View style={styles.input}>
