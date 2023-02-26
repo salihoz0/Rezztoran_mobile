@@ -50,3 +50,6 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+
+
+//Bu sayfada SearchBar'a gerek olmadığını düşünüyorum.
