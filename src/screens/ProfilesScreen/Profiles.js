@@ -17,10 +17,6 @@ const Profiles = () => {
   const [mail, setMail] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
-  // const {data:me} = useGetMe() //Çalışmamakta
-  // console.log(me) 
-  //<Avatar.Text size={90} label="TG"/> şimdilik bu şekilde kalsın
-  // console.log(myDetails)
 
   const logout = async () => {
     await Keychain.resetGenericPassword()

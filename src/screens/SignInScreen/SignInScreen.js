@@ -25,10 +25,9 @@ const SignInScreen = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const doLogin = async (credientals={username, password}) => {
-    console.log(credientals)
+  const doLogin = async (values={username, password}) => {
     new Promise((resolve, reject) => {
-      login(credientals,{
+      login(values,{
         onSuccess: data => {
           resolve(undefined)
           dispatch(
@@ -37,7 +36,7 @@ const SignInScreen = () => {
               myDetails: data.user,
             })
           )
-          Keychain.setGenericPassword(credientals.username, credientals.password)
+          Keychain.setGenericPassword(values.username, values.password)
           setUsername('')
           setPassword('')
           console.log('başarılı')
