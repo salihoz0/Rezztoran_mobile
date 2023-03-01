@@ -21,6 +21,6 @@ const getRestaurantById = async (id) => {
 }
 
 export const useGetRestaurantById = (id) => {
-    const {data, refetch, isLoading} = useQuery(['getRestaurant', id], () => getRestaurant(id))
+    const {data, refetch, isLoading} = useQuery(['getRestaurant', id], () => getRestaurantById(id))
     return {data, refetch, isLoading}
 }
