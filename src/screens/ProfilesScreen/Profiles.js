@@ -1,17 +1,13 @@
 import { Card, Avatar, Button, Divider, Chip } from 'react-native-paper';
 import {ImageBackground, Text, Dimensions, View} from 'react-native';
 import backgr from '../../../assets/images/arkaplan.png';
-import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react'
-import { useGetMe } from '../../api/auth';
 import {useDispatch, useSelector} from 'react-redux'
 import * as Keychain from 'react-native-keychain'
 import { resetAuth } from '../../store/authStore';
 import Modal from 'react-native-modal';
 import CustomInput from '../../components/CustomInput';
 import { usePostResetUserPassword } from '../../api/user';
-import Toast from 'react-native-toast-message';
-
 
 const Profiles = () => {
   const {myDetails} = useSelector((state) => state.authStore)
@@ -20,6 +16,7 @@ const Profiles = () => {
   const { mutate: resPassword} = usePostResetUserPassword()
   const [mail, setMail] = useState('')
   const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
   // const {data:me} = useGetMe() //Çalışmamakta
   // console.log(me) 
   //<Avatar.Text size={90} label="TG"/> şimdilik bu şekilde kalsın
@@ -29,15 +26,6 @@ const Profiles = () => {
     await Keychain.resetGenericPassword()
     dispatch(resetAuth())
   }
-
-  const showToast = () => {
-    Toast.show({
-      type: 'Başarılı',
-      text1: 'Şifre Sıfırlama',
-      text2: 'Şifreniz Başarıyla Sıfırlanmıştır'
-    });
-  }
-
 
   const doResPassword = async (values={mail, password}) => {
     new Promise((resolve, reject) => {
@@ -49,7 +37,6 @@ const Profiles = () => {
           setPassword('')
           console.log('başarılı')
           setModalVisible(false)
-          showToast()
         },
         onError: () => {
           reject

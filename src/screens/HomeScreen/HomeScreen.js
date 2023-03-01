@@ -15,10 +15,10 @@ import SearchBar from '../../components/CustomSearchBar/CustomSearchBar';
 import backgr from '../../../assets/images/arkaplan.png';
 import {useNavigation} from '@react-navigation/native';
 import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
+import { useGetRestaurant } from '../../api/restaurant';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
-
   return (
     <ImageBackground style={styles.backgr} source={backgr}>
       <View style={styles.container}>
@@ -33,9 +33,6 @@ const HomeScreen = () => {
             <Icon name="silverware-fork-knife" size={20} color={'#000000'} style={{marginRight: 10}}/>
             <Text style={styles.text}>Restoranlar</Text>
           </TouchableOpacity>
-          <View style={styles.input}>
-            <SearchBar />
-          </View>
           <Text style={styles.offerText}>Şunlar hoşunuza gidebilir</Text>
         </ImageBackground>
         <CarouselComponent data={Restaurants_data} />

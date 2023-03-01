@@ -15,67 +15,13 @@ import ProfilesScreen from '../screens/ProfilesScreen/Profiles';
 import ReservationsScreen from '../screens/ResevervationsScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import {useDispatch, useSelector} from 'react-redux'
-import * as Keychain from 'react-native-keychain'
-import { resetAuth, setAuth } from '../store/authStore';
-import { useLogin } from '../api/auth';
-import SplashScreen from 'react-native-splash-screen'
+import {useSelector} from 'react-redux'
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const Navigation = () => {
-const {myDetails, isLoggedIn} = useSelector((state) => state.authStore)
-// const [loginControl, setLoginControl] = useState(false)
-const dispatch = useDispatch()
-const { mutate: login} = useLogin()
-console.log('nav: ',myDetails)
-
-useEffect(() => {
-  isLogged()
-},[myDetails])
-
-const logout = async () => {
-  await Keychain.resetGenericPassword()
-  dispatch(resetAuth())
-}
-
-const isLogged = async () => {
-  const credientals = await Keychain.getGenericPassword()
-  if(credientals){
-    login({username: credientals.username, password: credientals.password},{
-      onSuccess: data => {
-        resolve(undefined)
-        dispatch(
-          setAuth({
-            myToken: data.accessToken,
-            myDetails: data.user,
-          })
-        )
-        Keychain.setGenericPassword(credientals.username, credientals.password)
-        setUsername('')
-        setPassword('')
-        console.log('başarılı')
-        setLoginControl(true)
-        setTimeout(() => {
-          SplashScreen.hide()
-        },1000)
-      },
-      onError: () => {
-        reject
-        logout()
-        console.log('istek başarısız')
-        SplashScreen.hide()
-        setLoginControl(false)
-      }
-    })
-  }else{
-    setLoginControl(false)
-    SplashScreen.hide()
-    return false
-  }
-};
-
+const {isLoggedIn} = useSelector((state) => state.authStore)
 const StackNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
