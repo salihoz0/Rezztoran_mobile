@@ -1,4 +1,5 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
+import {ImageBackground} from 'react-native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native'
 import SignInScreen from '../screens/SignInScreen';
@@ -16,6 +17,8 @@ import ReservationsScreen from '../screens/ResevervationsScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import {useSelector} from 'react-redux'
+import bg from '../../assets/images/arkaplan.png'
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
