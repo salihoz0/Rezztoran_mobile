@@ -1,5 +1,4 @@
 import React from 'react';
-import { ImageBackground } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native'
 import SignInScreen from '../screens/SignInScreen';
@@ -17,8 +16,6 @@ import ReservationsScreen from '../screens/ResevervationsScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { useSelector } from 'react-redux'
-import bg from '../../assets/images/arkaplan.png'
-
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -53,8 +50,8 @@ const Navigation = () => {
     return (
       <Tab.Navigator
         initialRouteName="Home"
-        activeColor="#3e2465"
-        barStyle={{ backgroundColor: '#FFFFFF' }}
+        activeColor='rgb(212, 123, 51)'
+        barStyle={{ backgroundColor: 'rgb(242, 238, 220)' }}
       >
         <Tab.Screen
           name="Ana Sayfa"
@@ -62,7 +59,7 @@ const Navigation = () => {
           options={{
             headerShown: false,
             tabBarIcon: () => {
-              return <Icon name="home" size={20} />;
+              return <Icon name="home" size={20} style={{ color: 'rgb(212, 123, 51)' }} />;
             },
           }}
         />
@@ -73,7 +70,7 @@ const Navigation = () => {
             tabBarHideOnKeyboard: true,
             headerShown: false,
             tabBarIcon: () => {
-              return <Icon name="search" size={20} />;
+              return <Icon name="search" size={20} style={{ color: 'rgb(212, 123, 51)' }} />;
             },
           }}
         />
@@ -84,7 +81,7 @@ const Navigation = () => {
             tabBarHideOnKeyboard: true,
             headerShown: false,
             tabBarIcon: () => {
-              return <Icon name="calendar-check-o" size={20} />;
+              return <Icon name="calendar-check-o" size={20} style={{ color: 'rgb(212, 123, 51)' }} />;
             },
           }}
         />
@@ -95,7 +92,7 @@ const Navigation = () => {
             tabBarHideOnKeyboard: true,
             headerShown: false,
             tabBarIcon: () => {
-              return <Icon name="user" size={20} />;
+              return <Icon name="user" size={20} style={{ color: 'rgb(212, 123, 51)' }} />;
             },
           }}
         />
