@@ -1,7 +1,7 @@
 import React from 'react';
-import {ImageBackground} from 'react-native'
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationContainer} from '@react-navigation/native'
+import { ImageBackground } from 'react-native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native'
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import ConfirmEmailScreen from '../screens/ConfirmEmailScreen';
@@ -16,7 +16,7 @@ import ProfilesScreen from '../screens/ProfilesScreen/Profiles';
 import ReservationsScreen from '../screens/ResevervationsScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import bg from '../../assets/images/arkaplan.png'
 
 
@@ -24,37 +24,37 @@ const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const Navigation = () => {
-const {isLoggedIn} = useSelector((state) => state.authStore)
-const StackNavigation = () => {
-  return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name='TabNavigation' component={TabNavigation}/>
-      <Stack.Screen name="RestorantDetail" component={RestorantDetailScreen} />
-      <Stack.Screen name="SearchedRest" component={SearchedRestScreen} />
-      <Stack.Screen name="ExploreScreen" component={ExploreScreen} />
-      <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
-      <Stack.Screen name="ReservationsScreen" component={ReservationsScreen} />
-    </Stack.Navigator>
-  );
-};
+  const { isLoggedIn } = useSelector((state) => state.authStore)
+  const StackNavigation = () => {
+    return (
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name='TabNavigation' component={TabNavigation} />
+        <Stack.Screen name="RestorantDetail" component={RestorantDetailScreen} />
+        <Stack.Screen name="SearchedRest" component={SearchedRestScreen} />
+        <Stack.Screen name="ExploreScreen" component={ExploreScreen} />
+        <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
+        <Stack.Screen name="ReservationsScreen" component={ReservationsScreen} />
+      </Stack.Navigator>
+    );
+  };
 
-const AuthNavigation = () => {
-  return(
-  <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="SignIn" component={SignInScreen} />
-      <Stack.Screen name="SignUp" component={SignUpScreen} />
-      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
-      <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
-      <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} />
-  </Stack.Navigator>)
-}
+  const AuthNavigation = () => {
+    return (
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="SignIn" component={SignInScreen} />
+        <Stack.Screen name="SignUp" component={SignUpScreen} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+        <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
+        <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} />
+      </Stack.Navigator>)
+  }
 
-const TabNavigation = () => { 
-  return (
+  const TabNavigation = () => {
+    return (
       <Tab.Navigator
         initialRouteName="Home"
         activeColor="#3e2465"
-        barStyle={{ backgroundColor: '#DBDBDB'}}
+        barStyle={{ backgroundColor: '#DBDBDB' }}
       >
         <Tab.Screen
           name="Ana Sayfa"
@@ -111,14 +111,14 @@ const TabNavigation = () => {
           }}
         />
       </Tab.Navigator>
-  );
-};
+    );
+  };
 
-return(
-  <NavigationContainer>
-    {!isLoggedIn ? <AuthNavigation/> : <StackNavigation/> } 
-  </NavigationContainer>
-)
+  return (
+    <NavigationContainer>
+      {isLoggedIn ? <AuthNavigation /> : <StackNavigation />}
+    </NavigationContainer>
+  )
 
 }
 
