@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
 import Favorites from './Favorites';
 import SearchEngine from './SearchEngine';
 import data from '../../../assets/Data/Restorant_data.json';
 import { useNavigation } from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
-import CustomButton from '../../components/CustomButton/CustomButton';
-import CarouselComponent from '../../components/CarouselComponent/CarouselComponent';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { TextInput, Card } from 'react-native-paper';
-import Restorants from '../../components/CustomRestorant/Restorants';
+import { TextInput } from 'react-native-paper';
 import StarComponent from '../../components/StarComponent/StarComponent';
 
 const ExploreScreen = () => {
@@ -24,21 +21,21 @@ const ExploreScreen = () => {
   //Card tasarımına göre tekrardan düzenlenmeli
   const Discover = () => {
     return (
-      <View style={{ marginVertical: 10 }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: '100%', marginVertical: 5 }}>
+      <SafeAreaView edges={['bottom']} style={{ marginVertical: 10 }}>
+        <View style={{ justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 25, alignItems: 'center', marginVertical: 5 }}>
           <Text style={{ fontSize: 30, fontFamily: 'Poppins-Medium', color: 'black' }}>Keşfet</Text>
           <View style={{ flexDirection: 'row', width: 100, alignItems: 'center', justifyContent: 'space-evenly' }}>
             <TouchableOpacity onPress={() => setPage(2)}>
-              <Icon name="filter" size={20} />
+              <Icon name="filter" size={25} style={{ color: 'rgb(212, 123, 51)' }} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setPage(1)}>
-              <Icon name="heart" size={20} />
+              <Icon name="heart" size={25} style={{ color: 'rgb(212, 123, 51)' }} />
             </TouchableOpacity>
           </View>
         </View>
         <TextInput
-          focused
-          style={{ marginHorizontal: 10 }}
+          outlined
+          style={{ marginHorizontal: 10, backgroundColor: 'rgb(240, 238, 230)', borderColor: 'rgb(217, 213, 169)' }}
           label='Restoran ara'
           value={text}
           onChangeText={text => setText(text)}
@@ -47,6 +44,7 @@ const ExploreScreen = () => {
           <Text style={{ fontFamily: 'Poppins-Medium', marginHorizontal: 10, color: 'black', fontSize: 15, marginTop: 5 }}>Şehire Göre</Text>
           <FlatList
             horizontal
+            scrollEventThrottle={5}
             data={data}
             showsHorizontalScrollIndicator={false}
             renderItem={({ item }) => {
@@ -56,19 +54,21 @@ const ExploreScreen = () => {
                     marginHorizontal: 5,
                     marginTop: 10,
                     borderWidth: 1,
-                    borderColor: '#D3D3D3',
+                    borderColor: 'rgb(217, 213, 169)',
+                    borderRadius: 10,
+                    backgroundColor: 'rgb(242, 238, 220)',
                   }}>
                   <FastImage
-                    style={{ width: 170, height: 170 }}
+                    style={{ width: 170, height: 170, borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
                     source={{
                       uri: `${item.imgURL}`,
                       priority: FastImage.priority.normal,
                     }}
                     resizeMode={FastImage.resizeMode.cover}
                   />
-                  <Text style={{ color: '#000000', fontFamily: 'Poppins-Medium', margin: 10 }}>{item.title}</Text>
-                  <View style={{ flexDirection: 'row', width: '100%' }}>
-                    <Text style={{ color: '#000000', fontFamily: 'Poppins-light', marginLeft: 10, marginRight: 50 }}>{item.city}</Text>
+                  <Text numberOfLines={1} ellipsizeMode="tail" style={{ color: '#000000', fontFamily: 'Poppins-Medium', margin: 10, maxWidth: 160 }}>{item.title}</Text>
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginRight: 5, marginBottom: 5 }}>
+                    <Text style={{ color: '#000000', fontFamily: 'Poppins-light', marginLeft: 10 }}>{item.city}</Text>
                     <TouchableOpacity onPress={() => {
                       navigation.navigate('RestorantDetail', {
                         title: item.title,
@@ -76,7 +76,7 @@ const ExploreScreen = () => {
                         price: item.price,
                       });
                     }}>
-                      <Text style={{ color: '#000000', fontFamily: 'Poppins-Medium' }}>Detay</Text>
+                      <Icon name="search" size={15} style={{ color: 'rgb(237, 176, 7)', backgroundColor: '#FFFFFF', padding: 5, borderRadius: 20, borderColor: 'rgb(237, 176, 7)', borderWidth: 1 }} />
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -84,7 +84,7 @@ const ExploreScreen = () => {
             }}
           />
         </View>
-        <View style={{ marginHorizontal: 10, marginTop: 10 }}>
+        <View style={{ marginHorizontal: 10, marginTop: 5 }}>
           <Text style={{ paddingTop: 10, paddingLeft: 10, fontFamily: 'Poppins-Medium', fontSize: 15, color: '#000000', paddingBottom: 10 }}>Önerilenler</Text>
           <FlatList
             horizontal
@@ -92,7 +92,7 @@ const ExploreScreen = () => {
             showsHorizontalScrollIndicator={false}
             renderItem={({ item }) => {
               return (
-                <Card mode='elevated' style={{ width: 170, height: 170, marginHorizontal: 10 }}>
+                <View style={{ width: 170, height: 170, marginHorizontal: 10, borderColor: 'rgb(217, 213, 169)', borderWidth: 1, backgroundColor: 'rgb(242, 238, 220)', borderRadius: 10 }}>
                   <FastImage
                     style={{ width: 170, height: 100, borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
                     source={{
@@ -101,19 +101,17 @@ const ExploreScreen = () => {
                     }}
                     resizeMode={FastImage.resizeMode.cover}
                   />
-                  <Card.Content>
-                    <Text variant="titleLarge" style={{ fontFamily: 'Poppins-Regular', color: '#000000', fontSize: 10 }}>{item.title}</Text>
-                  </Card.Content>
-                  <Card.Content style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 10 }}>
+                  <Text numberOfLines={1} ellipsizeMode="tail" variant="titleLarge" style={{ fontFamily: 'Poppins-Regular', color: '#000000', fontSize: 15, marginLeft: 10 }}>{item.title}</Text>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 10, paddingHorizontal: 10 }}>
                     <StarComponent count={item.star} select={'star'} />
                     <StarComponent count={item.price} />
-                  </Card.Content>
-                </Card>
+                  </View>
+                </View>
               );
             }}
           />
         </View>
-      </View>
+      </SafeAreaView >
     );
   };
 
