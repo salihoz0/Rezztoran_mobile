@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, ImageBackground } from 'react-native';
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import Favorites from './Favorites';
 import SearchEngine from './SearchEngine';
 import data from '../../../assets/Data/Restorant_data.json';
@@ -16,7 +15,7 @@ import StarComponent from '../../components/StarComponent/StarComponent';
 const ExploreScreen = () => {
   const [page, setPage] = useState(0);
   const navigation = useNavigation();
-  const [text, setText] = React.useState("");
+  const [text, setText] = useState("");
 
   const goBack = () => {
     setPage(0);
@@ -28,7 +27,7 @@ const ExploreScreen = () => {
         <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: '100%', marginVertical: 5 }}>
           <Text style={{ fontSize: 30, fontFamily: 'Poppins-Medium', color: 'black' }}>Keşfet</Text>
           <View style={{ flexDirection: 'row', width: 100, alignItems: 'center', justifyContent: 'space-evenly' }}>
-            <TouchableOpacity onPress={() => setPage(1)}>
+            <TouchableOpacity onPress={() => setPage(2)}>
               <Icon name="filter" size={20} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setPage(2)}>

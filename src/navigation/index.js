@@ -54,7 +54,7 @@ const Navigation = () => {
       <Tab.Navigator
         initialRouteName="Home"
         activeColor="#3e2465"
-        barStyle={{ backgroundColor: '#DBDBDB' }}
+        barStyle={{ backgroundColor: '#FFFFFF' }}
       >
         <Tab.Screen
           name="Ana Sayfa"
@@ -74,17 +74,6 @@ const Navigation = () => {
             headerShown: false,
             tabBarIcon: () => {
               return <Icon name="search" size={20} />;
-            },
-          }}
-        />
-        <Tab.Screen
-          name="Favoriler"
-          component={FavoritesScreen}
-          options={{
-            tabBarHideOnKeyboard: true,
-            headerShown: false,
-            tabBarIcon: () => {
-              return <Icon name="heart" size={20} />;
             },
           }}
         />
