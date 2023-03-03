@@ -21,6 +21,7 @@ const ExploreScreen = () => {
     setPage(0);
   };
 
+  //Card tasarımına göre tekrardan düzenlenmeli
   const Discover = () => {
     return (
       <View style={{ marginVertical: 10 }}>
@@ -30,7 +31,7 @@ const ExploreScreen = () => {
             <TouchableOpacity onPress={() => setPage(2)}>
               <Icon name="filter" size={20} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => setPage(2)}>
+            <TouchableOpacity onPress={() => setPage(1)}>
               <Icon name="heart" size={20} />
             </TouchableOpacity>
           </View>
@@ -42,7 +43,7 @@ const ExploreScreen = () => {
           value={text}
           onChangeText={text => setText(text)}
         />
-        <View style={{ marginHorizontal: 10 }}>
+        <View style={{ margin: 10 }}>
           <Text style={{ fontFamily: 'Poppins-Medium', marginHorizontal: 10, color: 'black', fontSize: 15, marginTop: 5 }}>Şehire Göre</Text>
           <FlatList
             horizontal
