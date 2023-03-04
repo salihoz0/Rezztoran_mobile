@@ -1,9 +1,8 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    zIndex: 1,
   },
   backgr: {
     flex: 1,
@@ -11,6 +10,7 @@ export default StyleSheet.create({
   imageBackground: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height / 1.8,
+    marginBottom: 15
   },
   title: {
     marginBottom: 16,
@@ -59,14 +59,5 @@ export default StyleSheet.create({
     textShadowRadius: 2,
     color: '#000000',
     fontFamily: 'Poppins-SemiBold',
-  },
-  input: {
-    marginTop: 20,
-  },
-  blur_logo: {
-    zIndex: 0,
-    position: 'absolute',
-    marginTop: Dimensions.get('window').height / 1.6,
-    alignSelf: 'center',
   },
 });

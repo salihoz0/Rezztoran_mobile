@@ -4,35 +4,48 @@ import {
   ImageBackground,
   Text,
   TouchableOpacity,
-  Image,
+  SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import mainPhoto from '../../../assets/images/mainMenuPhoto.png';
-import data from '../../../assets/Data/Restorant_data.json';
 import styles from './HomeScreen.style';
-import backgr from '../../../assets/images/arkaplan.png';
 import { useNavigation } from '@react-navigation/native';
-import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
+import Carousel from '../../components/Carousel';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, removeFavorite } from '../../store/favoritesStore'
+import data from '../../../assets/Data/Restorant_data.json';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
-  const [data, setData] = useState()
+  // const [data, setData] = useState()
+  const [isFavorite, setIsFavorite] = useState(false)
+  const dispatch = useDispatch();
+  const initialState = useSelector(state => state.favoritesStore)
+  console.log('init: ', initialState)
 
-  useEffect(() => {
-    const getRestaurant = async () => {
-      await axios.get("http://192.168.1.40:8080/api/restaurant").then(function (response) {
-        setData(response.data)
-      }).catch(function () {
-        console.log('hata')
-      })
+  const handleFavoriteButtonPress = (id) => {
+    isFavorite ? dispatch(removeFavorite({ id })) : dispatch(addFavorite({ id }));
+    setIsFavorite(!isFavorite);
+  }
 
-    }
-    getRestaurant()
-  }, [])
+  function isIdInInitialState(id) {
+    return initialState.some(item => item.id === id);
+  }
 
-  console.log('data:', data)
+  // useEffect(() => {
+  //   const getRestaurant = async () => {
+  //     await axios.get("http://192.168.1.40:8080/api/restaurant").then(function (response) {
+  //       setData(response.data)
+  //     }).catch(function () {
+  //       console.log('hata')
+  //     })
+
+  //   }
+  //   getRestaurant()
+  // }, [])
+
   return (
-    <ImageBackground style={styles.backgr} source={backgr}>
+    <SafeAreaView edges={['bottom']} style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
       <View style={styles.container}>
         <ImageBackground source={mainPhoto} style={styles.imageBackground}>
           <Text style={styles.title}>Keşfedin</Text>
@@ -47,13 +60,9 @@ const HomeScreen = () => {
           </TouchableOpacity>
           <Text style={styles.offerText}>Şunlar hoşunuza gidebilir</Text>
         </ImageBackground>
+        <Carousel data={data} handleFavoriteButtonPress={handleFavoriteButtonPress} isIdInInitialState={isIdInInitialState} />
       </View>
-      <Image
-        source={BlurLogo}
-        resizeMode={'contain'}
-        style={styles.blur_logo}
-      />
-    </ImageBackground>
+    </SafeAreaView>
   );
 };
 

@@ -2,7 +2,6 @@ import { View, Text, SafeAreaView, TouchableOpacity, FlatList } from 'react-nati
 import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import data from '../../../assets/Data/Favorites.json'
-import FastImage from 'react-native-fast-image'
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../store/favoritesStore'
 import RestaurantCard from '../../components/RestaurantCard'
