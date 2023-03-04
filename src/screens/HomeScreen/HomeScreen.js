@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   ImageBackground,
@@ -13,7 +13,7 @@ import Restaurants_data from '../../../assets/Data/Restorant_data.json';
 import styles from './HomeScreen.style';
 import SearchBar from '../../components/CustomSearchBar/CustomSearchBar';
 import backgr from '../../../assets/images/arkaplan.png';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
 import { useGetRestaurant } from '../../api/restaurant';
 
@@ -23,17 +23,17 @@ const HomeScreen = () => {
 
   useEffect(() => {
     const getRestaurant = async () => {
-      await axios.get("http://192.168.1.40:8080/api/restaurant").then(function(response) {
+      await axios.get("http://192.168.1.40:8080/api/restaurant").then(function (response) {
         setData(response.data)
-      }).catch(function(){
+      }).catch(function () {
         console.log('hata')
       })
-      
+
     }
     getRestaurant()
-  },[])
+  }, [])
 
-  console.log('data:' , data)
+  console.log('data:', data)
   return (
     <ImageBackground style={styles.backgr} source={backgr}>
       <View style={styles.container}>
@@ -41,16 +41,16 @@ const HomeScreen = () => {
           <Text style={styles.title}>Keşfedin</Text>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('SearchedRest', {data: Restaurants_data});
+              navigation.navigate('TabNavigation', { screen: "Ara" });
             }}
             style={styles.button}
             activeOpacity={0.8}>
-            <Icon name="silverware-fork-knife" size={20} color={'#000000'} style={{marginRight: 10}}/>
+            <Icon name="silverware-fork-knife" size={20} color={'#000000'} style={{ marginRight: 10 }} />
             <Text style={styles.text}>Restoranlar</Text>
           </TouchableOpacity>
           <Text style={styles.offerText}>Şunlar hoşunuza gidebilir</Text>
         </ImageBackground>
-        <CarouselComponent data={Restaurants_data}/>
+        <CarouselComponent data={Restaurants_data} />
       </View>
       <Image
         source={BlurLogo}
