@@ -1,6 +1,6 @@
 import { View, Text, SafeAreaView, TouchableOpacity, FlatList } from 'react-native'
 import React, { useState } from 'react'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import data from '../../../assets/Data/Favorites.json'
 import FastImage from 'react-native-fast-image'
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,7 +44,7 @@ const Favorites = (props) => {
           </View>
           <TouchableOpacity style={{ width: 70, height: 40, position: 'absolute', right: 0, alignItems: 'center', marginTop: 10 }} onPress={() => { handleFavoriteButtonPress(id) }}>
             {
-              isIdInInitialState(id) ? <Icon name="heart" size={25} style={{ color: 'rgb(237, 176, 7)' }} /> : <Icon name="heart" size={25} style={{ color: '#000000' }} />
+              isIdInInitialState(id) ? <Icon name="heart" size={25} style={{ color: 'rgb(237, 176, 7)' }} /> : <Icon name="heart-outline" size={25} style={{ color: 'rgb(237, 176, 7)' }} />
             }
           </TouchableOpacity>
         </View>
@@ -53,7 +53,7 @@ const Favorites = (props) => {
   }
 
   return (
-    <SafeAreaView edges={['bottom']} style={{ backgroundColor: '#FFFFFF' }}>
+    <SafeAreaView edges={['bottom']} style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
       <View style={{ justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 25, alignItems: 'center', marginTop: 10 }}>
         <Text style={{ fontSize: 30, fontFamily: 'Poppins-Medium', color: 'black' }}>Favoriler</Text>
         <TouchableOpacity onPress={goBack} >

@@ -1,16 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {TextInput, View, Pressable} from 'react-native';
+import React, { useState, useEffect } from 'react';
 import Restorant_Data from '../../../assets/Data/Restorant_data.json';
-import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import styles from './CustomSearchBarStyles';
+import { useNavigation } from '@react-navigation/native';
+import { TextInput } from 'react-native-paper';
 
 const SearchBar = () => {
   const navigation = useNavigation();
   const [a, SetA] = useState(0);
-  const [value] = useState();
+  const [value, setValue] = useState();
   const [list, setList] = useState('');
-  const [text, setText] = useState('');
 
   const handleSearch = text => {
     const filteredList = Restorant_Data.filter(Restorant => {
@@ -25,27 +22,24 @@ const SearchBar = () => {
 
   useEffect(() => {
     a > 0
-      ? navigation.navigate('SearchedRest', {data: list})
+      ? navigation.navigate('SearchedRest', { data: list })
       : console.log('Boş Giriş');
   }, [list]);
 
   return (
-      <View style={styles.container}>
-          <TextInput
-            style={styles.text_input}
-            placeholder="Restoran deneyin"
-            autoComplete="off"
-            value={value}
-            placeholderTextColor="black"
-            onChangeText={text => setText(text)}
-            onSubmitEditing={text => {
-              handleSearch(text.nativeEvent.text);
-            }}
-            autoFocus ={true}
-            inlineImageLeft='search'
-            inlineImagePadding={5}
-            />
-      </View>
+    <TextInput
+      placeholder="Restoran deneyin"
+      autoComplete="off"
+      value={value}
+      placeholderTextColor="black"
+      onChangeText={text => setValue(text)}
+      onSubmitEditing={text => {
+        handleSearch(text.nativeEvent.text);
+      }}
+      autoFocus={true}
+      inlineImageLeft='search'
+      inlineImagePadding={5}
+    />
   );
 };
 

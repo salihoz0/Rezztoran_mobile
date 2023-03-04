@@ -5,9 +5,9 @@ import SearchEngine from './SearchEngine';
 import data from '../../../assets/Data/Restorant_data.json';
 import { useNavigation } from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { TextInput } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import StarComponent from '../../components/StarComponent/StarComponent';
+import { TextInput } from 'react-native-paper';
 
 const ExploreScreen = () => {
   const [page, setPage] = useState(0);
@@ -18,15 +18,14 @@ const ExploreScreen = () => {
     setPage(0);
   };
 
-  //Card tasarımına göre tekrardan düzenlenmeli
   const Discover = () => {
     return (
-      <SafeAreaView edges={['bottom']} style={{ marginVertical: 10 }}>
-        <View style={{ justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 25, alignItems: 'center', marginVertical: 5 }}>
+      <SafeAreaView edges={['bottom']} style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
+        <View style={{ justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 25, alignItems: 'center', marginVertical: 10 }}>
           <Text style={{ fontSize: 30, fontFamily: 'Poppins-Medium', color: 'black' }}>Keşfet</Text>
           <View style={{ flexDirection: 'row', width: 100, alignItems: 'center', justifyContent: 'space-evenly' }}>
             <TouchableOpacity onPress={() => setPage(2)}>
-              <Icon name="filter" size={25} style={{ color: 'rgb(212, 123, 51)' }} />
+              <Icon name="filter-outline" size={25} style={{ color: 'rgb(212, 123, 51)' }} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setPage(1)}>
               <Icon name="heart" size={25} style={{ color: 'rgb(212, 123, 51)' }} />
@@ -34,16 +33,16 @@ const ExploreScreen = () => {
           </View>
         </View>
         <TextInput
-          outlined
           style={{ marginHorizontal: 10, backgroundColor: 'rgb(240, 238, 230)', borderColor: 'rgb(217, 213, 169)' }}
           label='Restoran ara'
           value={text}
-          onChangeText={text => setText(text)}
+          onChange={text => setText(text)}
         />
         <View style={{ margin: 10 }}>
           <Text style={{ fontFamily: 'Poppins-Medium', marginHorizontal: 10, color: 'black', fontSize: 15, marginTop: 5 }}>Şehire Göre</Text>
           <FlatList
             horizontal
+            removeClippedSubviews={false}
             scrollEventThrottle={5}
             data={data}
             showsHorizontalScrollIndicator={false}
@@ -76,7 +75,7 @@ const ExploreScreen = () => {
                         price: item.price,
                       });
                     }}>
-                      <Icon name="search" size={15} style={{ color: 'rgb(237, 176, 7)', backgroundColor: '#FFFFFF', padding: 5, borderRadius: 20, borderColor: 'rgb(237, 176, 7)', borderWidth: 1 }} />
+                      <Icon name="calendar-arrow-right" size={30} style={{ color: 'rgb(237, 176, 7)' }} />
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -90,6 +89,7 @@ const ExploreScreen = () => {
             horizontal
             data={data}
             showsHorizontalScrollIndicator={false}
+            removeClippedSubviews={false}
             renderItem={({ item }) => {
               return (
                 <View style={{ width: 170, height: 170, marginHorizontal: 10, borderColor: 'rgb(217, 213, 169)', borderWidth: 1, backgroundColor: 'rgb(242, 238, 220)', borderRadius: 10 }}>
