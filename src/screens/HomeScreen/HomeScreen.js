@@ -6,16 +6,13 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import CarouselComponent from '../../components/CarouselComponent';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import mainPhoto from '../../../assets/images/mainMenuPhoto.png';
-import Restaurants_data from '../../../assets/Data/Restorant_data.json';
+import data from '../../../assets/Data/Restorant_data.json';
 import styles from './HomeScreen.style';
-import SearchBar from '../../components/CustomSearchBar/CustomSearchBar';
 import backgr from '../../../assets/images/arkaplan.png';
 import { useNavigation } from '@react-navigation/native';
 import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
-import { useGetRestaurant } from '../../api/restaurant';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -50,7 +47,6 @@ const HomeScreen = () => {
           </TouchableOpacity>
           <Text style={styles.offerText}>Şunlar hoşunuza gidebilir</Text>
         </ImageBackground>
-        <CarouselComponent data={Restaurants_data} />
       </View>
       <Image
         source={BlurLogo}
