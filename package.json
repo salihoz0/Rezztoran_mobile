@@ -38,6 +38,7 @@
     "react-native-modal": "^13.0.1",
     "react-native-modal-datetime-picker": "^14.0.0",
     "react-native-paper": "^5.2.0",
+    "react-native-radio-buttons-group": "^2.3.2",
     "react-native-reanimated": "^2.13.0",
     "react-native-reanimated-carousel": "^3.1.5",
     "react-native-responsive-screen": "^1.4.2",
