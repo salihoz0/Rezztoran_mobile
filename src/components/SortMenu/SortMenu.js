@@ -14,28 +14,6 @@ const SortMenu = props => {
   const [filterSelected, setFilterSelected] = useState(false)
   const dispatch = useDispatch()
 
-  // function sortItemsBy(selectedSortType) {
-  //   let sortedData = [];
-  //   switch (selectedSortType) {
-  //     case "ascPrice":
-  //       sortedData = [...data].sort((a, b) => a.price - b.price);
-  //       break;
-  //     case "descPrice":
-  //       sortedData = [...data].sort((a, b) => b.price - a.price);
-  //       break;
-  //     case "highRated":
-  //       sortedData = [...data].sort((a, b) => b.star - a.star);
-  //       break;
-  //     case "mostReviewed":
-  //       sortedData = [...data].sort((a, b) => b.most_rated - a.most_rated);
-  //       break;
-  //     default:
-  //       sortedData = data;
-  //       break;
-  //   }
-  //   setSearchEngineData(sortedData);
-  // }
-
   const handleSortChange = (key) => {
     dispatch(
       setSort({

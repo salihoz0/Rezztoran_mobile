@@ -8,6 +8,7 @@ import FastImage from 'react-native-fast-image';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import StarComponent from '../../components/StarComponent/StarComponent';
 import { TextInput } from 'react-native-paper';
+import SearchInput from './SearchInput';
 
 const ExploreScreen = () => {
   const [page, setPage] = useState(0);
@@ -32,12 +33,13 @@ const ExploreScreen = () => {
             </TouchableOpacity>
           </View>
         </View>
-        <TextInput
-          style={{ marginHorizontal: 10, backgroundColor: 'rgb(240, 238, 230)', borderColor: 'rgb(217, 213, 169)' }}
-          label='Restoran ara'
-          value={text}
-          onChange={text => setText(text)}
-        />
+        <TouchableOpacity onPress={() => setPage(3)}>
+          <TextInput
+            style={{ marginHorizontal: 10, backgroundColor: 'rgb(240, 238, 230)', borderColor: 'rgb(217, 213, 169)' }}
+            label='Restoran ara'
+            editable={false}
+          />
+        </TouchableOpacity>
         <View style={{ margin: 10 }}>
           <Text style={{ fontFamily: 'Poppins-Medium', marginHorizontal: 10, color: 'black', fontSize: 15, marginTop: 5 }}>Şehire Göre</Text>
           <FlatList
@@ -120,6 +122,7 @@ const ExploreScreen = () => {
       {page === 0 && <Discover />}
       {page === 1 && <Favorites goBack={goBack} />}
       {page === 2 && <SearchEngine goBack={goBack} />}
+      {page === 3 && <SearchInput goBack={goBack} data={data} />}
     </View>
   );
 };

@@ -2,20 +2,24 @@ import { View, Text, TouchableOpacity, SafeAreaView, FlatList, Dimensions } from
 import React, { useEffect, useState } from 'react'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import SortMenu from '../../components/SortMenu'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import data from '../../../assets/Data/Restorant_data.json'
-import FastImage from 'react-native-fast-image'
 import RestaurantCard from '../../components/RestaurantCard';
+import { resetSort, resetFilter } from '../../store/searchEngineStore'
+
 
 const SearchEngine = (props) => {
   const { goBack } = props
   const { sortData, filterData } = useSelector((state) => state.searchEngineStore)
+  const dispatch = useDispatch()
   const [search, setSearch] = useState('')
   const [searchEngineData, setSearchEngineData] = useState(data)
+  // const [clearControl, setClearControl] = useState(nullControl)
   const [page, setPage] = useState(0)
+  const nullControl = sortData === null && filterData === null
 
   useEffect(() => {
-    if (sortData === null && filterData === null) {
+    if (nullControl) {
       setSearchEngineData(data)
     } else {
       let filteredData = filterRestaurantsByCategory(data, filterData);
@@ -49,6 +53,11 @@ const SearchEngine = (props) => {
     return restaurants.filter(restaurant => restaurant.category === category);
   };
 
+  const clearSearchEngine = () => {
+    dispatch(resetSort({}))
+    dispatch(resetFilter({}))
+  }
+
   const goBackSearchEngine = () => {
     setPage(0);
   };
@@ -76,20 +85,44 @@ const SearchEngine = (props) => {
             <Icon name="home" size={30} style={{ color: 'rgb(212, 123, 51)' }} />
           </TouchableOpacity>
         </View>
-        <View>
+        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
           <TouchableOpacity
             style={{
-              width: Dimensions.get('screen').width / 1.05,
+              width: Dimensions.get('screen').width / 2.2,
               backgroundColor: 'white',
-              borderRadius: 10,
+              borderTopLeftRadius: 10,
+              borderBottomLeftRadius: 10,
               marginTop: 10,
               alignItems: 'center',
               elevation: 3,
-              marginLeft: 10
+              borderWidth: 1,
+              borderColor: 'rgb(242, 238, 220)'
+            }}
+            onPress={() => { clearSearchEngine() }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              {
+                nullControl ? <Icon name="delete-empty-outline" size={30} color={'rgb(212, 123, 51)'} /> : <Icon name="delete-outline" size={30} color={'rgb(212, 123, 51)'} />
+              }
+              <Text style={{ fontSize: 17, fontFamily: 'Poppins-Medium', color: 'rgb(212, 123, 51)' }}>Temizle</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              width: Dimensions.get('screen').width / 2.2,
+              backgroundColor: 'white',
+              borderTopRightRadius: 10,
+              borderBottomRightRadius: 10,
+              marginTop: 10,
+              alignItems: 'center',
+              elevation: 3,
+              borderWidth: 1,
+              borderColor: 'rgb(242, 238, 220)'
             }}
             onPress={() => setPage(1)}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Icon name="filter-outline" size={30} color={'rgb(212, 123, 51)'} />
+              {
+                nullControl ? <Icon name="filter-outline" size={30} color={'rgb(212, 123, 51)'} /> : <Icon name="filter" size={30} color={'rgb(212, 123, 51)'} />
+              }
               <Text style={{ fontSize: 17, fontFamily: 'Poppins-Medium', color: 'rgb(212, 123, 51)' }}>Filtrele</Text>
             </View>
           </TouchableOpacity>
