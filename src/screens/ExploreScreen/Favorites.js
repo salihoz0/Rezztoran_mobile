@@ -5,7 +5,7 @@ import data from '../../../assets/Data/Favorites.json'
 import FastImage from 'react-native-fast-image'
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../store/favoritesStore'
-
+import RestaurantCard from '../../components/RestaurantCard'
 
 const Favorites = (props) => {
   const { goBack } = props
@@ -27,28 +27,15 @@ const Favorites = (props) => {
   const renderItem = ({ item }) => {
     const { imgURL, title, city, id, price } = item
     return (
-      <View>
-        <View style={{ borderWidth: 1, borderColor: 'rgb(217, 213, 169)', flexDirection: 'row', paddingVertical: 5, marginHorizontal: 5, marginVertical: 7, borderRadius: 10 }}>
-          <FastImage
-            style={{ width: 100, height: 100, marginLeft: 5, borderRadius: 5 }}
-            source={{
-              uri: `${imgURL}`,
-              priority: FastImage.priority.normal,
-            }}
-            resizeMode={FastImage.resizeMode.cover}
-          />
-          <View style={{ marginLeft: 10 }}>
-            <Text style={{ fontSize: 20, fontFamily: 'Poppins-Medium', color: 'black', marginTop: 10 }}>{title}</Text>
-            <Text style={{ fontSize: 15, fontFamily: 'Poppins-Medium', color: 'rgb(212, 123, 51)' }} >{city}</Text>
-            <Text style={{ backgroundColor: 'rgb(237, 176, 7)', width: 70, paddingVertical: 5, paddingLeft: 5, borderRadius: 10, marginTop: 10, color: 'black' }}>₺ {price}</Text>
-          </View>
-          <TouchableOpacity style={{ width: 70, height: 40, position: 'absolute', right: 0, alignItems: 'center', marginTop: 10 }} onPress={() => { handleFavoriteButtonPress(id) }}>
-            {
-              isIdInInitialState(id) ? <Icon name="heart" size={25} style={{ color: 'rgb(237, 176, 7)' }} /> : <Icon name="heart-outline" size={25} style={{ color: 'rgb(237, 176, 7)' }} />
-            }
-          </TouchableOpacity>
-        </View>
-      </View>
+      <RestaurantCard
+        imgURL={imgURL}
+        title={title}
+        city={city}
+        id={id}
+        price={price}
+        isIdInInitialState={isIdInInitialState}
+        handleFavoriteButtonPress={handleFavoriteButtonPress}
+      />
     )
   }
 
