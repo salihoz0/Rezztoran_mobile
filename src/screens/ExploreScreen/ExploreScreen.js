@@ -13,7 +13,6 @@ import SearchInput from './SearchInput';
 const ExploreScreen = () => {
   const [page, setPage] = useState(0);
   const navigation = useNavigation();
-  const [text, setText] = useState("");
 
   const goBack = () => {
     setPage(0);
