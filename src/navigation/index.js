@@ -9,8 +9,6 @@ import NewPasswordScreen from '../screens/NewPasswordScreen';
 import HomeScreen from '../screens/HomeScreen';
 import RestorantDetailScreen from '../screens/RestorantDetailScreen';
 import ExploreScreen from '../screens/ExploreScreen';
-import SearchedRestScreen from '../screens/SearchedRestScreen';
-import FavoritesScreen from '../screens/FavoritesScreen/FavoritesScreen';
 import ProfilesScreen from '../screens/ProfilesScreen/Profiles';
 import ReservationsScreen from '../screens/ResevervationsScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -27,9 +25,7 @@ const Navigation = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name='TabNavigation' component={TabNavigation} />
         <Stack.Screen name="RestorantDetail" component={RestorantDetailScreen} />
-        <Stack.Screen name="SearchedRest" component={SearchedRestScreen} />
         <Stack.Screen name="ExploreScreen" component={ExploreScreen} />
-        <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
         <Stack.Screen name="ReservationsScreen" component={ReservationsScreen} />
       </Stack.Navigator>
     );
