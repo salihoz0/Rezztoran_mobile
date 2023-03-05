@@ -93,7 +93,9 @@ const ExploreScreen = () => {
             removeClippedSubviews={false}
             renderItem={({ item }) => {
               return (
-                <View style={{ width: 170, height: 170, marginHorizontal: 10, borderColor: 'rgb(217, 213, 169)', borderWidth: 1, backgroundColor: 'rgb(242, 238, 220)', borderRadius: 10 }}>
+                <TouchableOpacity style={{ width: 170, height: 170, marginHorizontal: 10, borderColor: 'rgb(217, 213, 169)', borderWidth: 1, backgroundColor: 'rgb(242, 238, 220)', borderRadius: 10 }}
+                  onPress={() => navigation.navigate('RestorantDetail', { title: item.title, star: item.star, price: item.price })}
+                >
                   <FastImage
                     style={{ width: 170, height: 100, borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
                     source={{
@@ -107,7 +109,7 @@ const ExploreScreen = () => {
                     <StarComponent count={item.star} select={'star'} />
                     <StarComponent count={item.price} />
                   </View>
-                </View>
+                </TouchableOpacity>
               );
             }}
           />

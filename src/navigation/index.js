@@ -11,6 +11,7 @@ import RestorantDetailScreen from '../screens/RestorantDetailScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import ProfilesScreen from '../screens/ProfilesScreen/Profiles';
 import ReservationsScreen from '../screens/ResevervationsScreen';
+import Coupon from '../screens/Coupon/Coupon';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { useSelector } from 'react-redux'
@@ -67,6 +68,17 @@ const Navigation = () => {
             headerShown: false,
             tabBarIcon: () => {
               return <Icon name="search" size={20} style={{ color: 'rgb(212, 123, 51)' }} />;
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Kupon"
+          component={Coupon}
+          options={{
+            tabBarHideOnKeyboard: true,
+            headerShown: false,
+            tabBarIcon: () => {
+              return <Icon name="ticket" size={20} style={{ color: 'rgb(212, 123, 51)' }} />;
             },
           }}
         />
