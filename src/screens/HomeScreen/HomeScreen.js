@@ -17,32 +17,19 @@ import data from '../../../assets/Data/Restorant_data.json';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
-  // const [data, setData] = useState()
   const [isFavorite, setIsFavorite] = useState(false)
   const dispatch = useDispatch();
   const initialState = useSelector(state => state.favoritesStore)
   console.log('init: ', initialState)
 
-  const handleFavoriteButtonPress = (id) => {
-    isFavorite ? dispatch(removeFavorite({ id })) : dispatch(addFavorite({ id }));
+  const handleFavoriteButtonPress = (id, title, city, price, imgURL) => {
+    isFavorite ? dispatch(removeFavorite({ id, title, city, price, imgURL })) : dispatch(addFavorite({ id, title, city, price, imgURL }));
     setIsFavorite(!isFavorite);
   }
 
   function isIdInInitialState(id) {
     return initialState.some(item => item.id === id);
   }
-
-  // useEffect(() => {
-  //   const getRestaurant = async () => {
-  //     await axios.get("http://192.168.1.40:8080/api/restaurant").then(function (response) {
-  //       setData(response.data)
-  //     }).catch(function () {
-  //       console.log('hata')
-  //     })
-
-  //   }
-  //   getRestaurant()
-  // }, [])
 
   return (
     <SafeAreaView edges={['bottom']} style={{ flex: 1, backgroundColor: '#FFFFFF' }}>

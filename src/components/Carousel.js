@@ -16,7 +16,7 @@ const Carousel = (props) => {
                     borderRadius: 10,
                     backgroundColor: 'rgb(242, 238, 220)',
                 }}>
-                <TouchableOpacity style={{ position: 'absolute', right: 10, alignItems: 'center', marginTop: 10, zIndex: 2 }} onPress={() => { handleFavoriteButtonPress(id) }}>
+                <TouchableOpacity style={{ position: 'absolute', right: 10, alignItems: 'center', marginTop: 10, zIndex: 2 }} onPress={() => { handleFavoriteButtonPress(id, title, city, price, imgURL) }}>
                     {
                         isIdInInitialState(id) ? <Icon name="heart" size={20} style={{ color: 'rgb(237, 176, 7)', backgroundColor: '#FFFFFF', paddingHorizontal: 5, paddingVertical: 5, borderRadius: 20 }} /> : <Icon name="heart-outline" size={20} style={{ color: 'rgb(237, 176, 7)', backgroundColor: '#FFFFFF', paddingHorizontal: 5, paddingVertical: 5, borderRadius: 20 }} />
                     }
