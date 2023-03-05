@@ -24,7 +24,7 @@ const RestaurantCard = (props) => {
                                 <Text style={{ fontSize: 15, fontFamily: 'Poppins-Medium', color: 'rgb(212, 123, 51)' }} >{city}</Text>
                                 <Text style={{ backgroundColor: 'rgb(237, 176, 7)', width: 70, paddingVertical: 5, paddingLeft: 5, borderRadius: 10, marginTop: 10, color: 'black' }}>₺ {price}</Text>
                             </View>
-                            <TouchableOpacity style={{ width: 70, height: 40, position: 'absolute', right: 0, alignItems: 'center', marginTop: 10 }} onPress={() => { handleFavoriteButtonPress(id) }}>
+                            <TouchableOpacity style={{ width: 70, height: 40, position: 'absolute', right: 0, alignItems: 'center', marginTop: 10 }} onPress={() => { handleFavoriteButtonPress(id, title, city, price, imgURL) }}>
                                 {
                                     isIdInInitialState(id) ? <Icon name="heart" size={25} style={{ color: 'rgb(237, 176, 7)' }} /> : <Icon name="heart-outline" size={25} style={{ color: 'rgb(237, 176, 7)' }} />
                                 }

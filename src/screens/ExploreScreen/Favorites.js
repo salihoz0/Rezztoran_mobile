@@ -14,8 +14,8 @@ const Favorites = (props) => {
   const initialState = useSelector(state => state.favoritesStore)
   console.log('init: ', initialState)
 
-  const handleFavoriteButtonPress = (id) => {
-    isFavorite ? dispatch(removeFavorite({ id })) : dispatch(addFavorite({ id }));
+  const handleFavoriteButtonPress = (id, title, city, price, imgURL) => {
+    isFavorite ? dispatch(removeFavorite({ id, title, city, price, imgURL })) : dispatch(addFavorite({ id, title, city, price, imgURL }));
     setIsFavorite(!isFavorite);
   }
 
@@ -47,7 +47,7 @@ const Favorites = (props) => {
         </TouchableOpacity>
       </View>
       <FlatList
-        data={data}
+        data={initialState}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
       />
