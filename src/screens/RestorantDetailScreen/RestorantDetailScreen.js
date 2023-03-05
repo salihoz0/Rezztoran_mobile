@@ -1,105 +1,74 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Text,
-  FlatList,
   View,
-  ImageBackground,
   TouchableOpacity,
+  SafeAreaView,
+  ScrollView
 } from 'react-native';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
-import backgr from '../../../assets/images/arkaplan.png';
-import Restorant_data from '../../../assets/Data/Restorant_data.json';
-import Restorants from '../../components/CustomRestorant/Restorants';
-import CustomMenu from '../../components/CustomMenu/CustomMenu';
-import ReservationCreate from '../../components/ReservationCreate/ReservationCreate';
-import styles from './RestoranDetailScreenStyles';
-import StarComponent from '../../components/StarComponent';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Card } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
+import QRMenu from '../../components/QRMenu';
 
 const RestorantDetailScreen = props => {
-  const selectTitle = props.route.params.title;
-  const star = props.route.params.star;
-  const price = props.route.params.price;
-  const [list, setList] = useState(Restorant_data);
-  const [showMenu, setShowMenu] = useState(true);
-  const renderRestorant = ({item}) => <Restorants Restorant={item} />;
+  const { imgURL, title, city, star, price, id } = props.data
+  const { goBack, handleFavoriteButtonPress, isIdInInitialState } = props
+  const navigation = useNavigation();
+  const [page, setPage] = useState(0)
 
-  useEffect(() => {
-    const pressed = () => {
-      const filteredList = Restorant_data.filter(Restorant => {
-        const currentTitle = Restorant.title;
-        return currentTitle.indexOf(selectTitle) > -1;
-      });
-      setList(filteredList);
-    };
-    pressed();
-  }, []);
+  const HomePage = () => {
+    return (
+      <SafeAreaView edges={['bottom']} style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
+        <View style={{ justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 25, alignItems: 'center', marginTop: 10 }}>
+          <Text style={{ fontSize: 30, fontFamily: 'Poppins-Medium', color: 'black' }}>Detay</Text>
+          <TouchableOpacity onPress={goBack} >
+            <Icon name="home" size={30} style={{ color: 'rgb(212, 123, 51)' }} />
+          </TouchableOpacity>
+        </View>
+        <ScrollView>
+          <Card style={{ marginHorizontal: 10, marginTop: 20, backgroundColor: 'rgb(240, 238, 230)', borderColor: 'rgb(217, 213, 169)' }}>
+            <Card.Cover source={{ uri: `${imgURL}` }} />
+            <Card.Content>
+              <Text numberOfLines={1} ellipsizeMode='tail' style={{ fontSize: 25, fontFamily: 'Poppins-Medium', color: 'black', marginTop: 10, width: 200 }}>{title}</Text>
+              <Text style={{ fontSize: 15, fontFamily: 'Poppins-Medium', color: 'rgb(212, 123, 51)' }}>{city}</Text>
+              <Text style={{ backgroundColor: 'rgb(237, 176, 7)', width: 70, paddingVertical: 5, paddingLeft: 5, borderRadius: 10, marginTop: 10, color: 'black' }}>₺ {price}</Text>
+              <TouchableOpacity style={{ width: 70, height: 40, position: 'absolute', right: 10, alignItems: 'center', top: 10 }} onPress={() => { handleFavoriteButtonPress(id, title, city, price, imgURL) }}>
+                {
+                  isIdInInitialState(id) ? <Icon name="heart" size={30} style={{ color: 'rgb(237, 176, 7)' }} /> : <Icon name="heart-outline" size={30} style={{ color: 'rgb(237, 176, 7)' }} />
+                }
+              </TouchableOpacity>
+            </Card.Content>
+            <Card.Actions>
+              <TouchableOpacity onPress={() => { navigation.navigate('TabNavigation', { screen: 'Rezervasyon' }) }} style={{ borderWidth: 1, borderColor: '#0cc45c', backgroundColor: '#b4e6c2', paddingHorizontal: 30, paddingVertical: 10, borderRadius: 20, marginRight: 10 }}>
+                <Text style={{ color: '#0cc45c', fontFamily: 'Inter-Bold' }}>Rezervasyon</Text>
+              </TouchableOpacity>
+            </Card.Actions>
+          </Card>
+          <Card style={{ marginTop: 10, backgroundColor: 'rgb(240, 238, 230)', borderColor: 'rgb(217, 213, 169)', marginHorizontal: 10, alignItems: 'center' }}>
+            <Card.Content style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly' }}>
+              <View style={{ alignItems: 'center', borderColor: '#80d79b', borderWidth: 1, marginLeft: 10, paddingHorizontal: 5, paddingVertical: 5, borderRadius: 5, backgroundColor: 'rgb(211, 244, 216)' }}>
+                <Icon name="clock-time-three-outline" size={20} style={{ color: '#0cc45c' }} />
+                <Text style={{ fontSize: 10, fontFamily: 'Poppins-Medium', color: '#0cc45c' }}>Çalışma Saatleri</Text>
+                <Text style={{ fontSize: 15, fontFamily: 'Inter-Bold', color: '#0cc45c' }}>09:30 - 22:00</Text>
+              </View>
+              <TouchableOpacity onPress={() => setPage(1)} style={{ alignItems: 'center', borderColor: 'rgb(237, 176, 7)', borderWidth: 1, marginLeft: 100, paddingHorizontal: 15, paddingVertical: 15, borderRadius: 5, backgroundColor: 'rgb(240, 238, 230)' }}>
+                <Icon name="qrcode-scan" size={20} style={{ color: 'rgb(212, 123, 51)' }} />
+                <Text style={{ fontSize: 10, fontFamily: 'Poppins-Medium', color: 'rgb(212, 123, 51)' }}>QR KOD</Text>
+              </TouchableOpacity>
+            </Card.Content>
+          </Card>
+        </ScrollView>
+      </SafeAreaView >
+    )
+  }
 
   return (
-    <ImageBackground source={backgr} style={styles.backgr}>
-      <View style={styles.container}>
-        <View style={{height: hp('28%')}}>
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={list}
-            renderItem={renderRestorant}
-          />
-        </View>
-        <View style={{height: hp('12%')}}>
-          <Text style={styles.header}>{selectTitle}</Text>
-          <View style={styles.info}>
-            <StarComponent count={star} select={'star'} />
-            <StarComponent count={price} />
-            <View>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Text
-                  style={{color: 'black', fontWeight: '700', fontSize: hp(2)}}>
-                  Çalışma Saaatleri
-                </Text>
-                <Icon name="clock-outline" size={25} color={'black'} />
-              </View>
-              <Text
-                style={{
-                  alignSelf: 'center',
-                  color: 'black',
-                  fontWeight: '500',
-                }}>
-                09:00-23.00
-              </Text>
-            </View>
-          </View>
-        </View>
-        <View style={styles.Menu}>
-          {showMenu ? (
-            <CustomMenu />
-          ) : (
-            <View style={styles.reserve}>
-              <ReservationCreate />
-            </View>
-          )}
-        </View>
-      </View>
-      <View style={{height: hp(7)}}>
-        <TouchableOpacity
-          onPress={() => {
-            setShowMenu(!showMenu);
-          }}
-          style={showMenu ? styles.button : styles.button_cancel}
-          activeOpacity={0.9}>
-          {showMenu ? (
-            <Text style={styles.text}>REZERVASYON YAP</Text>
-          ) : (
-            <Text style={styles.text_cancel}>İPTAL ET</Text>
-          )}
-        </TouchableOpacity>
-
-      </View>
-    </ImageBackground>
-  );
+    <>
+      {page === 0 && <HomePage />}
+      {page === 1 && <QRMenu goBack={() => setPage(0)} />}
+    </>
+  )
 };
 
 export default RestorantDetailScreen;

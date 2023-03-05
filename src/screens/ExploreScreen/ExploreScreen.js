@@ -3,16 +3,43 @@ import { View, Text, TouchableOpacity, FlatList, SafeAreaView } from 'react-nati
 import Favorites from './Favorites';
 import SearchEngine from './SearchEngine';
 import data from '../../../assets/Data/Restorant_data.json';
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import StarComponent from '../../components/StarComponent/StarComponent';
 import { TextInput } from 'react-native-paper';
 import SearchInput from './SearchInput';
+import RestorantDetail from '../../screens/RestorantDetailScreen/RestorantDetailScreen'
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, removeFavorite } from '../../store/favoritesStore'
 
 const ExploreScreen = () => {
   const [page, setPage] = useState(0);
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
+  const [resDetailData, setResDetailData] = useState({
+    title: undefined,
+    star: undefined,
+    price: undefined,
+  })
+
+  const [isFavorite, setIsFavorite] = useState(false)
+  const dispatch = useDispatch();
+  const initialState = useSelector(state => state.favoritesStore)
+  console.log('init: ', initialState)
+
+  const handleFavoriteButtonPress = (id, title, city, price, imgURL) => {
+    isFavorite ? dispatch(removeFavorite({ id, title, city, price, imgURL })) : dispatch(addFavorite({ id, title, city, price, imgURL }));
+    setIsFavorite(!isFavorite);
+  }
+
+  function isIdInInitialState(id) {
+    return initialState.some(item => item.id === id);
+  }
+
+  const detailHandler = (imgURL, title, city, star, price, id) => {
+    setResDetailData({ imgURL, title, city, star, price, id })
+    setPage(4)
+  }
 
   const goBack = () => {
     setPage(0);
@@ -48,6 +75,7 @@ const ExploreScreen = () => {
             data={data}
             showsHorizontalScrollIndicator={false}
             renderItem={({ item }) => {
+              const { imgURL, title, city, star, price, id } = item
               return (
                 <View
                   style={{
@@ -61,21 +89,15 @@ const ExploreScreen = () => {
                   <FastImage
                     style={{ width: 170, height: 170, borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
                     source={{
-                      uri: `${item.imgURL}`,
+                      uri: `${imgURL}`,
                       priority: FastImage.priority.normal,
                     }}
                     resizeMode={FastImage.resizeMode.cover}
                   />
-                  <Text numberOfLines={1} ellipsizeMode="tail" style={{ color: '#000000', fontFamily: 'Poppins-Medium', margin: 10, maxWidth: 160 }}>{item.title}</Text>
+                  <Text numberOfLines={1} ellipsizeMode="tail" style={{ color: '#000000', fontFamily: 'Poppins-Medium', margin: 10, maxWidth: 160 }}>{title}</Text>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginRight: 5, marginBottom: 5 }}>
-                    <Text style={{ color: '#000000', fontFamily: 'Poppins-light', marginLeft: 10 }}>{item.city}</Text>
-                    <TouchableOpacity onPress={() => {
-                      navigation.navigate('RestorantDetail', {
-                        title: item.title,
-                        star: item.star,
-                        price: item.price,
-                      });
-                    }}>
+                    <Text style={{ color: '#000000', fontFamily: 'Poppins-light', marginLeft: 10 }}>{city}</Text>
+                    <TouchableOpacity onPress={() => { detailHandler(imgURL, title, city, star, price, id) }}>
                       <Icon name="calendar-arrow-right" size={30} style={{ color: 'rgb(237, 176, 7)' }} />
                     </TouchableOpacity>
                   </View>
@@ -92,22 +114,21 @@ const ExploreScreen = () => {
             showsHorizontalScrollIndicator={false}
             removeClippedSubviews={false}
             renderItem={({ item }) => {
+              const { imgURL, title, city, star, price, id } = item
               return (
-                <TouchableOpacity style={{ width: 170, height: 170, marginHorizontal: 10, borderColor: 'rgb(217, 213, 169)', borderWidth: 1, backgroundColor: 'rgb(242, 238, 220)', borderRadius: 10 }}
-                  onPress={() => navigation.navigate('RestorantDetail', { title: item.title, star: item.star, price: item.price })}
-                >
+                <TouchableOpacity style={{ width: 170, height: 170, marginHorizontal: 10, borderColor: 'rgb(217, 213, 169)', borderWidth: 1, backgroundColor: 'rgb(242, 238, 220)', borderRadius: 10 }} onPress={() => { detailHandler(imgURL, title, city, star, price, id) }}>
                   <FastImage
                     style={{ width: 170, height: 100, borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
                     source={{
-                      uri: `${item.imgURL}`,
+                      uri: `${imgURL}`,
                       priority: FastImage.priority.normal,
                     }}
                     resizeMode={FastImage.resizeMode.cover}
                   />
-                  <Text numberOfLines={1} ellipsizeMode="tail" variant="titleLarge" style={{ fontFamily: 'Poppins-Regular', color: '#000000', fontSize: 15, marginLeft: 10 }}>{item.title}</Text>
+                  <Text numberOfLines={1} ellipsizeMode="tail" variant="titleLarge" style={{ fontFamily: 'Poppins-Regular', color: '#000000', fontSize: 15, marginLeft: 10 }}>{title}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 10, paddingHorizontal: 10 }}>
-                    <StarComponent count={item.star} select={'star'} />
-                    <StarComponent count={item.price} />
+                    <StarComponent count={star} select={'star'} />
+                    <StarComponent count={price} />
                   </View>
                 </TouchableOpacity>
               );
@@ -124,6 +145,7 @@ const ExploreScreen = () => {
       {page === 1 && <Favorites goBack={goBack} />}
       {page === 2 && <SearchEngine goBack={goBack} />}
       {page === 3 && <SearchInput goBack={goBack} data={data} />}
+      {page === 4 && <RestorantDetail goBack={goBack} data={resDetailData} handleFavoriteButtonPress={handleFavoriteButtonPress} isIdInInitialState={isIdInInitialState} />}
     </View>
   );
 };
