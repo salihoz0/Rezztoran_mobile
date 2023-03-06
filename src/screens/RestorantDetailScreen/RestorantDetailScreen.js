@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   View,
   TouchableOpacity,
   SafeAreaView,
-  ScrollView
+
 } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Card } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import QRMenu from '../../components/QRMenu';
+import ClockCarousel from '../../components/ClockCarousel';
 
 const RestorantDetailScreen = props => {
   const { imgURL, title, city, star, price, id } = props.data
@@ -19,14 +21,15 @@ const RestorantDetailScreen = props => {
 
   const HomePage = () => {
     return (
-      <SafeAreaView edges={['bottom']} style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
+      <SafeAreaView edges={['top']} style={{ backgroundColor: '#FFFFFF' }}>
         <View style={{ justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 25, alignItems: 'center', marginTop: 10 }}>
           <Text style={{ fontSize: 30, fontFamily: 'Poppins-Medium', color: 'black' }}>Detay</Text>
           <TouchableOpacity onPress={goBack} >
             <Icon name="home" size={30} style={{ color: 'rgb(212, 123, 51)' }} />
           </TouchableOpacity>
         </View>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
+
           <Card style={{ marginHorizontal: 10, marginTop: 20, backgroundColor: 'rgb(240, 238, 230)', borderColor: 'rgb(217, 213, 169)' }}>
             <Card.Cover source={{ uri: `${imgURL}` }} />
             <Card.Content>
@@ -58,6 +61,7 @@ const RestorantDetailScreen = props => {
               </TouchableOpacity>
             </Card.Content>
           </Card>
+          <ClockCarousel />
           <View style={{ marginTop: 10, backgroundColor: 'rgb(240, 238, 230)', borderColor: 'rgb(217, 213, 169)', marginHorizontal: 10, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly', borderRadius: 10 }}>
             <TouchableOpacity style={{ alignItems: 'center', borderColor: 'rgb(237, 176, 7)', borderWidth: 1, paddingHorizontal: 5, paddingVertical: 5, borderRadius: 5, backgroundColor: 'rgb(240, 238, 230)' }}>
               <Text>Yorumlar</Text>
@@ -80,3 +84,14 @@ const RestorantDetailScreen = props => {
 };
 
 export default RestorantDetailScreen;
+
+/*
+Sorunlar
+- Rezervasyon yap butonuna tıklayınca restorana not gönderip rezerve yapması ve store'a kaydetmesi
+bu store'dan rezervasyonların çekilmesi ve Rezervasyonlarım sayfasında görüntülenmesi
+- QR Kod sayfasının tasarlanması
+- Saatin çalışma saatlerine uygun olması gerekmesi (BACKEND ile ortak)
+- uygun olan saatlerin farklı renkte gösterilmesi ve o saati seçince yeşil renkte yanması
+- Yorumlar ve Menu kısımlarının tasarlanması (Bence Menu kısmının ayrıntılı olmasına gerek yok)
+- Stillendirmeler.
+*/
