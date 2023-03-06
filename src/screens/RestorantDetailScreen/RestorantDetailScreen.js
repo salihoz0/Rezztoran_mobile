@@ -58,6 +58,14 @@ const RestorantDetailScreen = props => {
               </TouchableOpacity>
             </Card.Content>
           </Card>
+          <View style={{ marginTop: 10, backgroundColor: 'rgb(240, 238, 230)', borderColor: 'rgb(217, 213, 169)', marginHorizontal: 10, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly', borderRadius: 10 }}>
+            <TouchableOpacity style={{ alignItems: 'center', borderColor: 'rgb(237, 176, 7)', borderWidth: 1, paddingHorizontal: 5, paddingVertical: 5, borderRadius: 5, backgroundColor: 'rgb(240, 238, 230)' }}>
+              <Text>Yorumlar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{ alignItems: 'center', borderColor: 'rgb(237, 176, 7)', borderWidth: 1, paddingHorizontal: 5, paddingVertical: 5, borderRadius: 5, backgroundColor: 'rgb(240, 238, 230)' }}>
+              <Text>Menü</Text>
+            </TouchableOpacity>
+          </View>
         </ScrollView>
       </SafeAreaView >
     )

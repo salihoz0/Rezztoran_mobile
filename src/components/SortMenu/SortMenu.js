@@ -9,6 +9,7 @@ import { setSort, setFilter, setNumOfPeople, setReservationDate, resetSearchEngi
 import Calendar from '../Calendar'
 
 const initialState = {
+  location: false,
   sortSelected: false,
   filterSelected: false,
   NumOfPeople: false,
@@ -17,6 +18,8 @@ const initialState = {
 
 function accordionReducer(state, action) {
   switch (action.type) {
+    case 'TOGGLE_LOCATION':
+      return { ...state, location: !state.location };
     case 'TOGGLE_SORT':
       return { ...state, sortSelected: !state.sortSelected };
     case 'TOGGLE_FILTER':
@@ -119,6 +122,14 @@ const SortMenu = props => {
         </View>
       </View>
       <ScrollView showsVerticalScrollIndicator={false} style={{ marginBottom: 60 }}>
+        <MenuButton onPress={() => dispatchAccordionAction({ type: 'TOGGLE_LOCATION' })} iconCondition={accordionState.location} title='Lokasyon' />
+        {
+          accordionState.location && (
+            <View style={{ justifyContent: 'space-around', marginLeft: 24, marginBottom: 10 }}>
+              <Text>location</Text>
+            </View>
+          )
+        }
         <MenuButton onPress={() => dispatchAccordionAction({ type: 'TOGGLE_SORT' })} iconCondition={accordionState.sortSelected} title='Sırala' />
         {
           accordionState.sortSelected && (
