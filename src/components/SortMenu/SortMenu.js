@@ -1,18 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
+import React, { useReducer } from 'react';
+import { View, Text, TouchableOpacity, SafeAreaView, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { ScrollView } from 'react-native-gesture-handler';
 import CheckBox from '../CheckBox';
-import { sortMenu, filterMenu } from './sort-filter';
+import { sortMenu, filterMenu, numOfPeopleMenu } from './sort-filter';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSort, resetSort, setFilter, resetFilter } from '../../store/searchEngineStore'
+import { setSort, setFilter, setNumOfPeople, setReservationDate, resetSearchEngineStore } from '../../store/searchEngineStore'
+import Calendar from '../Calendar'
+
+const initialState = {
+  sortSelected: false,
+  filterSelected: false,
+  NumOfPeople: false,
+  date: false,
+};
+
+function accordionReducer(state, action) {
+  switch (action.type) {
+    case 'TOGGLE_SORT':
+      return { ...state, sortSelected: !state.sortSelected };
+    case 'TOGGLE_FILTER':
+      return { ...state, filterSelected: !state.filterSelected };
+    case 'TOGGLE_NUM_OF_PEOPLE':
+      return { ...state, NumOfPeople: !state.NumOfPeople };
+    case 'TOGGLE_DATE':
+      return { ...state, date: !state.date };
+    default:
+      return state;
+  }
+}
 
 const SortMenu = props => {
   const { goBack } = props
-  const { sortData, filterData } = useSelector((state) => state.searchEngineStore)
-  const [sortSelected, setSortSelected] = useState(false)
-  const [filterSelected, setFilterSelected] = useState(false)
+  const { sortData, filterData, numOfPeople, reservationDate } = useSelector((state) => state.searchEngineStore)
+  const [accordionState, dispatchAccordionAction] = useReducer(accordionReducer, initialState);
   const dispatch = useDispatch()
+
+  console.log('date: ', reservationDate)
 
   const handleSortChange = (key) => {
     dispatch(
@@ -30,6 +54,60 @@ const SortMenu = props => {
     )
   }
 
+  const handleNumOfPeopleChange = (key) => {
+    dispatch(
+      setNumOfPeople({
+        numOfPeople: key
+      })
+    )
+  }
+
+  const handleReservationDate = (date) => {
+    dispatch(
+      setReservationDate({
+        reservationDate: date
+      })
+    )
+  }
+
+  const MenuButton = ({ onPress, iconCondition, title }) => {
+    return (
+      <TouchableOpacity onPress={onPress}>
+        <View
+          style={{
+            paddingVertical: 16,
+            paddingHorizontal: 24,
+            borderBottomWidth: 1,
+            borderColor: '#F3F3F3',
+            justifyContent: 'center',
+          }}>
+          <Text
+            style={{
+              lineHeight: 20,
+              fontFamily: 'Poppins-Medium',
+              fontSize: 16,
+              letterSpacing: 0.2,
+              color: '#000',
+            }}>
+            {title}
+          </Text>
+          <Icon
+            style={{
+              position: 'absolute',
+              right: 24,
+            }}
+            name={
+              iconCondition
+                ? 'arrow-down'
+                : 'arrow-right'}
+            size={20}
+            color='rgb(212, 123, 51)'
+          />
+        </View>
+      </TouchableOpacity>
+    )
+  }
+
   return (
     <SafeAreaView edges={['bottom']} style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
       <View style={{ justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 25, alignItems: 'center', marginVertical: 10 }}>
@@ -41,41 +119,9 @@ const SortMenu = props => {
         </View>
       </View>
       <ScrollView showsVerticalScrollIndicator={false} style={{ marginBottom: 60 }}>
-        <TouchableOpacity onPress={() => { setSortSelected(!sortSelected) }}>
-          <View
-            style={{
-              paddingVertical: 16,
-              paddingHorizontal: 24,
-              borderBottomWidth: 1,
-              borderColor: '#F3F3F3',
-              justifyContent: 'center',
-            }}>
-            <Text
-              style={{
-                lineHeight: 20,
-                fontFamily: 'Poppins-Medium',
-                fontSize: 16,
-                letterSpacing: 0.2,
-                color: '#000',
-              }}>
-              Sırala
-            </Text>
-            <Icon
-              style={{
-                position: 'absolute',
-                right: 24,
-              }}
-              name={
-                sortSelected
-                  ? 'arrow-down'
-                  : 'arrow-right'}
-              size={20}
-              color='rgb(212, 123, 51)'
-            />
-          </View>
-        </TouchableOpacity>
+        <MenuButton onPress={() => dispatchAccordionAction({ type: 'TOGGLE_SORT' })} iconCondition={accordionState.sortSelected} title='Sırala' />
         {
-          sortSelected && (
+          accordionState.sortSelected && (
             <View style={{ justifyContent: 'space-around', marginLeft: 24, marginBottom: 10 }}>
               {
                 sortMenu.map((item) => {
@@ -92,41 +138,9 @@ const SortMenu = props => {
             </View>
           )
         }
-        <TouchableOpacity onPress={() => { setFilterSelected(!filterSelected) }}>
-          <View
-            style={{
-              paddingVertical: 16,
-              paddingHorizontal: 24,
-              borderBottomWidth: 1,
-              borderBottomColor: '#F3F3F3',
-              justifyContent: 'center',
-            }}>
-            <Text
-              style={{
-                lineHeight: 20,
-                fontFamily: 'Poppins-Medium',
-                fontSize: 16,
-                letterSpacing: 0.2,
-                color: '#000',
-              }}>
-              Filtrele
-            </Text>
-            <Icon
-              style={{
-                position: 'absolute',
-                right: 24,
-              }}
-              name={
-                filterSelected
-                  ? 'arrow-down'
-                  : 'arrow-right'}
-              size={20}
-              color='rgb(212, 123, 51)'
-            />
-          </View>
-        </TouchableOpacity>
+        <MenuButton onPress={() => dispatchAccordionAction({ type: 'TOGGLE_FILTER' })} iconCondition={accordionState.filterSelected} title='Filtrele' />
         {
-          filterSelected && (
+          accordionState.filterSelected && (
             <View style={{ justifyContent: 'space-around', marginLeft: 24, marginBottom: 10 }}>
               {
                 filterMenu.map((item) => {
@@ -143,42 +157,44 @@ const SortMenu = props => {
             </View>
           )
         }
+
+        <MenuButton onPress={() => dispatchAccordionAction({ type: 'TOGGLE_NUM_OF_PEOPLE' })} iconCondition={accordionState.NumOfPeople} title='Kişi Sayısı' />
+        {
+          accordionState.NumOfPeople && (
+            <View style={{ justifyContent: 'space-around', marginHorizontal: 10, marginBottom: 10 }}>
+              <FlatList
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={numOfPeopleMenu}
+                keyExtractor={item => item.id}
+                renderItem={({ item }) => {
+                  return (
+                    <TouchableOpacity onPress={() => handleNumOfPeopleChange(item.key)} style={{ marginLeft: 10, borderWidth: 1, borderColor: '#0cc45c', borderRadius: 10, alignItems: 'center', paddingHorizontal: 10, marginTop: 10, paddingBottom: 10, backgroundColor: 'rgb(211, 244, 216)' }}>
+                      <CheckBox
+                        key={item.key}
+                        theme="ORANGE"
+                        onToggle={() => handleNumOfPeopleChange(item.key)}
+                        selected={numOfPeople === item.key}
+                        text={item.text} />
+                    </TouchableOpacity>
+                  )
+                }}
+              />
+            </View>
+          )
+        }
+
+        <MenuButton onPress={() => dispatchAccordionAction({ type: 'TOGGLE_DATE' })} iconCondition={accordionState.date} title='Tarih' />
+        {
+          accordionState.date && (
+            <Calendar handleReservationDate={handleReservationDate} reservationDate={reservationDate} />
+          )
+        }
+
       </ScrollView>
-    </SafeAreaView>
+    </SafeAreaView >
   );
 };
 
 
 export default SortMenu;
-
-/*
-<Menu
-        visible={visible}
-        anchor={
-          <Pressable
-            style={{
-              width: Dimensions.get('screen').width / 2,
-              backgroundColor: 'white',
-              marginLeft: 13,
-              borderRadius: 20,
-              borderTopRightRadius: 0,
-              borderBottomRightRadius: 0,
-              marginTop: 10,
-              alignItems: 'center',
-              elevation: 3,
-            }}
-            onPress={showMenu}
-          >
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Icon name="sort-variant" size={30} color={'rgb(212, 123, 51)'} />
-              <Text style={{ fontSize: 17, fontFamily: 'Poppins-Medium', color: 'rgb(212, 123, 51)' }}>Sırala</Text>
-            </View>
-          </Pressable>
-        }
-        onRequestClose={hideMenu}>
-        <MenuItem onPress={() => handleSortMenuItemPress("ascPrice")}>Artan Fiyat</MenuItem>
-        <MenuItem onPress={() => handleSortMenuItemPress("descPrice")}>Azalan Fiyat</MenuItem>
-        <MenuItem onPress={() => handleSortMenuItemPress("highRated")}>Yüksek Puanlılar</MenuItem>
-        <MenuItem onPress={() => handleSortMenuItemPress("mostReviewed")}>En Çok Değerlendirilenler</MenuItem>
-      </Menu>
-*/
