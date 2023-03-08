@@ -46,6 +46,14 @@ const Favorites = (props) => {
           <Icon name="home" size={30} style={{ color: 'rgb(212, 123, 51)' }} />
         </TouchableOpacity>
       </View>
+      <View
+        style={{
+          borderWidth: 0.5,
+          borderColor: '#E1E1E1',
+          marginBottom: 12,
+          alignItems: "center",
+        }}
+      />
       <FlatList
         data={initialState}
         keyExtractor={(item) => item.id}

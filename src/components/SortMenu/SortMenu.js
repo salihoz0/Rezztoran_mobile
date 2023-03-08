@@ -121,6 +121,14 @@ const SortMenu = props => {
           </TouchableOpacity>
         </View>
       </View>
+      <View
+        style={{
+          borderWidth: 0.5,
+          borderColor: '#E1E1E1',
+          marginBottom: 12,
+          alignItems: "center",
+        }}
+      />
       <ScrollView showsVerticalScrollIndicator={false} style={{ marginBottom: 60 }}>
         <MenuButton onPress={() => dispatchAccordionAction({ type: 'TOGGLE_LOCATION' })} iconCondition={accordionState.location} title='Lokasyon' />
         {

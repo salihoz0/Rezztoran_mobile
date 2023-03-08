@@ -59,6 +59,14 @@ const ExploreScreen = () => {
             </TouchableOpacity>
           </View>
         </View>
+        <View
+          style={{
+            borderWidth: 0.5,
+            borderColor: '#E1E1E1',
+            marginBottom: 12,
+            alignItems: "center",
+          }}
+        />
         <TouchableOpacity onPress={() => setPage(3)}>
           <TextInput
             style={{ marginHorizontal: 10, backgroundColor: 'rgb(240, 238, 230)', borderColor: 'rgb(217, 213, 169)' }}
