@@ -19,3 +19,14 @@
   /> yarn start 
   
   /> yarn android
+
+# branch islemleri
+git pull origin main
+git add .
+git commit -m "[file][job] message"
+git push
+git checkout main 
+git pull origin main
+git pull origin dev-alperen(ornek)
+git push
+git checkout dev-alperen(ornek)
