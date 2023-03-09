@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import data from '../../../assets/Data/Restorant_data.json'
 import RestaurantCard from '../../components/RestaurantCard';
 import { resetSort, resetFilter } from '../../store/searchEngineStore'
+import Header from '../../components/Header';
 
 
 const SearchEngine = (props) => {
@@ -79,20 +80,7 @@ const SearchEngine = (props) => {
   const HomePage = () => {
     return (
       <SafeAreaView edges={['bottom']} style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
-        <View style={{ justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 25, alignItems: 'center', marginTop: 10 }}>
-          <Text style={{ fontSize: 30, fontFamily: 'Poppins-Medium', color: 'black' }}>Filtrele</Text>
-          <TouchableOpacity onPress={goBack} >
-            <Icon name="home" size={30} style={{ color: 'rgb(212, 123, 51)' }} />
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            borderWidth: 0.5,
-            borderColor: '#E1E1E1',
-            marginBottom: 12,
-            alignItems: "center",
-          }}
-        />
+        <Header title='Filtrele' firstIconName='home' onPress1={goBack} />
         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
           <TouchableOpacity
             style={{

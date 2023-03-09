@@ -1,30 +1,23 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   FlatList,
   Image,
-  ImageBackground,
-  Pressable,
-  Dimensions,
+  SafeAreaView,
+  TouchableOpacity
 } from 'react-native';
-import backgr from '../../../assets/images/arkaplan.png';
 import Reservations from '../../../assets/Data/Reservations.json';
-import StarComponent from '../../components/StarComponent';
-import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 import styles from './ReservationsScreensStyles';
-import {Button} from 'react-native-paper';
-import BlurLogo from '../../../assets/images/rezztoran_logo_blur.png';
+import { Button } from 'react-native-paper';
+
 
 const ReservationsScreen = () => {
-  const navigation = useNavigation();
-  const [liked, setLiked] = useState(Reservations.liked);
-
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     return (
       <View style={styles.container}>
-        <Image style={styles.image} source={{uri: item.imgURL}} />
+        <Image style={styles.image} source={{ uri: item.imgURL }} />
         <View style={styles.info_container}>
           <Text style={styles.titleImage}>{item.title}</Text>
           <Text style={styles.info}>{item.Date}</Text>
@@ -54,47 +47,18 @@ const ReservationsScreen = () => {
   };
 
   return (
-    <ImageBackground source={backgr} style={styles.ImageBackground}>
-      <Text style={styles.header}>Rezervasyonlarım</Text>
+    <SafeAreaView edges={['bottom']} style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
+      <View style={{ justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 25, alignItems: 'center', marginVertical: 10 }}>
+        <Text style={{ fontSize: 30, fontFamily: 'Poppins-Medium', color: 'black' }}>Rezervasyonlarım</Text>
+      </View>
       <FlatList
-        style={{zIndex: 1}}
+        style={{ zIndex: 1 }}
         data={Reservations}
         showsVerticalScrollIndicator={false}
         renderItem={renderItem}
       />
-      <Image
-        source={BlurLogo}
-        resizeMode={'contain'}
-        style={styles.blur_logo}
-      />
-    </ImageBackground>
+    </SafeAreaView >
   );
 };
 
 export default ReservationsScreen;
-
-/*
-<Text style={styles.text}>{item.star}</Text>
-            <Pressable
-              onPress={() => (
-                setLiked(isLiked => !isLiked), (item.liked = !item.liked)
-              )}
-              style={styles.like}
-              pressRetentionOffset>
-              <Icon
-                name="heart"
-                size={20}
-                color={liked ? 'red' : 'white'}
-                style={styles.like}
-              />
-                        <View style={styles.star}>
-            <StarComponent count={item.star} select={'star'} />
-            <StarComponent count={item.price} />
-            
-          <Text style={styles.info}>Kişi Sayısı: {item.numberOfPeople} </Text>
-          </View>
-
-
-
-</Pressable>
-*/

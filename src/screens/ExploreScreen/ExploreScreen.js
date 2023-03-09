@@ -12,6 +12,7 @@ import SearchInput from './SearchInput';
 import RestorantDetail from '../../screens/RestorantDetailScreen/RestorantDetailScreen'
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../store/favoritesStore'
+import Header from '../../components/Header';
 
 const ExploreScreen = () => {
   const [page, setPage] = useState(0);
@@ -48,25 +49,7 @@ const ExploreScreen = () => {
   const Discover = () => {
     return (
       <SafeAreaView edges={['bottom']} style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
-        <View style={{ justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 25, alignItems: 'center', marginVertical: 10 }}>
-          <Text style={{ fontSize: 30, fontFamily: 'Poppins-Medium', color: 'black' }}>Keşfet</Text>
-          <View style={{ flexDirection: 'row', width: 100, alignItems: 'center', justifyContent: 'space-evenly' }}>
-            <TouchableOpacity onPress={() => setPage(2)}>
-              <Icon name="filter" size={25} style={{ color: 'rgb(212, 123, 51)' }} />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setPage(1)}>
-              <Icon name="heart" size={25} style={{ color: 'rgb(212, 123, 51)' }} />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View
-          style={{
-            borderWidth: 0.5,
-            borderColor: '#E1E1E1',
-            marginBottom: 12,
-            alignItems: "center",
-          }}
-        />
+        <Header title='Keşfet' firstIconName='filter' secondIconName='heart' onPress1={() => setPage(2)} onPress2={() => setPage(1)} />
         <TouchableOpacity onPress={() => setPage(3)}>
           <TextInput
             style={{ marginHorizontal: 10, backgroundColor: 'rgb(240, 238, 230)', borderColor: 'rgb(217, 213, 169)' }}
