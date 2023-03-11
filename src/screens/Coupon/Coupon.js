@@ -10,3 +10,10 @@ const Coupon = () => {
 }
 
 export default Coupon
+
+/*
+ Türkiyenin her yerinden restoranın eğer bir kampanyası varsa görüntülenecek
+ kampyanya tıklandığında rezervasyon 2. aşamaya yönlendirme yapacak
+ işleyiş bu şekilde olacak
+
+*/
