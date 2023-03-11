@@ -58,13 +58,13 @@ const Comment = (props) => {
                 borderColor: 'rgb(217, 213, 169)',
                 marginHorizontal: 10,
                 alignItems: 'center',
-                borderRadius: 10,
+                borderRadius: 5,
                 borderWidth: 1
             }}
         >
             <Text
                 style={{
-                    borderWidth: 1,
+                    borderBottomWidth: 1,
                     borderColor: 'rgb(237, 176, 7)',
                     width: '100%',
                     textAlign: 'center',

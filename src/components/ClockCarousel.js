@@ -22,7 +22,7 @@ const ClockCarousel = (props) => {
     };
 
     return (
-        <View style={{ marginTop: 10, backgroundColor: 'rgb(240, 238, 230)', borderColor: 'rgb(237, 176, 7)', borderWidth: 1, marginHorizontal: 10, alignItems: 'center', paddingVertical: 10, borderRadius: 10 }}>
+        <View style={{ marginTop: 10, backgroundColor: 'rgb(240, 238, 230)', borderColor: 'rgb(217, 213, 169)', borderWidth: 1, marginHorizontal: 10, alignItems: 'center', paddingVertical: 10, borderRadius: 5 }}>
             <View style={{ alignItems: 'center', marginBottom: 10 }}>
                 <Text style={{ fontSize: 16, fontFamily: 'Poppins-Medium', color: '#000000' }}>2 Kişi, 06 Mart Pazartesi</Text>
                 <Text style={{ fontSize: 12, fontFamily: 'Poppins-Medium', color: 'rgb(212, 123, 51)' }}>Uygun olan rezervasyon saatleri</Text>
@@ -43,7 +43,7 @@ export default ClockCarousel
 const styles = StyleSheet.create({
     hourItem: {
         alignItems: 'center',
-        borderWidth: 2,
+        borderWidth: 1,
         marginLeft: 20,
         paddingHorizontal: 20,
         paddingVertical: 10,
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     },
     selectedHourItem: {
         backgroundColor: '#80d79b',
-        borderWidth: 2,
+        borderWidth: 1,
         borderColor: '#0cc45c'
     },
     selectedHourText: {
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         color: '#FFFFFF'
     },
     disabledHour: {
-        borderWidth: 2,
+        borderWidth: 1,
         borderColor: 'gray',
         backgroundColor: '#D3D3D3'
     },

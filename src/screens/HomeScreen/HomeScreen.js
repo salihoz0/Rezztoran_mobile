@@ -38,7 +38,7 @@ const HomeScreen = () => {
           <Text style={styles.title}>Keşfedin</Text>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('TabNavigation', { screen: "Ara" });
+              navigation.navigate('TabNavigation', { screen: "Keşfet" });
             }}
             style={styles.button}
             activeOpacity={0.8}>

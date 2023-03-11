@@ -61,17 +61,6 @@ const Navigation = () => {
           }}
         />
         <Tab.Screen
-          name="Ara"
-          component={ExploreScreen}
-          options={{
-            tabBarHideOnKeyboard: true,
-            headerShown: false,
-            tabBarIcon: () => {
-              return <Icon name="search" size={20} style={{ color: 'rgb(212, 123, 51)' }} />;
-            },
-          }}
-        />
-        <Tab.Screen
           name="Kupon"
           component={Coupon}
           options={{
@@ -79,6 +68,17 @@ const Navigation = () => {
             headerShown: false,
             tabBarIcon: () => {
               return <Icon name="ticket" size={20} style={{ color: 'rgb(212, 123, 51)' }} />;
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Keşfet"
+          component={ExploreScreen}
+          options={{
+            tabBarHideOnKeyboard: true,
+            headerShown: false,
+            tabBarIcon: () => {
+              return <Icon name="compass" size={25} style={{ color: 'rgb(212, 123, 51)' }} />;
             },
           }}
         />
