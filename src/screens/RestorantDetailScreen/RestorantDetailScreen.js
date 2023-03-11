@@ -15,7 +15,10 @@ import Header from '../../components/Header'
 import FastImage from 'react-native-fast-image';
 import { hours } from './tmpData'
 import Menu_data from '../../../assets/Data/Menu_data.json'
+import Comment_data from '../../../assets/Data/Comment_data.json'
 import Menu from './Menu'
+import Comment from './Comment';
+import Comment2 from './Comment2';
 
 const RestorantDetailScreen = props => {
   const { imgURL, title, city, star, price, id } = props.data
@@ -159,6 +162,7 @@ const RestorantDetailScreen = props => {
           </View>
           <ClockCarousel hours={hours} selectedHour={selectedHour} setSelectedHour={setSelectedHour} />
           <Menu data={Menu_data} />
+          <Comment data={Comment_data} page={page} setPage={setPage} />
         </ScrollView>
       </SafeAreaView>
     )
@@ -168,6 +172,7 @@ const RestorantDetailScreen = props => {
     <>
       {page === 0 && <HomePage />}
       {page === 1 && <QRMenu goBack={() => setPage(0)} />}
+      {/* {page === 2 && <Comment2 goBack={() => setPage(0)} data={Comment_data} />} */}
     </>
   )
 };
@@ -178,32 +183,5 @@ export default RestorantDetailScreen;
 Sorunlar
 - bu store'dan rezervasyonların çekilmesi ve Rezervasyonlarım sayfasında görüntülenmesi
 - Saatin çalışma saatlerine uygun olması gerekmesi (BACKEND ile ortak)
-- Yorumlar ve Menu kısımlarının tasarlanması (Bence Menu kısmının ayrıntılı olmasına gerek yok)
-*/
-
-/*
-
-<View style={{
-            marginTop: 10,
-            backgroundColor: 'rgb(240, 238, 230)',
-            borderColor: 'rgb(217, 213, 169)',
-            marginHorizontal: 10,
-            alignItems: 'center',
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            borderRadius: 10,
-            height: 500
-          }}>
-            <TouchableOpacity style={{
-              alignItems: 'center',
-              borderColor: 'rgb(237, 176, 7)',
-              borderWidth: 1,
-              paddingHorizontal: 5,
-              paddingVertical: 5,
-              borderRadius: 5,
-              backgroundColor: 'rgb(240, 238, 230)'
-            }}>
-              <Text>Yorumlar</Text>
-            </TouchableOpacity>
-          </View>
+- Yorumlar kısımlarının tasarlanması (Bence Menu kısmının ayrıntılı olmasına gerek yok)
 */

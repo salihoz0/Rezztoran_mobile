@@ -32,7 +32,9 @@ const RestaurantMenu = (props) => {
 
         return (
             <View
-                style={{ width: '100%', alignItems: 'center', borderBottomWidth: 0.5, borderColor: '#D3D3D3' }}
+                style={{
+                    width: '100%', alignItems: 'center', borderBottomWidth: 0.5, borderColor: '#D3D3D3', borderRadius: 5
+                }}
             >
                 <TouchableOpacity
                     style={{
@@ -82,7 +84,7 @@ const RestaurantMenu = (props) => {
                 marginHorizontal: 10,
                 alignItems: 'center',
                 borderRadius: 10,
-                borderWidth: 1
+                borderWidth: 1,
             }}
         >
             <Text

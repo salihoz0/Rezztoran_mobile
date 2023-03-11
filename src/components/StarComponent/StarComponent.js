@@ -1,9 +1,9 @@
-import {View, Text} from 'react-native';
+import { View, Text } from 'react-native';
 import React from 'react';
 import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './StarComponentStyles';
-const StarComponent = ({count, select}) => {
+const StarComponent = ({ count, select, comment }) => {
   return select == 'star' ? (
     <View>
       <Stars
@@ -12,16 +12,16 @@ const StarComponent = ({count, select}) => {
         half={true}
         disabled={true}
         starSize={50}
-        fullStar={<Icon name="star" size={20} style={[styles.myStarStyle]} />}
+        fullStar={<Icon name="star" size={comment ? 10 : 20} style={[styles.myStarStyle]} />}
         emptyStar={
           <Icon
             name="star-o"
-            size={20}
+            size={comment ? 10 : 20}
             style={[styles.myStarStyle, styles.myEmptyStarStyle]}
           />
         }
         halfStar={
-          <Icon size={20} name="star-half-empty" style={[styles.myStarStyle]} />
+          <Icon size={comment ? 10 : 20} name="star-half-empty" style={[styles.myStarStyle]} />
         }
       />
     </View>
