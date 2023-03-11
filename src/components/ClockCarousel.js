@@ -1,32 +1,22 @@
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 
-const ClockCarousel = () => {
-    const [selectedHour, setSelectedHour] = useState(null);
+const ClockCarousel = (props) => {
+    const { hours, selectedHour, setSelectedHour } = props
 
-    const hours = [
-        { id: 1, label: '00:00' },
-        { id: 2, label: '13:00' },
-        { id: 3, label: '14:00' },
-        { id: 4, label: '15:00' },
-        { id: 5, label: '16:00' },
-        { id: 6, label: '17:00' },
-        { id: 7, label: '18:00' },
-        { id: 8, label: '19:00' },
-        { id: 9, label: '20:00' },
-        { id: 10, label: '21:00' },
-        { id: 11, label: '22:00' },
-        { id: 12, label: '23:00' },
-    ];
+    const setSelectedHourHandler = (reserv, hour) => {
+        reserv === false && setSelectedHour(hour)
+    }
 
     const HourItem = ({ hour }) => {
         const isSelected = selectedHour && selectedHour.id === hour.id;
         return (
             <TouchableOpacity
-                onPress={() => setSelectedHour(hour)}
-                style={[styles.hourItem, isSelected && styles.selectedHourItem]}
+                onPress={() => setSelectedHourHandler(hour.reserv, hour)}
+                style={[styles.hourItem, isSelected && styles.selectedHourItem, hour.reserv === true && styles.disabledHour]}
+                disabled={hour.reserv}
             >
-                <Text style={[styles.hourText, isSelected && styles.selectedHourText]}>{hour.label}</Text>
+                <Text style={[styles.hourText, isSelected && styles.selectedHourText, , hour.reserv === true && styles.disabledHourText]}>{hour.label}</Text>
             </TouchableOpacity>
         );
     };
@@ -75,5 +65,14 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontFamily: 'Inter-Bold',
         color: '#FFFFFF'
+    },
+    disabledHour: {
+        borderWidth: 2,
+        borderColor: 'gray',
+        backgroundColor: '#D3D3D3'
+    },
+    disabledHourText: {
+        color: 'gray',
+        fontFamily: 'Inter-Medium'
     }
 })
