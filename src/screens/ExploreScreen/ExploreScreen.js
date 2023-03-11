@@ -76,9 +76,10 @@ const ExploreScreen = () => {
                     borderColor: 'rgb(217, 213, 169)',
                     borderRadius: 10,
                     backgroundColor: 'rgb(242, 238, 220)',
+                    width: 170
                   }}>
                   <FastImage
-                    style={{ width: 170, height: 170, borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
+                    style={{ width: '100%', height: 170, borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
                     source={{
                       uri: `${imgURL}`,
                       priority: FastImage.priority.normal,
@@ -109,7 +110,7 @@ const ExploreScreen = () => {
               return (
                 <TouchableOpacity style={{ width: 170, height: 170, marginHorizontal: 10, borderColor: 'rgb(217, 213, 169)', borderWidth: 1, backgroundColor: 'rgb(242, 238, 220)', borderRadius: 10 }} onPress={() => { detailHandler(imgURL, title, city, star, price, id) }}>
                   <FastImage
-                    style={{ width: 170, height: 100, borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
+                    style={{ width: '100%', height: 100, borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
                     source={{
                       uri: `${imgURL}`,
                       priority: FastImage.priority.normal,
