@@ -8,13 +8,14 @@ import {
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Card } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import QRMenu from '../../components/QRMenu';
 import ClockCarousel from '../../components/ClockCarousel';
 import Header from '../../components/Header'
 import FastImage from 'react-native-fast-image';
 import { hours } from './tmpData'
+import Menu_data from '../../../assets/Data/Menu_data.json'
+import Menu from './Menu'
 
 const RestorantDetailScreen = props => {
   const { imgURL, title, city, star, price, id } = props.data
@@ -157,7 +158,32 @@ const RestorantDetailScreen = props => {
             </View>
           </View>
           <ClockCarousel hours={hours} selectedHour={selectedHour} setSelectedHour={setSelectedHour} />
-          <View style={{
+          <Menu data={Menu_data} />
+        </ScrollView>
+      </SafeAreaView>
+    )
+  }
+
+  return (
+    <>
+      {page === 0 && <HomePage />}
+      {page === 1 && <QRMenu goBack={() => setPage(0)} />}
+    </>
+  )
+};
+
+export default RestorantDetailScreen;
+
+/*
+Sorunlar
+- bu store'dan rezervasyonların çekilmesi ve Rezervasyonlarım sayfasında görüntülenmesi
+- Saatin çalışma saatlerine uygun olması gerekmesi (BACKEND ile ortak)
+- Yorumlar ve Menu kısımlarının tasarlanması (Bence Menu kısmının ayrıntılı olmasına gerek yok)
+*/
+
+/*
+
+<View style={{
             marginTop: 10,
             backgroundColor: 'rgb(240, 238, 230)',
             borderColor: 'rgb(217, 213, 169)',
@@ -179,40 +205,5 @@ const RestorantDetailScreen = props => {
             }}>
               <Text>Yorumlar</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{
-              alignItems: 'center',
-              borderColor: 'rgb(237, 176, 7)',
-              borderWidth: 1,
-              paddingHorizontal: 5,
-              paddingVertical: 5,
-              borderRadius: 5,
-              backgroundColor: 'rgb(240, 238, 230)'
-            }}>
-              <Text>Menü</Text>
-            </TouchableOpacity>
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    )
-  }
-
-  return (
-    <>
-      {page === 0 && <HomePage />}
-      {page === 1 && <QRMenu goBack={() => setPage(0)} />}
-    </>
-  )
-};
-
-export default RestorantDetailScreen;
-
-/*
-Sorunlar
-- Rezervasyon yap butonuna tıklayınca restorana not gönderip rezerve yapması ve store'a kaydetmesi
-bu store'dan rezervasyonların çekilmesi ve Rezervasyonlarım sayfasında görüntülenmesi
-- QR Kod sayfasının tasarlanması
-- Saatin çalışma saatlerine uygun olması gerekmesi (BACKEND ile ortak)
-- uygun olan saatlerin farklı renkte gösterilmesi ve o saati seçince yeşil renkte yanması
-- Yorumlar ve Menu kısımlarının tasarlanması (Bence Menu kısmının ayrıntılı olmasına gerek yok)
-- Stillendirmeler.
 */

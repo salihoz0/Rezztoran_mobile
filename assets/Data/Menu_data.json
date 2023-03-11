@@ -5,7 +5,7 @@
     "position": 1,
     "description": "Kemik iliği ve Süt ile Pişirilmiş, Muskat ile Tatlandırılmış.",
     "images": [],
-    "category_name": "Çorbalar"
+    "category_name": "corba"
   },
   {
     "id": "94301",
@@ -13,7 +13,7 @@
     "position": 2,
     "description": "Vişneli, Zeytin Yağlı Yaprak Sarması.",
     "images": [],
-    "category_name": "Soğuk İştah Açıcılar"
+    "category_name": "ara"
   },
   {
     "id": "94304",
@@ -21,7 +21,7 @@
     "position": 3,
     "description": "Bezelye, Havuç, Patates ve Dere Otu.",
     "images": [],
-    "category_name": "Soğuk İştah Açıcılar"
+    "category_name": "ara"
   },
   {
     "id": "94324",
@@ -29,7 +29,7 @@
     "position": 5,
     "description": "Domates, Salatalık, Kırmızı ve Yeşil Biber.",
     "images": [],
-    "category_name": "Salatalar"
+    "category_name": "salata"
   },
   {
     "id": "94325",
@@ -37,7 +37,7 @@
     "position": 6,
     "description": "Pekmez, Defne Yaprağı, Sarımsak ile Tatlandırılmış",
     "images": [],
-    "category_name": "Salatalar"
+    "category_name": "salata"
   },
   {
     "id": "94307",
@@ -45,7 +45,7 @@
     "position": 4,
     "description": "Biber Salçası, Bal, Zeytin Yağı, Taze Reyhan.",
     "images": [],
-    "category_name": "Ana Yemekler"
+    "category_name": "ana"
   },
   {
     "id": "94310",
@@ -53,7 +53,7 @@
     "position": 5,
     "description": "Zırhla Çekilmiş Dana Eti, Pirinç, Badem, Kuş Üzümü, Çam Fıstığı, Baharatlar.",
     "images": [],
-    "category_name": "Ana Yemekler"
+    "category_name": "ana"
   },
   {
     "id": "94313",
@@ -61,7 +61,7 @@
     "position": 6,
     "description": "Güveçte Kuzu eti, Kuru Kayısı, Arpacık Soğanı, Kuru Üzüm, İncir, Bal ve Badem.",
     "images": [],
-    "category_name": "Ana Yemekler"
+    "category_name": "ana"
   },
   {
     "id": "94316",
@@ -69,7 +69,7 @@
     "position": 7,
     "description": "Kişniş, Defne Yaprağı, Domates, Yeşil Biber, Dere Otu, Limon.",
     "images": [],
-    "category_name": "Ana Yemekler"
+    "category_name": "ana"
   },
   {
     "id": "94220",
@@ -77,7 +77,7 @@
     "position": 1,
     "description": "Safran ile tatlandırılmış Patlıcan, Pirinç, Bulgur, Tarçın, Kakule, Kuru Nane.",
     "images": [],
-    "category_name": "Ana Yemekler"
+    "category_name": "ana"
   },
   {
     "id": "94321",
@@ -85,7 +85,7 @@
     "position": 2,
     "description": "Sote Tavuk, Tarçın, Tane Badem, Beğendi eşliğinde.",
     "images": [],
-    "category_name": "Ana Yemekler"
+    "category_name": "ana"
   },
   {
     "id": "94322",
@@ -93,7 +93,7 @@
     "position": 3,
     "description": "Köz Patlıcan ile",
     "images": [],
-    "category_name": "Ana Yemekler"
+    "category_name": "ana"
   },
   {
     "id": "94323",
@@ -101,7 +101,7 @@
     "position": 4,
     "description": "Leblebi Unu, Şeker, Tereyağ ve Süt.",
     "images": [],
-    "category_name": "Tatlılar"
+    "category_name": "tatli"
   },
   {
     "id": "94326",
@@ -109,6 +109,6 @@
     "position": 7,
     "description": "Damla Sakızlı ve Gül Suyu Puding, Badem, Antep Fıstığı & Mevsim Meyveleri.",
     "images": [],
-    "category_name": "Tatlılar"
+    "category_name": "tatli"
   }
 ]

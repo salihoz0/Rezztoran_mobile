@@ -7,6 +7,7 @@ import { sortMenu, filterMenu, numOfPeopleMenu } from './sort-filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSort, setFilter, setNumOfPeople, setReservationDate, resetSearchEngineStore } from '../../store/searchEngineStore'
 import Calendar from '../Calendar'
+import Header from '../Header';
 
 const initialState = {
   location: false,
@@ -113,22 +114,7 @@ const SortMenu = props => {
 
   return (
     <SafeAreaView edges={['bottom']} style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
-      <View style={{ justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 25, alignItems: 'center', marginVertical: 10 }}>
-        <Text style={{ fontSize: 30, fontFamily: 'Poppins-Medium', color: 'black' }}>Filtrele</Text>
-        <View style={{ flexDirection: 'row', width: 100, alignItems: 'center', justifyContent: 'space-evenly' }}>
-          <TouchableOpacity onPress={goBack}>
-            <Icon name="backspace" size={25} style={{ color: 'rgb(212, 123, 51)' }} />
-          </TouchableOpacity>
-        </View>
-      </View>
-      <View
-        style={{
-          borderWidth: 0.5,
-          borderColor: '#E1E1E1',
-          marginBottom: 12,
-          alignItems: "center",
-        }}
-      />
+      <Header title='Filtrele' firstIconName='backspace' onPress1={goBack} />
       <ScrollView showsVerticalScrollIndicator={false} style={{ marginBottom: 60 }}>
         <MenuButton onPress={() => dispatchAccordionAction({ type: 'TOGGLE_LOCATION' })} iconCondition={accordionState.location} title='Lokasyon' />
         {
@@ -217,3 +203,39 @@ const SortMenu = props => {
 
 
 export default SortMenu;
+
+/*
+<TouchableOpacity onPress={onPress}>
+        <View
+          style={{
+            paddingVertical: 16,
+            paddingHorizontal: 24,
+            borderBottomWidth: 1,
+            borderColor: '#F3F3F3',
+            justifyContent: 'center',
+          }}>
+          <Text
+            style={{
+              lineHeight: 20,
+              fontFamily: 'Poppins-Medium',
+              fontSize: 16,
+              letterSpacing: 0.2,
+              color: '#000',
+            }}>
+            {title}
+          </Text>
+          <Icon
+            style={{
+              position: 'absolute',
+              right: 24,
+            }}
+            name={
+              iconCondition
+                ? 'arrow-down'
+                : 'arrow-right'}
+            size={20}
+            color='rgb(212, 123, 51)'
+          />
+        </View>
+      </TouchableOpacity>
+*/

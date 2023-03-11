@@ -15,7 +15,6 @@ const SearchEngine = (props) => {
   const dispatch = useDispatch()
   const [search, setSearch] = useState('')
   const [searchEngineData, setSearchEngineData] = useState(data)
-  // const [clearControl, setClearControl] = useState(nullControl)
   const [page, setPage] = useState(0)
   const nullControl = sortData === null && filterData === null
 
