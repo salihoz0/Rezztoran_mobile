@@ -1,18 +1,18 @@
-const REZZTORAN_AUTH_SERVICE = "http://192.168.1.40:8080/api/auth" // cmd ipconfig yazıp kendi ip adresini yapıştır
-const REZZTORAN_USER_SERVICE = "http://192.168.1.40:8080/api/user"
-const REZZTORAN_RESTAURANT_SERVICE = "http://192.168.1.40:8080/api/restaurant"
-const REZZTORAN_MENU_SERVICE = "http://192.168.1.40:8080/api/menu"
-const REZZTORAN_CATEGORY_SERVICE = "http://192.168.1.40:8080/api/category"
+const REZZTORAN_AUTH_SERVICE = "http://192.168.68.104:8082/api/auth" // cmd ipconfig yazıp kendi ip adresini yapıştır
+const REZZTORAN_USER_SERVICE = "http://192.168.68.104:8082/api/user"
+const REZZTORAN_RESTAURANT_SERVICE = "http://192.168.68.104:8082/api/restaurant"
+const REZZTORAN_MENU_SERVICE = "http://192.168.68.104:8082/api/menu"
+const REZZTORAN_CATEGORY_SERVICE = "http://192.168.68.104:8082/api/category"
 
 export const END_POINTS = {
-    USER_CONTROLLER:{
+    USER_CONTROLLER: {
         POST_RESET_PASSWORD: `${REZZTORAN_USER_SERVICE}/reset-password`,
         DELETE_USER: `${REZZTORAN_USER_SERVICE}/:id`
     },
     AUTH_CONTROLLER: {
         LOGIN: `${REZZTORAN_AUTH_SERVICE}/login`,
         REGISTER: `${REZZTORAN_AUTH_SERVICE}/register`,
-        ME:`${REZZTORAN_AUTH_SERVICE}/me`
+        ME: `${REZZTORAN_AUTH_SERVICE}/me`
     },
     RESTAURANT_CONTROLLER: {
         GET_RESTAURANT: `${REZZTORAN_RESTAURANT_SERVICE}`,

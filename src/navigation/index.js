@@ -110,7 +110,7 @@ const Navigation = () => {
 
   return (
     <NavigationContainer>
-      {isLoggedIn ? <AuthNavigation /> : <StackNavigation />}
+      {!isLoggedIn ? <AuthNavigation /> : <StackNavigation />}
     </NavigationContainer>
   )
 

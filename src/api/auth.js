@@ -1,9 +1,9 @@
 import { END_POINTS } from "./end-points";
-import  {useMutation, useQuery }from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 
 //=============== LOGIN =======================
-const postLogin = async (values={username, password}) => {
+const postLogin = async (values = { username, password }) => {
     const userData = {
         username: values.username,
         password: values.password
@@ -17,7 +17,7 @@ export const useLogin = () => {
 }
 
 //================= REGISTER ======================
-const postRegister = async (values = {username, mail, password, name, surname}) => {
+const postRegister = async (values = { username, mail, password, name, surname }) => {
     const userData = {
         username: values.username,
         mail: values.mail,
@@ -40,6 +40,6 @@ const getMe = async () => {
 }
 
 export const useGetMe = () => {
-    const {data, refetch, isLoading} = useQuery(['getMe'], () => getMe())
-    return {data, refetch, isLoading}
+    const { data, refetch, isLoading } = useQuery(['getMe'], () => getMe())
+    return { data, refetch, isLoading }
 }
