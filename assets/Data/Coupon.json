@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "restoran": "Elit Restorant",
+        "imgURL": "https://www.thegalataistanbul.com/wp-content/uploads/sites/73/2021/03/Mesai7-1500x999.jpg",
+        "coupon": " İlk rezervasyona %20 indirim",
+        "couponCode": "ALPERENKAPUSUZ",
+        "Icon":"shopping-sale"
+    },
+    {
+        "id": 2,
+        "restoran": "Osteria Francescana",
+        "imgURL": "https://www.mewithmysuitcase.com/wp-content/uploads/2019/03/OsteriaFrancescana28529.jpg",
+        "coupon": " Nisan ayı boyunca 100₺ indirim",
+        "couponCode": "SALİHÖZ",
+        "Icon":"shopping-sale"
+
+    },
+    {
+        "id": 3,
+        "restoran": "Mikla",
+        "coupon": "Chefin Menüsünü alana kavunlu pasta hediye",
+        "imgURL": "https://i.lezzet.com.tr/images-xxlarge-secondary/michelin-yildizli-mikla-restoran-be986372-d507-45ea-b8d0-2cb85e2aa828",
+        "couponCode": "GÜRKANUÇAR",
+        "Icon":"shopping-package"
+
+    },
+    {
+        "id": 4,
+        "restoran": "Zuma",
+        "imgURL": "https://fastly.4sqi.net/img/general/558x200/2025969_N1wU5V_dN82JX-SGc7Xz0xwNPLrivFVgperzef6mo_g.jpg",
+        "coupon": " İlk rezervasyona %12 indirim",
+        "couponCode": "VADIMKINIABEV",
+        "Icon":"shopping-sale"
+
+    }
+]
