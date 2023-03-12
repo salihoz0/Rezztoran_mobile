@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
 import Favorites from './Favorites';
 import SearchEngine from './SearchEngine';
-import data from '../../../assets/Data/Restorant_data.json';
+// import data from '../../../assets/Data/Restorant_data.json';
 // import { useNavigation } from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -13,6 +13,8 @@ import RestorantDetail from '../../screens/RestorantDetailScreen/RestorantDetail
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../store/favoritesStore'
 import Header from '../../components/Header';
+import { useGetRestaurant } from '../../api/restaurant';
+
 
 const ExploreScreen = () => {
   const [page, setPage] = useState(0);
@@ -27,9 +29,11 @@ const ExploreScreen = () => {
   const dispatch = useDispatch();
   const initialState = useSelector(state => state.favoritesStore)
   console.log('init: ', initialState)
+  const { data: restaurant } = useGetRestaurant()
 
-  const handleFavoriteButtonPress = (id, title, city, price, imgURL) => {
-    isFavorite ? dispatch(removeFavorite({ id, title, city, price, imgURL })) : dispatch(addFavorite({ id, title, city, price, imgURL }));
+
+  const handleFavoriteButtonPress = (id, restaurantName, city, price, restaurantImage) => {
+    isFavorite ? dispatch(removeFavorite({ id, restaurantName, city, price, restaurantImage })) : dispatch(addFavorite({ id, restaurantName, city, price, restaurantImage }));
     setIsFavorite(!isFavorite);
   }
 
@@ -37,8 +41,8 @@ const ExploreScreen = () => {
     return initialState.some(item => item.id === id);
   }
 
-  const detailHandler = (imgURL, title, city, star, price, id) => {
-    setResDetailData({ imgURL, title, city, star, price, id })
+  const detailHandler = (restaurantImage, restaurantName, city, star, price, id) => {
+    setResDetailData({ restaurantImage, restaurantName, city, star, price, id })
     setPage(4)
   }
 
@@ -63,10 +67,10 @@ const ExploreScreen = () => {
             horizontal
             removeClippedSubviews={false}
             scrollEventThrottle={5}
-            data={data}
+            data={restaurant}
             showsHorizontalScrollIndicator={false}
             renderItem={({ item }) => {
-              const { imgURL, title, city, star, price, id } = item
+              const { restaurantImage, restaurantName, city, star, price, id } = item
               return (
                 <View
                   style={{
@@ -81,15 +85,15 @@ const ExploreScreen = () => {
                   <FastImage
                     style={{ width: '100%', height: 170, borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
                     source={{
-                      uri: `${imgURL}`,
+                      uri: `${restaurantImage}`,
                       priority: FastImage.priority.normal,
                     }}
                     resizeMode={FastImage.resizeMode.cover}
                   />
-                  <Text numberOfLines={1} ellipsizeMode="tail" style={{ color: '#000000', fontFamily: 'Poppins-Medium', margin: 10, maxWidth: 160 }}>{title}</Text>
+                  <Text numberOfLines={1} ellipsizeMode="tail" style={{ color: '#000000', fontFamily: 'Poppins-Medium', margin: 10, maxWidth: 160 }}>{restaurantName}</Text>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginRight: 5, marginBottom: 5 }}>
                     <Text style={{ color: '#000000', fontFamily: 'Poppins-light', marginLeft: 10 }}>{city}</Text>
-                    <TouchableOpacity onPress={() => { detailHandler(imgURL, title, city, star, price, id) }}>
+                    <TouchableOpacity onPress={() => { detailHandler(restaurantImage, restaurantName, city, star, price, id) }}>
                       <Icon name="calendar-arrow-right" size={30} style={{ color: 'rgb(237, 176, 7)' }} />
                     </TouchableOpacity>
                   </View>
@@ -102,22 +106,22 @@ const ExploreScreen = () => {
           <Text style={{ paddingTop: 10, paddingLeft: 10, fontFamily: 'Poppins-Medium', fontSize: 15, color: '#000000', paddingBottom: 10 }}>Önerilenler</Text>
           <FlatList
             horizontal
-            data={data}
+            data={restaurant}
             showsHorizontalScrollIndicator={false}
             removeClippedSubviews={false}
             renderItem={({ item }) => {
-              const { imgURL, title, city, star, price, id } = item
+              const { restaurantImage, restaurantName, city, star, price, id } = item
               return (
-                <TouchableOpacity style={{ width: 170, height: 170, marginHorizontal: 10, borderColor: 'rgb(217, 213, 169)', borderWidth: 1, backgroundColor: 'rgb(242, 238, 220)', borderRadius: 10 }} onPress={() => { detailHandler(imgURL, title, city, star, price, id) }}>
+                <TouchableOpacity style={{ width: 170, height: 170, marginHorizontal: 10, borderColor: 'rgb(217, 213, 169)', borderWidth: 1, backgroundColor: 'rgb(242, 238, 220)', borderRadius: 10 }} onPress={() => { detailHandler(restaurantImage, restaurantName, city, star, price, id) }}>
                   <FastImage
                     style={{ width: '100%', height: 100, borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
                     source={{
-                      uri: `${imgURL}`,
+                      uri: `${restaurantImage}`,
                       priority: FastImage.priority.normal,
                     }}
                     resizeMode={FastImage.resizeMode.cover}
                   />
-                  <Text numberOfLines={1} ellipsizeMode="tail" variant="titleLarge" style={{ fontFamily: 'Poppins-Regular', color: '#000000', fontSize: 15, marginLeft: 10 }}>{title}</Text>
+                  <Text numberOfLines={1} ellipsizeMode="tail" variant="titleLarge" style={{ fontFamily: 'Poppins-Regular', color: '#000000', fontSize: 15, marginLeft: 10 }}>{restaurantName}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 10, paddingHorizontal: 10 }}>
                     <StarComponent count={star} select={'star'} />
                     <StarComponent count={price} />
@@ -136,7 +140,7 @@ const ExploreScreen = () => {
       {page === 0 && <Discover />}
       {page === 1 && <Favorites goBack={goBack} />}
       {page === 2 && <SearchEngine goBack={goBack} />}
-      {page === 3 && <SearchInput goBack={goBack} data={data} />}
+      {page === 3 && <SearchInput goBack={goBack} data={restaurant} />}
       {page === 4 && <RestorantDetail goBack={goBack} data={resDetailData} handleFavoriteButtonPress={handleFavoriteButtonPress} isIdInInitialState={isIdInInitialState} />}
     </View>
   );

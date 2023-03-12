@@ -5,12 +5,12 @@ const favoritesSlice = createSlice({
     initialState: [],
     reducers: {
         addFavorite: (state, action) => {
-            const { id, title, city, price, imgURL } = action.payload;
+            const { id, restaurantName, city, price, restaurantImage } = action.payload;
             const index = state.findIndex(favorite => favorite.id === id);
             if (index !== -1) {
-                state[index] = { id, title, city, price, imgURL };
+                state[index] = { id, restaurantName, city, price, restaurantImage };
             } else {
-                const favorite = { id, title, city, price, imgURL };
+                const favorite = { id, restaurantName, city, price, restaurantImage };
                 state.push(favorite);
             }
         },

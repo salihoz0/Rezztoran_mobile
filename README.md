@@ -30,3 +30,23 @@ git pull origin main
 git pull origin dev-alperen(ornek)
 git push
 git checkout dev-alperen(ornek)
+
+
+# QR kod node_modules ayarı
+yarn add deprecated-react-native-prop-types
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  findNodeHandle,
+  Platform,
+  NativeModules,
+  requireNativeComponent,
+  View,
+  ActivityIndicator,
+  Text,
+  StyleSheet,
+  PermissionsAndroid,
+} from 'react-native';
+import { ViewPropTypes } from 'deprecated-react-native-prop-types'
+import type { FaceFeature } from './FaceDetector';

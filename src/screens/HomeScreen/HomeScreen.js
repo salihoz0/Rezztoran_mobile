@@ -13,7 +13,7 @@ import { useNavigation } from '@react-navigation/native';
 import Carousel from '../../components/Carousel';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../store/favoritesStore'
-import data from '../../../assets/Data/Restorant_data.json';
+import { useGetRestaurant } from '../../api/restaurant';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -21,9 +21,10 @@ const HomeScreen = () => {
   const dispatch = useDispatch();
   const initialState = useSelector(state => state.favoritesStore)
   console.log('init: ', initialState)
+  const { data: restaurant } = useGetRestaurant()
 
-  const handleFavoriteButtonPress = (id, title, city, price, imgURL) => {
-    isFavorite ? dispatch(removeFavorite({ id, title, city, price, imgURL })) : dispatch(addFavorite({ id, title, city, price, imgURL }));
+  const handleFavoriteButtonPress = (id, restaurantName, city, price, restaurantImage) => {
+    isFavorite ? dispatch(removeFavorite({ id, restaurantName, city, price, restaurantImage })) : dispatch(addFavorite({ id, restaurantName, city, price, restaurantImage }));
     setIsFavorite(!isFavorite);
   }
 
@@ -47,7 +48,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
           <Text style={styles.offerText}>Şunlar hoşunuza gidebilir</Text>
         </ImageBackground>
-        <Carousel data={data} handleFavoriteButtonPress={handleFavoriteButtonPress} isIdInInitialState={isIdInInitialState} />
+        <Carousel data={restaurant} handleFavoriteButtonPress={handleFavoriteButtonPress} isIdInInitialState={isIdInInitialState} />
       </View>
     </SafeAreaView>
   );

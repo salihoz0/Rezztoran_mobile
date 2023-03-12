@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import SortMenu from '../../components/SortMenu'
 import { useDispatch, useSelector } from 'react-redux';
-import data from '../../../assets/Data/Restorant_data.json'
+// import data from '../../../assets/Data/Restorant_data.json'
 import RestaurantCard from '../../components/RestaurantCard';
 import { resetSort, resetFilter } from '../../store/searchEngineStore'
 import Header from '../../components/Header';
+import { useGetRestaurant } from '../../api/restaurant';
 
 
 const SearchEngine = (props) => {
@@ -17,6 +18,8 @@ const SearchEngine = (props) => {
   const [searchEngineData, setSearchEngineData] = useState(data)
   const [page, setPage] = useState(0)
   const nullControl = sortData === null && filterData === null
+  const { data: data } = useGetRestaurant()
+
 
   useEffect(() => {
     if (nullControl) {
@@ -38,7 +41,7 @@ const SearchEngine = (props) => {
         sortedData.sort((a, b) => b.price - a.price);
         break;
       case "highRated":
-        sortedData.sort((a, b) => b.star - a.star);
+        sortedData.sort((a, b) => b.starCount - a.starCount);
         break;
       case "mostReviewed":
         sortedData.sort((a, b) => b.most_rated - a.most_rated);
@@ -63,11 +66,11 @@ const SearchEngine = (props) => {
   };
 
   const renderItem = ({ item }) => {
-    const { imgURL, title, city, price, star, most_rated } = item
+    const { restaurantImage, restaurantName, city, price, star, most_rated } = item
     return (
       <RestaurantCard
-        imgURL={imgURL}
-        title={title}
+        imgURL={restaurantImage}
+        title={restaurantName}
         city={city}
         price={price}
         star={star}

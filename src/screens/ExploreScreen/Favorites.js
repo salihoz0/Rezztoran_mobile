@@ -15,8 +15,8 @@ const Favorites = (props) => {
   const initialState = useSelector(state => state.favoritesStore)
   console.log('init: ', initialState)
 
-  const handleFavoriteButtonPress = (id, title, city, price, imgURL) => {
-    isFavorite ? dispatch(removeFavorite({ id, title, city, price, imgURL })) : dispatch(addFavorite({ id, title, city, price, imgURL }));
+  const handleFavoriteButtonPress = (id, restaurantName, city, price, restaurantImage) => {
+    isFavorite ? dispatch(removeFavorite({ id, restaurantName, city, price, restaurantImage })) : dispatch(addFavorite({ id, restaurantName, city, price, restaurantImage }));
     setIsFavorite(!isFavorite);
   }
 
@@ -25,11 +25,11 @@ const Favorites = (props) => {
   }
 
   const renderItem = ({ item }) => {
-    const { imgURL, title, city, id, price } = item
+    const { restaurantImage, restaurantName, city, id, price } = item
     return (
       <RestaurantCard
-        imgURL={imgURL}
-        title={title}
+        imgURL={restaurantImage}
+        title={restaurantName}
         city={city}
         id={id}
         price={price}

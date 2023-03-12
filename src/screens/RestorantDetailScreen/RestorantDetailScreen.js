@@ -20,13 +20,11 @@ import Comment from './Comment';
 //import Comment2 from './Comment2';
 
 const RestorantDetailScreen = props => {
-  const { imgURL, title, city, star, price, id } = props.data
+  const { restaurantImage, restaurantName, city, star, price, id } = props.data
   const { goBack, handleFavoriteButtonPress, isIdInInitialState } = props
   const navigation = useNavigation();
   const [page, setPage] = useState(0)
   const [selectedHour, setSelectedHour] = useState(null)
-
-  console.log(selectedHour);
 
   return (
     <SafeAreaView
@@ -51,12 +49,12 @@ const RestorantDetailScreen = props => {
               borderTopRightRadius: 5
             }}
             source={{
-              uri: `${imgURL}`,
+              uri: `${restaurantImage}`,
               priority: FastImage.priority.normal,
             }}
             resizeMode={FastImage.resizeMode.cover}
           >
-            <TouchableOpacity style={{ position: 'absolute', right: 10, alignItems: 'center', top: 10, zIndex: 2 }} onPress={() => { handleFavoriteButtonPress(id, title, city, price, imgURL) }}>
+            <TouchableOpacity style={{ position: 'absolute', right: 10, alignItems: 'center', top: 10, zIndex: 2 }} onPress={() => { handleFavoriteButtonPress(id, restaurantName, city, price, restaurantImage) }}>
               {
                 isIdInInitialState(id) ? <Icon name="heart" size={30} style={{ color: 'rgb(237, 176, 7)', backgroundColor: '#FFFFFF', paddingHorizontal: 5, paddingVertical: 5, borderRadius: 20 }} /> : <Icon name="heart-outline" size={30} style={{ color: 'rgb(237, 176, 7)', backgroundColor: '#FFFFFF', paddingHorizontal: 5, paddingVertical: 5, borderRadius: 20 }} />
               }
@@ -70,7 +68,7 @@ const RestorantDetailScreen = props => {
                 color: 'black',
                 marginTop: 10,
                 width: 200
-              }}>{title}</Text>
+              }}>{restaurantName}</Text>
               <Text style={{
                 fontSize: 15,
                 fontFamily: 'Poppins-Medium',
