@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../store/favoritesStore'
 import Header from '../../components/Header';
 import { useGetRestaurant } from '../../api/restaurant';
-
+import { useGetCategory } from '../../api/category'
 
 const ExploreScreen = () => {
   const [page, setPage] = useState(0);
@@ -28,8 +28,8 @@ const ExploreScreen = () => {
   const [isFavorite, setIsFavorite] = useState(false)
   const dispatch = useDispatch();
   const initialState = useSelector(state => state.favoritesStore)
-  console.log('init: ', initialState)
   const { data: restaurant } = useGetRestaurant()
+  const { data: category } = useGetCategory()
 
 
   const handleFavoriteButtonPress = (id, restaurantName, city, price, restaurantImage) => {
@@ -93,8 +93,9 @@ const ExploreScreen = () => {
                   <Text numberOfLines={1} ellipsizeMode="tail" style={{ color: '#000000', fontFamily: 'Poppins-Medium', margin: 10, maxWidth: 160 }}>{restaurantName}</Text>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginRight: 5, marginBottom: 5 }}>
                     <Text style={{ color: '#000000', fontFamily: 'Poppins-light', marginLeft: 10 }}>{city}</Text>
-                    <TouchableOpacity onPress={() => { detailHandler(restaurantImage, restaurantName, city, star, price, id) }}>
-                      <Icon name="calendar-arrow-right" size={30} style={{ color: 'rgb(237, 176, 7)' }} />
+                    <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} onPress={() => { detailHandler(restaurantImage, restaurantName, city, star, price, id) }}>
+                      <Text style={{ color: 'rgb(237, 176, 7)', fontSize: 13 }} >Detaya Git </Text>
+                      <Icon name='chevron-right' size={17} style={{ color: 'rgb(237, 176, 7)' }} />
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -103,28 +104,41 @@ const ExploreScreen = () => {
           />
         </View>
         <View style={{ marginHorizontal: 10, marginTop: 5 }}>
-          <Text style={{ paddingTop: 10, paddingLeft: 10, fontFamily: 'Poppins-Medium', fontSize: 15, color: '#000000', paddingBottom: 10 }}>Önerilenler</Text>
+          <Text style={{ paddingTop: 10, paddingLeft: 10, fontFamily: 'Poppins-Medium', fontSize: 15, color: '#000000', paddingBottom: 10 }}>Kategoriler</Text>
           <FlatList
             horizontal
-            data={restaurant}
+            data={category}
             showsHorizontalScrollIndicator={false}
             removeClippedSubviews={false}
             renderItem={({ item }) => {
-              const { restaurantImage, restaurantName, city, star, price, id } = item
+              const { categoryImage, categoryName } = item
               return (
-                <TouchableOpacity style={{ width: 170, height: 170, marginHorizontal: 10, borderColor: 'rgb(217, 213, 169)', borderWidth: 1, backgroundColor: 'rgb(242, 238, 220)', borderRadius: 10 }} onPress={() => { detailHandler(restaurantImage, restaurantName, city, star, price, id) }}>
+                <TouchableOpacity style={{ width: 156, height: 152, marginRight: 12, borderColor: 'rgb(217, 213, 169)', borderWidth: 1, backgroundColor: 'rgb(242, 238, 220)', borderRadius: 12 }} >
                   <FastImage
-                    style={{ width: '100%', height: 100, borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
+                    style={{ width: 156, height: 152, borderRadius: 10 }}
                     source={{
-                      uri: `${restaurantImage}`,
+                      uri: `${categoryImage}`,
                       priority: FastImage.priority.normal,
                     }}
                     resizeMode={FastImage.resizeMode.cover}
                   />
-                  <Text numberOfLines={1} ellipsizeMode="tail" variant="titleLarge" style={{ fontFamily: 'Poppins-Regular', color: '#000000', fontSize: 15, marginLeft: 10 }}>{restaurantName}</Text>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 10, paddingHorizontal: 10 }}>
-                    <StarComponent count={star} select={'star'} />
-                    <StarComponent count={price} />
+                  <View
+                    style={{
+                      position: "relative",
+                      bottom: 25,
+                      left: 12,
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontFamily: 'Inter-Bold',
+                        fontSize: 16,
+                        lineHeight: 18,
+                        letterSpacing: 0.2,
+                        color: "#FFFFFF",
+                        marginBottom: 12,
+                      }}
+                    >{categoryName}</Text>
                   </View>
                 </TouchableOpacity>
               );
