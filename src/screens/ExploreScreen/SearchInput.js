@@ -10,18 +10,18 @@ const SearchInput = (props) => {
     const [filter, setFilter] = useState('')
 
     const filterHandler = () => {
-        return data.filter(item => item.title.toLowerCase().includes(filter.toLowerCase()))
+        return data.filter(item => item.restaurantName.toLowerCase().includes(filter.toLowerCase()))
     }
 
     const renderItem = ({ item }) => {
-        const { imgURL, title, city, price, star, most_rated } = item
+        const { restaurantImage, restaurantName, city, price, starCount, most_rated } = item
         return (
             <RestaurantCard
-                imgURL={imgURL}
-                title={title}
+                imgURL={restaurantImage}
+                title={restaurantName}
                 city={city}
                 price={price}
-                star={star}
+                star={starCount}
                 most_rated={most_rated}
             />
         )

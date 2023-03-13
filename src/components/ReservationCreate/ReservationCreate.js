@@ -1,103 +1,131 @@
 import React, {useState} from 'react';
-import {
-  View,
-  ImageBackground,
-  Text,
-  Pressable,
-  TextInput,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {SelectList} from 'react-native-dropdown-select-list';
-import backgr from '../../../assets/images/arkaplan.png';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import data from '../../../assets/Data/NumberOfPeople_data.json';
-import moment from 'moment';
+import {hours} from '../../screens/RestorantDetailScreen/tmpData';
+import {persons} from './tmpPersons';
+import {useDispatch, useSelector} from 'react-redux';
 import styles from './ReservationCreateStyles';
+import ClockCarousel from '../ClockCarousel';
+import Icon1 from 'react-native-vector-icons/Fontisto';
+import {Button} from 'react-native-paper';
+import couponData from '../../../assets/Data/Coupon.json';
+import {
+  setSort,
+  setFilter,
+  setNumOfPeople,
+  setReservationDate,
+  resetSearchEngineStore,
+} from '../../store/searchEngineStore';
+
+import Calendar from '../Calendar';
+import {ScrollView} from 'react-native-gesture-handler';
 const DateTimePicker = () => {
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [selected, setSelected] = useState('2');
-  const [dateData, setDateData] = useState();
+  const [selectedHour, setSelectedHour] = useState(null);
+  const [selectedPersons, setSelectedPersons] = useState(null);
+  const [note, setNote] = useState(' ');
+  const [pressed, setPressed] = useState(false);
+  const [coupon, setCoupon] = useState(' ');
+  const [couponDetail, setcouponDetail] = useState(' ');
+  const [couponDetailCode, setcouponDetailCode] = useState(' ');
+  const {sortData, filterData, numOfPeople, reservationDate} = useSelector(
+    state => state.searchEngineStore,
+  );
+  const dispatch = useDispatch();
 
-  const showDatePicker = () => {
-    setDatePickerVisibility(true);
-  };
-  const handleConfirm = time => {
-    let chosentime = moment(time).format('MMMM Do YYYY, h:mm:ss a');
-    setDateData(chosentime);
-    console.log(chosentime);
-    hideDatePicker();
+  const handleReservationDate = date => {
+    dispatch(
+      setReservationDate({
+        reservationDate: date,
+      }),
+    );
   };
 
-  const hideDatePicker = () => {
-    setDatePickerVisibility(false);
-  };
   const reservationCreate = () => [
     //verileri alıp rezervasyonlarım sayfasına gönder
   ];
-  const placeholder = () => {
-    return (
-      <View style={styles.numberTextContain}>
-          <Icon name="person-add" size={30} color={'black'} />
-          <Text style={styles.numberText}>  {selected} Kişi</Text>
-       
-      </View>
-    );
+
+  const couponTest = couponCode => {
+    setPressed(true);
+    const couponDetail = couponData.filter(coupon => {
+      return coupon.couponCode === couponCode;
+    });
+
+    const couponDetailCode = couponDetail.map(coupon => coupon.couponCode);
+    const couponDetailText = couponDetail.map(coupon => coupon.coupon);
+    setcouponDetailCode(couponDetailCode);
+    setcouponDetail(couponDetailText);
   };
+
   return (
-    <ImageBackground source={backgr} style={styles.backgr}>
+    <ScrollView style={styles.container}>
       <View style={styles.container}>
-        <View style={styles.number}>
-          <SelectList
-            search={false}
-            dropdownShown={false}
-            placeholder={placeholder()}
-            defaultOption={1}
-            dropdownTextStyles={{color:'red',fontSize:15,fontWeight:'bold'}}
-            inputStyles={{color:'red',alignSelf:'center'}}
-            boxStyles={{backgroundColor: 'white',}}
-            dropdownStyles={{backgroundColor: 'white'}}
-            setSelected={val => setSelected(val)}
-            save="value"
-            data={data}
-            arrowicon={<Icon name="keyboard-arrow-down" size={30} color={'black'} />}
-            dropdownItemStyles={{marginLeft: 8,borderBottomWidth:0.3,marginRight: 8}}
-          />
-        </View>
+        <Text style={styles.header}>Rezervasyon Yap</Text>
 
         <View>
-          <Pressable onPress={showDatePicker} style={styles.datePick}>
-            <View style={styles.datePickInner}>
-              <Icon name="calendar-today" size={30} color={'black'} />
-              <Text style={styles.datePickText}>
-                {' '}
-                {new Date().getDate()}/{new Date().getMonth()}/
-                {new Date().getFullYear()}{' '}
-              </Text>
-            </View>
-            <Icon name="keyboard-arrow-down" size={30} color={'black'} />
+          <ClockCarousel
+            hours={hours}
+            selectedHour={selectedHour}
+            setSelectedHour={setSelectedHour}
+          />
+          <ClockCarousel
+            hours={persons}
+            selectedHour={selectedPersons}
+            setSelectedHour={setSelectedPersons}
+          />
+          <View ></View>
+          <Calendar
+            style={styles.textinput}
+            handleReservationDate={handleReservationDate}
+            reservationDate={reservationDate}
+          />
 
-            <DateTimePickerModal
-              is24Hour
-              isVisible={isDatePickerVisible}
-              mode="datetime"
-              onConfirm={handleConfirm}
-              onCancel={hideDatePicker}
-            />
-          </Pressable>
           <TextInput
             style={styles.textinput}
             placeholder={'Notunuzu girebilirsiniz'}
             multiline
+            onChangeText={text => setNote(text)}
             autoCapitalize={'sentences'}
           />
+          <View style={styles.coupon}>
+            <View>
+              <TextInput
+                style={styles.textinputCoupon}
+                placeholder={'Kupon kodunu giriniz'}
+                multiline
+                onChangeText={text => setCoupon(text)}
+                autoCorrect={false}
+                autoCapitalize={'characters'}
+              />
+            </View>
+
+            <Icon1 name="ticket" size={25} color="green" />
+          </View>
+          <Button
+            mode="contained"
+            onPress={() => couponTest(coupon)}
+            textColor="black"
+            style={styles.couponButton}>
+            Kupon Doğrula
+          </Button>
+          {pressed ? (
+            couponDetailCode == coupon ? (
+              <Text style={styles.couponCorrect}>{couponDetail}</Text>
+            ) : (
+              <Text style={styles.couponWrong}>Kopun geçersiz</Text>
+            )
+          ) : null}
         </View>
       </View>
-      <TouchableOpacity style={styles.button} onPress={reservationCreate}>
-        <Text style={styles.text}>ONAYLA</Text>
-      </TouchableOpacity>
-    </ImageBackground>
+      <Button
+        mode="contained"
+        style={styles.button}
+        onPress={() => reservationCreate}
+        textColor="black">
+        ONAYLA
+      </Button>
+    </ScrollView>
   );
 };
 
