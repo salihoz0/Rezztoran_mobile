@@ -10,12 +10,12 @@ import ClockCarousel from '../ClockCarousel';
 import Icon1 from 'react-native-vector-icons/Fontisto';
 import {Button} from 'react-native-paper';
 import couponData from '../../../assets/Data/Coupon.json';
+import Header from '../Header';
 import {
   setSort,
   setFilter,
   setNumOfPeople,
   setReservationDate,
-  resetSearchEngineStore,
 } from '../../store/searchEngineStore';
 
 import Calendar from '../Calendar';
@@ -61,18 +61,20 @@ const DateTimePicker = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.container}>
-        <Text style={styles.header}>Rezervasyon Yap</Text>
+      <Header title="Rezervasyon Yap" />
 
         <View>
           <ClockCarousel
             hours={hours}
             selectedHour={selectedHour}
             setSelectedHour={setSelectedHour}
+            
           />
           <ClockCarousel
             hours={persons}
             selectedHour={selectedPersons}
             setSelectedHour={setSelectedPersons}
+            
           />
           <View ></View>
           <Calendar

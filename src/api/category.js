@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 
 //========== GET CATEGORY ============
-const Token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b21pb2thIiwiaXNzIjoicmV6enRvcmFuIiwiZXhwIjoxNjc3ODUwNTE1fQ.QjQJsN-NhrpSyRf5uXVhsE7oCCCiigiSuEb-JyUUDwk';
+const Token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWxpaCIsImlzcyI6InJlenp0b3JhbiIsImV4cCI6MTY3NzkyNDA3NX0.Gaj_w6UJ-ZMkzFcEjeEOrMpU7Ckx7bGGbOf-CoHbOD4';
 const getCategory = async () => {
     const response = await axios.get(END_POINTS.CATEGORY_CONTROLLER.GET_CATEGORY, { headers: { "Authorization": 'Bearer ' + Token } })
     return response.data

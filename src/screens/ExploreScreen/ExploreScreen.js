@@ -20,6 +20,9 @@ const ExploreScreen = () => {
   const [page, setPage] = useState(0);
   // const navigation = useNavigation();
   const [resDetailData, setResDetailData] = useState({
+    detailedAdress:undefined,
+    latitude:undefined,
+    longitude:undefined,
     title: undefined,
     star: undefined,
     price: undefined,
@@ -32,7 +35,7 @@ const ExploreScreen = () => {
   const { data: category } = useGetCategory()
 
 
-  const handleFavoriteButtonPress = (id, restaurantName, city, price, restaurantImage) => {
+  const handleFavoriteButtonPress = (id, restaurantName, city, price, restaurantImage,) => {
     isFavorite ? dispatch(removeFavorite({ id, restaurantName, city, price, restaurantImage })) : dispatch(addFavorite({ id, restaurantName, city, price, restaurantImage }));
     setIsFavorite(!isFavorite);
   }
@@ -41,8 +44,8 @@ const ExploreScreen = () => {
     return initialState.some(item => item.id === id);
   }
 
-  const detailHandler = (restaurantImage, restaurantName, city, star, price, id) => {
-    setResDetailData({ restaurantImage, restaurantName, city, star, price, id })
+  const detailHandler = (restaurantImage, restaurantName,detailedAddress ,latitude,longitude, city, star, price, id) => {
+    setResDetailData({ restaurantImage, restaurantName,detailedAddress, latitude,longitude, city, star, price, id, })
     setPage(4)
   }
 
@@ -70,7 +73,7 @@ const ExploreScreen = () => {
             data={restaurant}
             showsHorizontalScrollIndicator={false}
             renderItem={({ item }) => {
-              const { restaurantImage, restaurantName, city, star, price, id } = item
+              const { restaurantImage, restaurantName,detailedAddress, latitude,longitude, city,star, price, id } = item
               return (
                 <View
                   style={{
@@ -93,7 +96,7 @@ const ExploreScreen = () => {
                   <Text numberOfLines={1} ellipsizeMode="tail" style={{ color: '#000000', fontFamily: 'Poppins-Medium', margin: 10, maxWidth: 160 }}>{restaurantName}</Text>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginRight: 5, marginBottom: 5 }}>
                     <Text style={{ color: '#000000', fontFamily: 'Poppins-light', marginLeft: 10 }}>{city}</Text>
-                    <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} onPress={() => { detailHandler(restaurantImage, restaurantName, city, star, price, id) }}>
+                    <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} onPress={() => { detailHandler(restaurantImage, restaurantName,detailedAddress, latitude,longitude,city, star, price, id,) }}>
                       <Text style={{ color: 'rgb(237, 176, 7)', fontSize: 13 }} >Detaya Git </Text>
                       <Icon name='chevron-right' size={17} style={{ color: 'rgb(237, 176, 7)' }} />
                     </TouchableOpacity>

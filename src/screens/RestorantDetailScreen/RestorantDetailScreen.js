@@ -1,38 +1,46 @@
 import React, {useState} from 'react';
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  SafeAreaView,
-  Dimensions,
-} from 'react-native';
+import {Text, View, TouchableOpacity, SafeAreaView} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useNavigation} from '@react-navigation/native';
-import ClockCarousel from '../../components/ClockCarousel';
 import Header from '../../components/Header';
 import FastImage from 'react-native-fast-image';
-import {hours} from './tmpData';
 import Menu_data from '../../../assets/Data/Menu_data.json';
+import {showLocation} from 'react-native-map-link';
 import Comment_data from '../../../assets/Data/Comment_data.json';
 import Menu from './Menu';
 import Comment from './Comment';
-import {Modal} from 'react-native-paper';
 import ReservationCreate from '../../components/ReservationCreate/ReservationCreate';
 //import Comment2 from './Comment2';
 
 const RestorantDetailScreen = props => {
-  const {restaurantImage, restaurantName, city, star, price, id} = props.data;
+  const {
+    restaurantImage,
+    restaurantName,
+    detailedAddress,
+    latitude,
+    longitude,
+    city,
+    star,
+    price,
+    id,
+  } = props.data;
   const {goBack, handleFavoriteButtonPress, isIdInInitialState} = props;
-  const navigation = useNavigation();
   const [page, setPage] = useState(0);
-  const [selectedHour, setSelectedHour] = useState(null);
   const [visible, setVisible] = useState(false);
-
-  onLocation=()=>{
-    //lokasyon bilgilerini backendedn alıp haritalarda açacak
+  console.log(longitude)
+  const openMap = () => {
+    showLocation({
+      latitude: latitude,
+      longitude: longitude,
+      title: restaurantName,
+      alwaysIncludeGoogle: true,
+      dialogTitle: 'Uygulamada aç',
+      dialogMessage: detailedAddress,
+      cancelText: 'Vazgeç',
+      appsWhiteList: ['google-maps'],
+      directionsMode: 'car',
+    });
   };
-
 
   return (
     <SafeAreaView style={{backgroundColor: '#FFFFFF', flex: 1}}>
@@ -224,11 +232,12 @@ const RestorantDetailScreen = props => {
                 borderWidth: 1,
                 marginHorizontal: 10,
                 alignItems: 'center',
+                justifyContent: 'space-evenly',
                 paddingVertical: 10,
                 borderRadius: 5,
               }}
-              onPress={onLocation()}>
-              <Text>Restorantın Açık adresi</Text>
+              onPress={() => openMap()}>
+              <Text>{detailedAddress}</Text>
             </TouchableOpacity>
             <Menu data={Menu_data} />
             <Comment data={Comment_data} page={page} setPage={setPage} />
@@ -247,3 +256,4 @@ Sorunlar
 - Saatin çalışma saatlerine uygun olması gerekmesi (BACKEND ile ortak)
 - Yorumlar kısımlarının tasarlanması (Bence Menu kısmının ayrıntılı olmasına gerek yok)
 */
+

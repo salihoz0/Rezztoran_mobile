@@ -2,10 +2,10 @@ import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native
 import React, { useState } from 'react'
 
 const ClockCarousel = (props) => {
-    const { hours, selectedHour, setSelectedHour } = props
-
-    const setSelectedHourHandler = (reserv, hour) => {
-        reserv === false && setSelectedHour(hour)
+    const { hours, selectedHour, setSelectedHour } = props          //Alperen knk burada propslar normal props geçirme değil herhalde ben redux kullanmayı bilmiyorum
+                                                                    //burda iki tane daha prop geçir birisi seçilen kişi sayısını tutmak için saatlere yaptığın gibi ,ikincisi                                                     
+    const setSelectedHourHandler = (reserv, hour) => {              //selected gibi birşey geçir,  bu değer text değer olacak ve 2 kişi yazan yerdeki kişi yerine kullancaz  
+        reserv === false && setSelectedHour(hour)                   //veya saat olacak  mesela {selected}{selectedHour} yani saat 10.30 veya {selectedPersons}{selected} yani  5 kişi
     }
 
     const HourItem = ({ hour }) => {
