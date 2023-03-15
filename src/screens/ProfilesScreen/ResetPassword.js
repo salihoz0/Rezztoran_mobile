@@ -10,6 +10,8 @@ import { usePostResetUserPassword, usePostResetPasswordCode } from '../../api/au
 import CustomButton from '../../components/CustomButton';
 import CustomInput from '../../components/CustomInput';
 import Toast from 'react-native-toast-message';
+import * as Keychain from 'react-native-keychain';
+
 
 const ResetPassword = (props) => {
     const { goBack } = props
@@ -19,6 +21,7 @@ const ResetPassword = (props) => {
     const { mutate: resetPassword } = usePostResetUserPassword()
     const { mutate: sendCodeAndNewPassword } = usePostResetPasswordCode()
     const [isModalVisible, setModalVisible] = useState(true);
+
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
     };
@@ -62,6 +65,7 @@ const ResetPassword = (props) => {
                         text1: 'Şifre Değişikliği',
                         text2: 'Şifreniz Başarıyla Değiştirildi'
                     });
+                    Keychain.resetGenericPassword()
                 },
                 onError: () => {
                     reject;

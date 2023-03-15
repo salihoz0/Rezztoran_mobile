@@ -24,6 +24,7 @@ import { useGetMe } from '../../api/auth';
 
 const Profiles = () => {
   const [page, setPage] = useState(0);
+  const dispatch = useDispatch();
   const { data: me } = useGetMe()
   const screenTabs = [
     {
@@ -39,10 +40,16 @@ const Profiles = () => {
     {
       id: 3,
       pageName: 'Çıkış Yap',
-      onPress: () => setPage(3),
+      onPress: async () => {
+        try {
+          await Keychain.resetGenericPassword();
+          dispatch(resetAuth({}));
+        } catch (error) {
+          console.log('Error resetting password: ', error);
+        }
+      },
     }
   ]
-
 
   const HomePage = () => {
     return (
@@ -79,7 +86,7 @@ const Profiles = () => {
       {page === 0 && <HomePage />}
       {page === 1 && <QRMenu goBack={() => setPage(0)} />}
       {page === 2 && <ResetPassword goBack={() => setPage(0)} />}
-      {page === 3 && <ExitApp goBack={() => setPage(0)} />}
+      {/* {page === 3 && <ExitApp goBack={() => setPage(0)} />} */}
     </>
   );
 };
