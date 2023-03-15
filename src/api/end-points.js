@@ -7,13 +7,14 @@ const REZZTORAN_CATEGORY_SERVICE = `http://${IP_KEY}:8082/api/category`;
 
 export const END_POINTS = {
     USER_CONTROLLER: {
-        POST_RESET_PASSWORD: `${REZZTORAN_USER_SERVICE}/reset-password`,
         DELETE_USER: `${REZZTORAN_USER_SERVICE}/:id`
     },
     AUTH_CONTROLLER: {
         LOGIN: `${REZZTORAN_AUTH_SERVICE}/login`,
         REGISTER: `${REZZTORAN_AUTH_SERVICE}/register`,
-        ME: `${REZZTORAN_AUTH_SERVICE}/me`
+        ME: `${REZZTORAN_AUTH_SERVICE}/me`,
+        RESET_REQUEST: `${REZZTORAN_AUTH_SERVICE}/reset-request`,
+        SEND_CODE_AND_RESET_PASSWORD: `${REZZTORAN_AUTH_SERVICE}/reset-password`
     },
     RESTAURANT_CONTROLLER: {
         GET_RESTAURANT: `${REZZTORAN_RESTAURANT_SERVICE}`,

@@ -3,7 +3,7 @@ import {
     SafeAreaView,
     Linking
 } from 'react-native';
-import Header from '../components/Header'
+import Header from '../../components/Header'
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 
