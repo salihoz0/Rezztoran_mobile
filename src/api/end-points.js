@@ -1,9 +1,8 @@
-require('dotenv').config()
-const REZZTORAN_AUTH_SERVICE = `http://${process.env.IP_KEY}:8082/api/auth`
-const REZZTORAN_USER_SERVICE = `http://${process.env.IP_KEY}:8082/api/user`
-const REZZTORAN_RESTAURANT_SERVICE = `http://${process.env.IP_KEY}:8082/api/restaurant`
-const REZZTORAN_MENU_SERVICE = `http://${process.env.IP_KEY}:8082/api/menu`
-const REZZTORAN_CATEGORY_SERVICE = `http://${process.env.IP_KEY}:8082/api/category`
+const REZZTORAN_AUTH_SERVICE = `http://${process.env.IP_KEY}:8082/api/auth`;
+const REZZTORAN_USER_SERVICE = `http://${process.env.IP_KEY}:8082/api/user`;
+const REZZTORAN_RESTAURANT_SERVICE = `http://${process.env.IP_KEY}:8082/api/restaurant`;
+const REZZTORAN_MENU_SERVICE = `http://${process.env.IP_KEY}:8082/api/menu`;
+const REZZTORAN_CATEGORY_SERVICE = `http://${process.env.IP_KEY}:8082/api/category`;
 
 export const END_POINTS = {
     USER_CONTROLLER: {
