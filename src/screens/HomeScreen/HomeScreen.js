@@ -77,9 +77,3 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
-
-//Bu sayfada SearchBar'a gerek olmadığını düşünüyorum.
-/*
-Sorunlar
-- Restoran sliderına tıklayınca detay sayfasına götürsün
-*/

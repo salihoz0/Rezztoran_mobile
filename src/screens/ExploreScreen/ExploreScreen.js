@@ -47,16 +47,12 @@ const ExploreScreen = () => {
     id,
     restaurantName,
     city,
-    price,
     restaurantImage,
   ) => {
+    console.log('restaurantImage:', restaurantImage);
     isFavorite
-      ? dispatch(
-          removeFavorite({id, restaurantName, city, price, restaurantImage}),
-        )
-      : dispatch(
-          addFavorite({id, restaurantName, city, price, restaurantImage}),
-        );
+      ? dispatch(removeFavorite({id, restaurantName, city, restaurantImage}))
+      : dispatch(addFavorite({id, restaurantName, city, restaurantImage}));
     setIsFavorite(!isFavorite);
   };
 

@@ -24,7 +24,7 @@ const getRestaurantById = async id => {
     id,
   );
   const response = await axios.get(URL);
-  return response.data;
+  return response;
 };
 
 export const useGetRestaurantById = id => {

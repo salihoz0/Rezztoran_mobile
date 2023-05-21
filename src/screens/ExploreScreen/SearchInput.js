@@ -29,7 +29,7 @@ const SearchInput = props => {
         imgURL={restaurantImage}
         title={restaurantName}
         city={city}
-        star={starCount}
+        starCount={starCount}
       />
     );
   };

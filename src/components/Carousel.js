@@ -29,7 +29,6 @@ const Carousel = props => {
               id,
               restaurantName,
               city,
-              price,
               restaurantImage,
             );
           }}>
@@ -117,7 +116,7 @@ const Carousel = props => {
               justifyContent: 'space-between',
               color: '#000000',
             }}>
-            <Icon name="star" size={15} color={'rgb(212, 123, 51)'} />{' '}
+            <Icon name="star" size={15} color={'rgb(212, 123, 51)'} />
             {starCount}
           </Text>
         </View>

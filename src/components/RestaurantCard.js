@@ -8,7 +8,6 @@ const RestaurantCard = props => {
     imgURL,
     title,
     city,
-    // price,
     id,
     isIdInInitialState,
     handleFavoriteButtonPress,
@@ -52,18 +51,6 @@ const RestaurantCard = props => {
                   color: 'rgb(212, 123, 51)',
                 }}>
                 {city}
-              </Text>
-              <Text
-                style={{
-                  backgroundColor: 'rgb(237, 176, 7)',
-                  width: 70,
-                  paddingVertical: 5,
-                  paddingLeft: 5,
-                  borderRadius: 10,
-                  marginTop: 10,
-                  color: 'black',
-                }}>
-                ₺ {price}
               </Text>
             </View>
             <TouchableOpacity
@@ -116,45 +103,7 @@ const RestaurantCard = props => {
                 }}>
                 {city}
               </Text>
-              {/* <Text
-                style={{
-                  backgroundColor: 'rgb(237, 176, 7)',
-                  width: 70,
-                  paddingVertical: 5,
-                  paddingLeft: 5,
-                  borderRadius: 10,
-                  marginTop: 10,
-                  color: 'black',
-                }}>
-                ₺ {price}
-              </Text> */}
             </View>
-            {/* <Text
-              style={{
-                paddingHorizontal: 10,
-                position: 'absolute',
-                bottom: 13,
-                left: 200,
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                color: '#000000',
-              }}>
-              {' '}
-              <Icon name="star" size={15} color={'rgb(212, 123, 51)'} /> {star}
-            </Text> */}
-            {/* <View
-              style={{
-                position: 'absolute',
-                right: 10,
-                alignItems: 'center',
-                marginTop: 10,
-                paddingVertical: 5,
-                paddingHorizontal: 10,
-                borderRadius: 20,
-                backgroundColor: 'rgb(217, 213, 169)',
-              }}>
-              <Text style={{fontSize: 15, color: '#FFFFFF'}}>{most_rated}</Text>
-            </View> */}
           </>
         )}
       </View>
