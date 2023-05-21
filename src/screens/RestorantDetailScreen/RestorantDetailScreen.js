@@ -4,30 +4,28 @@ import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Header from '../../components/Header';
 import FastImage from 'react-native-fast-image';
-import Menu_data from '../../../assets/Data/Menu_data.json';
 import {showLocation} from 'react-native-map-link';
-import Comment_data from '../../../assets/Data/Comment_data.json';
 import Menu from './Menu';
-import Comment from './Comment';
 import ReservationCreate from '../../components/ReservationCreate/ReservationCreate';
-//import Comment2 from './Comment2';
 
 const RestorantDetailScreen = props => {
   const {
+    id,
     restaurantImage,
     restaurantName,
+    openingTime,
+    closingTime,
     detailedAddress,
+    restaurantAttributes,
+    city,
     latitude,
     longitude,
-    city,
-    star,
-    price,
-    id,
   } = props.data;
+
+  console.log('PROPS: ', props);
   const {goBack, handleFavoriteButtonPress, isIdInInitialState} = props;
-  const [page, setPage] = useState(0);
   const [visible, setVisible] = useState(false);
-  console.log(longitude)
+  console.log(longitude);
   const openMap = () => {
     showLocation({
       latitude: latitude,
@@ -99,7 +97,6 @@ const RestorantDetailScreen = props => {
                       id,
                       restaurantName,
                       city,
-                      price,
                       restaurantImage,
                     );
                   }}>
@@ -152,18 +149,6 @@ const RestorantDetailScreen = props => {
                     }}>
                     {city}
                   </Text>
-                  <Text
-                    style={{
-                      backgroundColor: 'rgb(237, 176, 7)',
-                      width: 70,
-                      paddingVertical: 5,
-                      paddingLeft: 5,
-                      borderRadius: 5,
-                      marginTop: 10,
-                      color: 'black',
-                    }}>
-                    ₺ {price}
-                  </Text>
                 </View>
                 <View
                   style={{
@@ -200,7 +185,7 @@ const RestorantDetailScreen = props => {
                         fontFamily: 'Inter-Bold',
                         color: 'rgb(212, 123, 51)',
                       }}>
-                      09:30 - 22:00
+                      {openingTime} - {closingTime}
                     </Text>
                   </View>
                   <TouchableOpacity
@@ -239,8 +224,8 @@ const RestorantDetailScreen = props => {
               onPress={() => openMap()}>
               <Text>{detailedAddress}</Text>
             </TouchableOpacity>
-            <Menu data={Menu_data} />
-            <Comment data={Comment_data} page={page} setPage={setPage} />
+            <Menu restaurantAttributes={restaurantAttributes} />
+            {/* <Comment data={Comment_data} page={page} setPage={setPage} /> */}
           </ScrollView>
         </SafeAreaView>
       )}
@@ -256,4 +241,3 @@ Sorunlar
 - Saatin çalışma saatlerine uygun olması gerekmesi (BACKEND ile ortak)
 - Yorumlar kısımlarının tasarlanması (Bence Menu kısmının ayrıntılı olmasına gerek yok)
 */
-

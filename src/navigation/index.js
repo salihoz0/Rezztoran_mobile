@@ -1,6 +1,6 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native'
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import ConfirmEmailScreen from '../screens/ConfirmEmailScreen';
@@ -11,63 +11,63 @@ import RestorantDetailScreen from '../screens/RestorantDetailScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import ProfilesScreen from '../screens/ProfilesScreen/Profiles';
 import ReservationsScreen from '../screens/ResevervationsScreen';
-import Coupon from '../screens/Coupon/Coupon';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { useSelector } from 'react-redux'
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {useSelector} from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const Navigation = () => {
-  const { isLoggedIn } = useSelector((state) => state.authStore)
+  const {isLoggedIn} = useSelector(state => state.authStore);
   const StackNavigation = () => {
     return (
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name='TabNavigation' component={TabNavigation} />
-        <Stack.Screen name="RestorantDetail" component={RestorantDetailScreen} />
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="TabNavigation" component={TabNavigation} />
+        <Stack.Screen
+          name="RestorantDetail"
+          component={RestorantDetailScreen}
+        />
         <Stack.Screen name="ExploreScreen" component={ExploreScreen} />
-        <Stack.Screen name="ReservationsScreen" component={ReservationsScreen} />
+        <Stack.Screen
+          name="ReservationsScreen"
+          component={ReservationsScreen}
+        />
       </Stack.Navigator>
     );
   };
 
   const AuthNavigation = () => {
     return (
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
         <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} />
-      </Stack.Navigator>)
-  }
+      </Stack.Navigator>
+    );
+  };
 
   const TabNavigation = () => {
     return (
       <Tab.Navigator
         initialRouteName="Home"
-        activeColor='rgb(212, 123, 51)'
-        barStyle={{ backgroundColor: 'rgb(242, 238, 220)' }}
-      >
+        activeColor="rgb(212, 123, 51)"
+        barStyle={{backgroundColor: 'rgb(242, 238, 220)'}}>
         <Tab.Screen
           name="Ana Sayfa"
           component={HomeScreen}
           options={{
             headerShown: false,
             tabBarIcon: () => {
-              return <Icon name="home" size={20} style={{ color: 'rgb(212, 123, 51)' }} />;
-            },
-          }}
-        />
-        <Tab.Screen
-          name="Kupon"
-          component={Coupon}
-          options={{
-            tabBarHideOnKeyboard: true,
-            headerShown: false,
-            tabBarIcon: () => {
-              return <Icon name="ticket" size={20} style={{ color: 'rgb(212, 123, 51)' }} />;
+              return (
+                <Icon
+                  name="home"
+                  size={20}
+                  style={{color: 'rgb(212, 123, 51)'}}
+                />
+              );
             },
           }}
         />
@@ -78,7 +78,13 @@ const Navigation = () => {
             tabBarHideOnKeyboard: true,
             headerShown: false,
             tabBarIcon: () => {
-              return <Icon name="compass" size={25} style={{ color: 'rgb(212, 123, 51)' }} />;
+              return (
+                <Icon
+                  name="compass"
+                  size={25}
+                  style={{color: 'rgb(212, 123, 51)'}}
+                />
+              );
             },
           }}
         />
@@ -89,7 +95,13 @@ const Navigation = () => {
             tabBarHideOnKeyboard: true,
             headerShown: false,
             tabBarIcon: () => {
-              return <Icon name="calendar-check-o" size={20} style={{ color: 'rgb(212, 123, 51)' }} />;
+              return (
+                <Icon
+                  name="calendar-check-o"
+                  size={20}
+                  style={{color: 'rgb(212, 123, 51)'}}
+                />
+              );
             },
           }}
         />
@@ -100,7 +112,13 @@ const Navigation = () => {
             tabBarHideOnKeyboard: true,
             headerShown: false,
             tabBarIcon: () => {
-              return <Icon name="user" size={20} style={{ color: 'rgb(212, 123, 51)' }} />;
+              return (
+                <Icon
+                  name="user"
+                  size={20}
+                  style={{color: 'rgb(212, 123, 51)'}}
+                />
+              );
             },
           }}
         />
@@ -112,8 +130,7 @@ const Navigation = () => {
     <NavigationContainer>
       {!isLoggedIn ? <AuthNavigation /> : <StackNavigation />}
     </NavigationContainer>
-  )
-
-}
+  );
+};
 
 export default Navigation;

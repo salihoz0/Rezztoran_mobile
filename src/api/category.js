@@ -1,28 +1,33 @@
-import { END_POINTS } from "./end-points";
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
-import { API_KEY } from "@env"
+import {END_POINTS} from './end-points';
+import {useQuery} from '@tanstack/react-query';
+import axios from 'axios';
 
 //========== GET CATEGORY ============
-const Token = API_KEY
 const getCategory = async () => {
-    const response = await axios.get(END_POINTS.CATEGORY_CONTROLLER.GET_CATEGORY, { headers: { "Authorization": 'Bearer ' + Token } })
-    return response.data
-}
+  const response = await axios.get(END_POINTS.CATEGORY_CONTROLLER.GET_CATEGORY);
+  return response.data;
+};
 
 export const useGetCategory = () => {
-    const { data, refetch, isLoading } = useQuery(['getCategory'], () => getCategory())
-    return { data, refetch, isLoading }
-}
+  const {data, refetch, isLoading} = useQuery(['getCategory'], () =>
+    getCategory(),
+  );
+  return {data, refetch, isLoading};
+};
 
 //========== GET CATEGORY BY ID ==========
-const getCategoryById = async (id) => {
-    const URL = END_POINTS.CATEGORY_CONTROLLER.GET_CATEGORY_BY_ID.replace(':id', id)
-    const response = await axios.get(URL)
-    return response.data
-}
+const getCategoryById = async id => {
+  const URL = END_POINTS.CATEGORY_CONTROLLER.GET_CATEGORY_BY_ID.replace(
+    ':id',
+    id,
+  );
+  const response = await axios.get(URL);
+  return response.data;
+};
 
-export const useGetCategoryById = (id) => {
-    const { data, refetch, isLoading } = useQuery(['getCategoryById', id], () => getCategoryById(id))
-    return { data, refetch, isLoading }
-}
+export const useGetCategoryById = id => {
+  const {data, refetch, isLoading} = useQuery(['getCategoryById', id], () =>
+    getCategoryById(id),
+  );
+  return {data, refetch, isLoading};
+};

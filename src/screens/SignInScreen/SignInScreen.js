@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   StyleSheet,
@@ -12,44 +12,44 @@ import Logo from '../../../assets/images/rezztoran_logo_transparent.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSignInButton from '../../components/SocialSignInButtons';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import backgr from '../../../assets/images/arkaplan.png';
-import { useDispatch } from 'react-redux';
-import { useLogin } from '../../api/auth';
-import { setAuth } from '../../store/authStore';
-import * as Keychain from 'react-native-keychain'
+import {useDispatch} from 'react-redux';
+import {useLogin} from '../../api/auth';
+import {setAuth} from '../../store/authStore';
+import * as Keychain from 'react-native-keychain';
+import {axiosConfig} from '../../api/axiosConfig';
 
 const SignInScreen = () => {
   const dispatch = useDispatch();
-  const { mutate: login } = useLogin()
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const {mutate: login} = useLogin();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const doLogin = async (values = { username, password }) => {
+  const doLogin = async (values = {username, password}) => {
     new Promise((resolve, reject) => {
       login(values, {
         onSuccess: data => {
-          resolve(undefined)
           dispatch(
             setAuth({
-              myToken: data.accessToken,
-              myDetails: data.user,
-            })
-          )
-          Keychain.setGenericPassword(values.username, values.password)
-          setUsername('')
-          setPassword('')
-          console.log('başarılı')
+              myToken: data?.content?.accessToken,
+              myDetails: data?.content?.user,
+            }),
+          );
+          Keychain.setGenericPassword(values.username, values.password);
+          setUsername('');
+          setPassword('');
+          axiosConfig(data?.content?.accessToken);
+          resolve(undefined);
         },
         onError: () => {
-          reject
-          console.log('istek başarısız')
-        }
-      })
-    },)
+          reject;
+        },
+      });
+    });
   };
 
-  const { height } = useWindowDimensions();
+  const {height} = useWindowDimensions();
 
   const navigation = useNavigation();
 
@@ -62,12 +62,12 @@ const SignInScreen = () => {
   };
 
   return (
-    <ImageBackground source={backgr} style={{ flex: 1 }}>
+    <ImageBackground source={backgr} style={{flex: 1}}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.root}>
           <Image
             source={Logo}
-            style={(styles.logo, { height: height * 0.3 })}
+            style={(styles.logo, {height: height * 0.3})}
             resizeMode="contain"
           />
           <CustomInput
@@ -80,9 +80,12 @@ const SignInScreen = () => {
             value={password}
             setValue={val => setPassword(val)}
             secureTextEntry
-            style={{ width: 500 }}
+            style={{width: 500}}
           />
-          <CustomButton text="Giriş Yap" onPress={() => doLogin({ username: username, password: password })} />
+          <CustomButton
+            text="Giriş Yap"
+            onPress={() => doLogin({username: username, password: password})}
+          />
           <CustomButton
             text="Şifremi Unuttum"
             onPress={onForgotPasswordPressed}

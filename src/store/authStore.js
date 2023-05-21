@@ -1,10 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   isLoggedIn: false,
   myToken: undefined,
   myDetails: {},
-}
+};
 
 export const authStore = createSlice({
   name: 'auth',
@@ -15,7 +15,7 @@ export const authStore = createSlice({
       state.myDetails = action.payload.myDetails || state.myDetails;
       state.isLoggedIn = true;
     },
-    resetAuth: (state) => {
+    resetAuth: state => {
       state.myToken = undefined;
       state.isLoggedIn = false;
       state.myDetails = {};
@@ -23,7 +23,5 @@ export const authStore = createSlice({
   },
 });
 
-export const { setAuth, resetAuth } = authStore.actions;
+export const {setAuth, resetAuth} = authStore.actions;
 export default authStore.reducer;
-
-//selam
