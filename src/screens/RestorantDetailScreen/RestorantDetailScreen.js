@@ -7,7 +7,7 @@ import FastImage from 'react-native-fast-image';
 import {showLocation} from 'react-native-map-link';
 import Menu from './Menu';
 import ReservationCreate from '../../components/ReservationCreate/ReservationCreate';
-
+import { useDelete } from '../../api/reserve';
 const RestorantDetailScreen = props => {
   const {
     id,
@@ -54,7 +54,7 @@ const RestorantDetailScreen = props => {
             }}>
             <Icon name="arrow-collapse-left" size={35} color="black" />
           </TouchableOpacity>
-          <ReservationCreate />
+          <ReservationCreate restaurantId={id} />
         </SafeAreaView>
       ) : (
         <SafeAreaView

@@ -12,7 +12,7 @@ const Restorants = ({Restorant}) => {
     <View>
       <Pressable
         onPress={() => {
-          navigation.navigate('RestorantDetail', {title: Restorant.title, star:Restorant.star, price:Restorant.price});
+          navigation.navigate('il', {title: Restorant.title, star:Restorant.star, price:Restorant.price});
         }}
         pressRetentionOffset>
         <View >
