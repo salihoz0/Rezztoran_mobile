@@ -25,7 +25,6 @@ const SignInScreen = () => {
   const {mutate: login} = useLogin();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const doLogin = async (values = {username, password}) => {
     new Promise((resolve, reject) => {
       login(values, {

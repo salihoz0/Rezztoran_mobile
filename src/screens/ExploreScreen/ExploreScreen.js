@@ -41,7 +41,6 @@ const ExploreScreen = () => {
   const {data: restaurant} = useGetRestaurant();
   const {data: category} = useGetCategory();
 
-  console.log('restaurant: ', restaurant);
 
   const handleFavoriteButtonPress = (
     id,

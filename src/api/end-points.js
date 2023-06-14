@@ -1,9 +1,11 @@
-import {IP_KEY} from '@env';
+//import {IP_KEY} from '@env';
+const IP_KEY="192.168.1.193";
 const REZZTORAN_AUTH_SERVICE = `http://${IP_KEY}:8082/api/auth`;
 const REZZTORAN_USER_SERVICE = `http://${IP_KEY}:8082/api/user`;
 const REZZTORAN_RESTAURANT_SERVICE = `http://${IP_KEY}:8082/api/restaurant`;
 const REZZTORAN_MENU_SERVICE = `http://${IP_KEY}:8082/api/menu`;
 const REZZTORAN_CATEGORY_SERVICE = `http://${IP_KEY}:8082/api/category`;
+const REZZTORAN_BOOKING_SERVICE = `http://${IP_KEY}:8082/api/book`;
 
 export const END_POINTS = {
   USER_CONTROLLER: {
@@ -26,5 +28,12 @@ export const END_POINTS = {
   CATEGORY_CONTROLLER: {
     GET_CATEGORY: `${REZZTORAN_CATEGORY_SERVICE}`,
     GET_CATEGORY_BY_ID: `${REZZTORAN_CATEGORY_SERVICE}`,
+  },
+  BOOK_CONTROLLER:{
+    POST_BOOK:`${REZZTORAN_BOOKING_SERVICE}`,
+    GET_BOOK:`${REZZTORAN_BOOKING_SERVICE}/user`,
+    DELETE_BOOK:`${REZZTORAN_BOOKING_SERVICE}`,
+    UPDATE_BOOK:`${REZZTORAN_BOOKING_SERVICE}`,
+
   },
 };

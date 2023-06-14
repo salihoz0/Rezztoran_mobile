@@ -64,3 +64,4 @@ buck-out/
 /vendor/bundle/
 src/api/end-points.js
 src/api/category.js
+.env
